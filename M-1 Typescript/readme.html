@@ -1,0 +1,1074 @@
+<!DOCTYPE html><html><head>
+      <title>readme</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="typescript">TypeScript </h1>
+<p>TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. TypeScript is often used in web development to build large-scale applications and is particularly popular with developers using frameworks like Angular.</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook">Typescript official documentation</a></li>
+<li><a href="https://www.freecodecamp.org/news/programming-in-typescript/">Programming in TypeScript – Full Course<br>
+</a></li>
+<li><a href="https://www.freecodecamp.org/news/learn-typescript-beginners-guide/">Learn TypeScript – The Ultimate Beginners Guide</a></li>
+<li><a href="https://www.freecodecamp.org/news/typescript-tutorial-for-react-developers/">TypeScript Handbook for React Developers – How to Build a Type-Safe Todo App</a></li>
+</ul>
+<h1 id="table-of-contents">Table of Contents </h1>
+<ol>
+<li><a href="#pros-and-cons-of-typescript">Pros and Cons of Typescript</a></li>
+<li><a href="#install-typescript-and-ts-config">Install TypeScript and TS config</a></li>
+<li><a href="#data-types-of-typescript-example">Data Types of Typescript</a>
+<ul>
+<li><a href="#primitive-data-types">Primitive types</a></li>
+<li><a href="#non-primitive-data-types">Non-Primitive types</a></li>
+<li><a href="#function">Function</a></li>
+<li><a href="#union-and-intersection-types">Union and Intersection types</a></li>
+<li><a href="#enum-type">Enum Type</a></li>
+</ul>
+</li>
+<li><a href="#type-alias">Type Alias</a></li>
+<li><a href="#interfaces">Interface</a></li>
+<li><a href="#type-assertion">Type Assertion</a></li>
+<li><a href="#generic">Generic</a></li>
+<li><a href="#asynchronous-typescript">Asynchronous Typescript</a></li>
+<li><a href="#conditional-types">Conditional Types</a></li>
+<li><a href="#mapped-types">Mapped Types</a></li>
+<li><a href="#utility-types">Utility Types</a></li>
+<li><a href="#object-oriented-programmingoop">Object Oriented Programming(OOP)</a></li>
+<li><a href="#object-oriented-programmingoop-with-typescript">Object Oriented Programming(OOP) With TypeScript</a>
+<ul>
+<li><a href="#basic-structure-of-a-class">Basic structure of a class</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#access-modifiers">Access modifiers</a></li>
+<li><a href="#getter-and-setter-function">Getter and Setter function</a></li>
+<li><a href="#statics">Statics</a></li>
+<li><a href="#polymorphism">Polymorphism</a></li>
+<li><a href="#abstraction">Abstraction</a></li>
+<li><a href="#encapsulation">Encapsulation</a></li>
+</ul>
+</li>
+</ol>
+<h1 id="pros-and-cons-of-typescript">Pros and Cons of Typescript </h1>
+<p>Every programming languages is created to serve few purpose, so that there have pros and cons.Here are some of the key pros and cons of TypeScript:</p>
+<h3 id="pros">Pros: </h3>
+<ol>
+<li>
+<p><code>Static Typing</code>: TypeScript enforces static typing, which means you can catch type-related errors at compile time rather than runtime. This can help improve code quality and catch bugs early in the development process.</p>
+</li>
+<li>
+<p><code>Enhanced Tooling</code>: TypeScript provides excellent tooling and editor support. Popular code editors like Visual Studio Code offer rich TypeScript integration, including auto-completion, error checking, and code navigation.</p>
+</li>
+<li>
+<p><code>Code Maintainability</code>: Strongly typed code is often more self-documenting and easier to understand, making it easier to maintain and refactor code bases, especially in large projects.</p>
+</li>
+<li>
+<p><code>Improved Collaboration</code>: The use of static types can make it easier for teams to collaborate on a project, as it provides a clear contract for functions and interfaces.</p>
+</li>
+<li>
+<p><code>Rich Ecosystem</code>: TypeScript has a rich ecosystem with a variety of libraries and frameworks designed to work with it, making it suitable for building complex applications.</p>
+</li>
+<li>
+<p><code>Transpilation</code>: TypeScript code can be transpiled into plain JavaScript, making it compatible with all major browsers and environments.</p>
+</li>
+</ol>
+<h3 id="cons">Cons: </h3>
+<ol>
+<li>
+<p><code>Learning Curve</code>: TypeScript introduces a learning curve for developers who are new to static typing. It may take time to fully grasp TypeScript's type system and its nuances.</p>
+</li>
+<li>
+<p><code>Overhead</code>: Adding type annotations can make the codebase slightly more verbose, which can be seen as an overhead, especially for small projects.</p>
+</li>
+<li>
+<p><code>Tooling Dependency</code>: TypeScript's strong tooling support means that you may rely heavily on specific editors or build tools to maximize its benefits. This can be a limitation in some development environments.</p>
+</li>
+<li>
+<p><code>Compilation Step</code>: TypeScript requires a compilation step before execution, which may slow down the development process compared to pure JavaScript development.</p>
+</li>
+<li>
+<p><code>Type Definitions</code>: While TypeScript has a rich ecosystem, not all JavaScript libraries have well-maintained type definitions, which can be frustrating when integrating third-party code.</p>
+</li>
+</ol>
+<p>In summary, TypeScript is a powerful language that offers many advantages for building large-scale applications, but it comes with a learning curve and some overhead. The decision to use TypeScript depends on the specific needs of a project and the preferences of the development team.</p>
+<h1 id="install-typescript-and-ts-config">Install TypeScript and TS config </h1>
+<ul>
+<li>Install TypeScript</li>
+</ul>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>  <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> typescript
+</code></pre><ul>
+<li>TS Config</li>
+</ul>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>  tsc <span class="token parameter variable">--init</span>
+</code></pre><h1 id="data-types-of-typescript-example">Data Types of Typescript (example) </h1>
+<h3 id="basis-types">Basis Types </h3>
+<ul>
+<li>
+<p>Primitive Types</p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>never</li>
+<li>unknown</li>
+<li>void</li>
+<li>symbol</li>
+</ul>
+</li>
+<li>
+<p>Non-Primitive types</p>
+<ul>
+<li>Array</li>
+<li>Tuple</li>
+<li>Object</li>
+</ul>
+</li>
+</ul>
+<h2 id="primitive-data-types">Primitive Data types </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token comment">// type annotations</span>
+<span class="token keyword keyword-const">const</span> authorTwo<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'James Clear'</span><span class="token punctuation">;</span> <span class="token comment">// explicit way of data type define</span>
+<span class="token keyword keyword-const">const</span> authorOne <span class="token operator">=</span> <span class="token string">'Brian Tracy'</span><span class="token punctuation">;</span> <span class="token comment">// implicit way of data type define</span>
+<span class="token comment">// we don’t always have to write explicit type annotations. In many cases, TypeScript can even just infer the types</span>
+
+<span class="token comment">// basic data types</span>
+<span class="token keyword keyword-const">const</span> author<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'Cal Newport'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> age<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">52</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> isActive<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> fb<span class="token operator">:</span> <span class="token keyword keyword-undefined">undefined</span> <span class="token operator">=</span> <span class="token keyword keyword-undefined">undefined</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> x<span class="token operator">:</span> <span class="token keyword keyword-null">null</span> <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
+
+<span class="token comment">// literal type</span>
+<span class="token class-name"><span class="token keyword keyword-const">const</span></span> alignment<span class="token operator">:</span> <span class="token string">'left'</span> <span class="token operator">|</span> <span class="token string">'center'</span> <span class="token operator">|</span> <span class="token string">'right'</span> <span class="token operator">=</span> <span class="token string">'center'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// void type</span>
+<span class="token class-name"><span class="token keyword keyword-function">function</span></span> <span class="token function">logMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword keyword-void">void</span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'This is a log message.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// unknown type</span>
+<span class="token class-name"><span class="token keyword keyword-function">function</span></span> <span class="token function">processValue</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token keyword keyword-typeof">typeof</span> value <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// You can safely use value as a string here</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token keyword keyword-typeof">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// You can safely use value as a number here</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Value is of an unknown type'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">processValue</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Works fine</span>
+<span class="token function">processValue</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Works fine</span>
+
+<span class="token comment">// never type</span>
+<span class="token class-name"><span class="token keyword keyword-function">function</span></span> <span class="token function">throwError</span><span class="token punctuation">(</span>message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">never</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-throw">throw</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="non-primitive-data-types">Non-primitive Data types </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ * Array
+ */</span>
+<span class="token keyword keyword-const">const</span> books<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Time Management'</span><span class="token punctuation">,</span> <span class="token string">'Atomic Habits'</span><span class="token punctuation">,</span> <span class="token string">'Deep Work'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> prices<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Tuple
+ */</span>
+<span class="token keyword keyword-const">const</span> coordinate<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token builtin">number</span><span class="token punctuation">,</span> <span class="token builtin">number</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> fullNameWithAge<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">number</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Napoleon'</span><span class="token punctuation">,</span> <span class="token string">'Hill'</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Object
+ */</span>
+<span class="token keyword keyword-const">const</span> bookOne<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-readonly">readonly</span> id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  title<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  price<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  pages<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  isAvailable<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span> <span class="token comment">// optional type</span>
+  <span class="token class-name">category</span><span class="token operator">:</span> <span class="token string">'BestSeller'</span><span class="token punctuation">;</span> <span class="token comment">// literal type</span>
+<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token string">'abc123'</span><span class="token punctuation">,</span>
+  title<span class="token operator">:</span> <span class="token string">'Deep Work'</span><span class="token punctuation">,</span>
+  author<span class="token operator">:</span> <span class="token string">'James Clear'</span><span class="token punctuation">,</span>
+  price<span class="token operator">:</span> <span class="token number">220</span><span class="token punctuation">,</span>
+  pages<span class="token operator">:</span> <span class="token number">180</span><span class="token punctuation">,</span>
+  category<span class="token operator">:</span> <span class="token string">'BestSeller'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><h2 id="function">Function </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token comment">//Normal Function</span>
+<span class="token keyword keyword-function">function</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//arrow function</span>
+<span class="token keyword keyword-const">const</span> multiply <span class="token operator">=</span> <span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// type of a function which returns a promise,</span>
+<span class="token keyword keyword-async">async</span> <span class="token keyword keyword-function">function</span> <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> <span class="token string">'james'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//method</span>
+<span class="token keyword keyword-const">const</span> book<span class="token operator">:</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  available<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  stock<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  <span class="token function-variable function">addStock</span><span class="token operator">:</span> <span class="token punctuation">(</span>qnt<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> <span class="token string">'Leadership'</span><span class="token punctuation">,</span>
+  author<span class="token operator">:</span> <span class="token string">'Brian Tracy'</span><span class="token punctuation">,</span>
+  available<span class="token operator">:</span> <span class="token string">'true'</span><span class="token punctuation">,</span>
+  stock<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">addStock</span><span class="token operator">:</span> <span class="token keyword keyword-function">function</span> <span class="token punctuation">(</span>qnt<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>stock <span class="token operator">+</span> qnt<span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> qnt <span class="token operator">+</span> <span class="token string">' Books added'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//callback</span>
+<span class="token keyword keyword-const">const</span> bookList<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Deep Work'</span><span class="token punctuation">,</span> <span class="token string">'Leadership'</span><span class="token punctuation">,</span> <span class="token string">'Atomic Habits'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> uppercaseBookList<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> bookList<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>book<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=&gt;</span> book<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="union-and-intersection-types">Union and Intersection types </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ * Union type
+ */</span>
+<span class="token keyword keyword-const">const</span> mixed<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token string">'book'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * intersection type
+ */</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Person</span> <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'string'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Employee</span> <span class="token operator">=</span> <span class="token punctuation">{</span> role<span class="token operator">:</span> <span class="token string">'employee'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">EmployeeRole</span> <span class="token operator">=</span> Person <span class="token operator">&amp;</span> Employee<span class="token punctuation">;</span>
+</code></pre><h1 id="enum-type">Enum type </h1>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-enum">enum</span> Role <span class="token punctuation">{</span>
+  <span class="token constant">ADMIN</span> <span class="token operator">=</span> <span class="token string">'ADMIN'</span><span class="token punctuation">,</span>
+  <span class="token constant">SUPER_ADMIN</span> <span class="token operator">=</span> <span class="token string">'SUPER_ADMIN'</span><span class="token punctuation">,</span>
+  <span class="token constant">OPERATOR</span> <span class="token operator">=</span> <span class="token string">'OPERATOR'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> admin<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> Role<span class="token punctuation">.</span><span class="token constant">ADMIN</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> superAdmin<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> Role<span class="token punctuation">.</span><span class="token constant">SUPER_ADMIN</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> operator<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> Role<span class="token punctuation">.</span><span class="token constant">OPERATOR</span><span class="token punctuation">;</span>
+</code></pre><h2 id="type-alias">Type Alias </h2>
+<p>Type alias is a way to create a new name for an existing type or to define complex types that may be used multiple times</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token comment">// type alias</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Address</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  city<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  country<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Student</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  firstName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  lastName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  gender<span class="token operator">:</span> <span class="token string">'male'</span> <span class="token operator">|</span> <span class="token string">'female'</span><span class="token punctuation">;</span>
+  contactNo<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  address<span class="token operator">?</span><span class="token operator">:</span> Address<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> studentOne<span class="token operator">:</span> Student <span class="token operator">=</span> <span class="token punctuation">{</span>
+  firstName<span class="token operator">:</span> <span class="token string">'James'</span><span class="token punctuation">,</span>
+  lastName<span class="token operator">:</span> <span class="token string">'Clear'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+  gender<span class="token operator">:</span> <span class="token string">'male'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">CreateFullName</span> <span class="token operator">=</span> <span class="token punctuation">(</span>fName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> lName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> createFullName<span class="token operator">:</span> <span class="token function-variable function">CreateFullName</span> <span class="token operator">=</span> <span class="token punctuation">(</span>fName<span class="token punctuation">,</span> lName<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>fName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+</code></pre><h2 id="interfaces">Interfaces </h2>
+<p>An interface is a way to define type for the structure of an object. It describes the properties, methods, and their types that an object should have. Interfaces are a fundamental part of TypeScript and are used for defining object shapes and ensuring type checking.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token comment">// interface only use to define  the structure of Object, not use for any primitive types</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">Author</span> <span class="token punctuation">{</span>
+  firstName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  lastName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> authorOne<span class="token operator">:</span> Author <span class="token operator">=</span> <span class="token punctuation">{</span>
+  firstName<span class="token operator">:</span> <span class="token string">'James'</span><span class="token punctuation">,</span>
+  lastName<span class="token operator">:</span> <span class="token string">'Clear'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// interface can be extends with interface and type alias</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">AuthorWithGenre</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Author</span> <span class="token punctuation">{</span>
+  genre<span class="token operator">:</span> <span class="token string">'motivation'</span> <span class="token operator">|</span> <span class="token string">'thriller'</span><span class="token punctuation">;</span>
+  status<span class="token operator">:</span> <span class="token string">'active'</span> <span class="token operator">|</span> <span class="token string">'passed-away'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> authorTwo<span class="token operator">:</span> AuthorWithGenre <span class="token operator">=</span> <span class="token punctuation">{</span>
+  firstName<span class="token operator">:</span> <span class="token string">'Cal'</span><span class="token punctuation">,</span>
+  lastName<span class="token operator">:</span> <span class="token string">'Newport'</span><span class="token punctuation">,</span>
+  genre<span class="token operator">:</span> <span class="token string">'motivation'</span><span class="token punctuation">,</span>
+  status<span class="token operator">:</span> <span class="token string">'passed-away'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// implements interface in class</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">User</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">Author</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> firstName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-public">public</span> lastName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>firstName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> lastName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>firstName <span class="token operator">=</span> firstName<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>lastName <span class="token operator">=</span> lastName<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p><a href="https://blog.bitsrc.io/type-vs-interface-in-typescript-cf3c00bc04ae">Differences Between Type Aliases and Interfaces</a></p>
+<h2 id="type-assertion">Type Assertion </h2>
+<p>Type assertion in TypeScript is a way to tell the TypeScript compiler that you know more about the type of a value than it does. It's like telling TypeScript, "Trust me, I've checked the type, and it's safe." Type assertion is useful in situations where you have more specific knowledge about the types in your code than TypeScript can infer.</p>
+<p>Type assertion can be done in two ways: with angle brackets (&lt;&gt;) or with the as keyword.</p>
+<ul>
+<li>
+<p>Using angle brackets (<code>&lt;&gt;</code>)</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-let">let</span> someValue<span class="token operator">:</span> <span class="token builtin">any</span> <span class="token operator">=</span> <span class="token string">'Hello, TypeScript!'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-let">let</span> strLength<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">&gt;</span>someValue<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>strLength<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 16</span>
+</code></pre></li>
+<li>
+<p>Using <code>as</code> keyword</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-let">let</span> someValue<span class="token operator">:</span> <span class="token builtin">any</span> <span class="token operator">=</span> <span class="token string">'Hello, TypeScript!'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-let">let</span> strLength<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span>someValue <span class="token keyword keyword-as">as</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>strLength<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 16</span>
+</code></pre></li>
+<li>
+<p>other examples</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-let">let</span> anything<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+anything <span class="token operator">=</span> <span class="token string">'Hello, World!'</span><span class="token punctuation">;</span>
+<span class="token punctuation">(</span>anything <span class="token keyword keyword-as">as</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//--------------------------------</span>
+<span class="token keyword keyword-const">const</span> kgToGram <span class="token operator">=</span> <span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword keyword-undefined">undefined</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token keyword keyword-typeof">typeof</span> value <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-const">const</span> convertedValue <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">The converted value is: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>convertedValue<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token keyword keyword-typeof">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> value <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> resultOne <span class="token operator">=</span> <span class="token function">kgToGram</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword keyword-as">as</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> resultTwo <span class="token operator">=</span> <span class="token function">kgToGram</span><span class="token punctuation">(</span><span class="token string">'5'</span><span class="token punctuation">)</span> <span class="token keyword keyword-as">as</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+<span class="token comment">//--------------------------------</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">CustomError</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-try">try</span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'something'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error <span class="token keyword keyword-as">as</span> CustomError<span class="token punctuation">)</span><span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<h2 id="generic">Generic </h2>
+<p>Generics in TypeScript allow you to create reusable components, functions, and classes that can work with a variety of data types. They provide a way to write code that is both flexible and type-safe. Generics are especially useful when you want to create functions or classes that work with different data types without losing type information.</p>
+<ul>
+<li>
+<p>Basic Example of Generic types</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-type">type</span> <span class="token class-name">GenericArray<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> srtArr<span class="token operator">:</span> GenericArray<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> numArr<span class="token operator">:</span> GenericArray<span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> boolArr<span class="token operator">:</span> GenericArray<span class="token operator">&lt;</span><span class="token builtin">boolean</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Name</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  fName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  lName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> objArr<span class="token operator">:</span> GenericArray<span class="token operator">&lt;</span>Name<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token string">'sdadsa'</span><span class="token punctuation">,</span> fName<span class="token operator">:</span> <span class="token string">'james'</span><span class="token punctuation">,</span> lName<span class="token operator">:</span> <span class="token string">'clear'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token string">'afsdfa'</span><span class="token punctuation">,</span> fName<span class="token operator">:</span> <span class="token string">'james'</span><span class="token punctuation">,</span> lName<span class="token operator">:</span> <span class="token string">'clear'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Generic Tuple
+ */</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">GenericTuple<span class="token operator">&lt;</span><span class="token constant">X</span><span class="token punctuation">,</span> <span class="token constant">Y</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token constant">X</span><span class="token punctuation">,</span> <span class="token constant">Y</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> nameAge<span class="token operator">:</span> GenericTuple<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">number</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Napoleon Hill'</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> genreStatus<span class="token operator">:</span> GenericTuple<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'motivation'</span><span class="token punctuation">,</span> <span class="token string">'active'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> nameWithId<span class="token operator">:</span> GenericTuple<span class="token operator">&lt;</span>Name<span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token string">'afsdfa'</span><span class="token punctuation">,</span> fName<span class="token operator">:</span> <span class="token string">'james'</span><span class="token punctuation">,</span> lName<span class="token operator">:</span> <span class="token string">'clear'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">'1232'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></li>
+<li>
+<p>Generic with Interface</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ * Generic with Interface
+ */</span>
+
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">Developer<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token punctuation">,</span> <span class="token constant">X</span><span class="token punctuation">,</span> <span class="token constant">Y</span><span class="token punctuation">,</span> <span class="token constant">Z</span> <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token operator">&gt;</span></span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  skills<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">;</span>
+  address<span class="token operator">:</span> <span class="token constant">X</span><span class="token punctuation">;</span>
+  remote<span class="token operator">?</span><span class="token operator">:</span> <span class="token constant">Y</span><span class="token punctuation">;</span>
+  graduated<span class="token operator">?</span><span class="token operator">:</span> <span class="token constant">Z</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> jrDeveloper<span class="token operator">:</span> Developer<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> county<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span> city<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword keyword-null">null</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'example'</span><span class="token punctuation">,</span>
+  email<span class="token operator">:</span> <span class="token string">'example@gmail.com'</span><span class="token punctuation">,</span>
+  skills<span class="token operator">:</span> <span class="token string">'Front-end Development'</span><span class="token punctuation">,</span>
+  address<span class="token operator">:</span> <span class="token punctuation">{</span> county<span class="token operator">:</span> <span class="token string">'Bangladesh'</span><span class="token punctuation">,</span> city<span class="token operator">:</span> <span class="token string">'Dhaka'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> srDeveloper<span class="token operator">:</span> Developer<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">boolean</span><span class="token punctuation">,</span> <span class="token builtin">boolean</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'example 2'</span><span class="token punctuation">,</span>
+  email<span class="token operator">:</span> <span class="token string">'example2@gmail.com'</span><span class="token punctuation">,</span>
+  skills<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'Front-end Development'</span><span class="token punctuation">,</span> <span class="token string">'Backend-Development'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  address<span class="token operator">:</span> <span class="token string">'Dhaka, Bangladesh'</span><span class="token punctuation">,</span>
+  remote<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  graduated<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></li>
+<li>
+<p>Function with generics</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ *  Function with generics
+ */</span>
+<span class="token keyword keyword-function">function</span> <span class="token generic-function"><span class="token function">identity</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>arg<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> arg<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Usage:</span>
+<span class="token keyword keyword-let">let</span> value<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token function">identity</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// The function returns a number.</span>
+<span class="token keyword keyword-let">let</span> message<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token function">identity</span><span class="token punctuation">(</span><span class="token string">'Hello, TypeScript!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// The function returns a string.</span>
+
+<span class="token keyword keyword-const">const</span> createTuple <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">X</span><span class="token punctuation">,</span> <span class="token constant">Y</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>first<span class="token operator">:</span> <span class="token constant">X</span><span class="token punctuation">,</span> last<span class="token operator">:</span> <span class="token constant">Y</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token constant">X</span><span class="token punctuation">,</span> <span class="token constant">Y</span><span class="token punctuation">]</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> <span class="token punctuation">[</span>first<span class="token punctuation">,</span> last<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// usage</span>
+<span class="token keyword keyword-const">const</span> fullName <span class="token operator">=</span> <span class="token generic-function"><span class="token function">createTuple</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token string">'Casciaro'</span><span class="token punctuation">,</span> <span class="token string">'Mammino'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> nameAge <span class="token operator">=</span> <span class="token generic-function"><span class="token function">createTuple</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">number</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token string">'Brain'</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> nameStatus <span class="token operator">=</span> <span class="token generic-function"><span class="token function">createTuple</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">boolean</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token string">'bruce'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></li>
+<li>
+<p>Constraints in typescript</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ * Constraints
+ * generic constraints allow you to restrict the types that can be used as type parameters in a generic function or class. Constraints ensure that you can only use types that meet certain criteria, such as having specific properties or implementing certain interfaces. This helps you write more specific and type-safe generic code.
+ */</span>
+
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">Book</span> <span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> addBook <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Book</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>info<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>info <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> newBookOne <span class="token operator">=</span> <span class="token function">addBook</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
+  name<span class="token operator">:</span> <span class="token string">'Think and Grow Rich'</span><span class="token punctuation">,</span>
+  author<span class="token operator">:</span> <span class="token string">'Napolion Hill'</span><span class="token punctuation">,</span>
+  price<span class="token operator">:</span> <span class="token number">120</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> newBookTwo <span class="token operator">=</span> <span class="token function">addBook</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
+  name<span class="token operator">:</span> <span class="token string">'Think and Grow Rich'</span><span class="token punctuation">,</span>
+  author<span class="token operator">:</span> <span class="token string">'Napolion Hill'</span><span class="token punctuation">,</span>
+  isAvailable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * generic Constraints with keyof operator
+ */</span>
+<span class="token keyword keyword-const">const</span> getProperty <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">X</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>obj<span class="token operator">:</span> <span class="token constant">X</span><span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token keyword keyword-keyof">keyof</span> <span class="token constant">X</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> getPropertyValue <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">X</span><span class="token punctuation">,</span> <span class="token constant">Y</span> <span class="token keyword keyword-extends">extends</span> <span class="token keyword keyword-keyof">keyof</span> <span class="token constant">X</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>obj<span class="token operator">:</span> <span class="token constant">X</span><span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token constant">Y</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> res1 <span class="token operator">=</span> <span class="token function">getPropertyValue</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token string">'1231'</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">'Mr.A'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> res2 <span class="token operator">=</span> <span class="token function">getPropertyValue</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Mr.B'</span><span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token string">'a@a.com'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></li>
+</ul>
+<h2 id="asynchronous-typescript">Asynchronous TypeScript </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ * - Promise
+ */</span>
+
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">Book</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> createPromise <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>Book<span class="token operator">&gt;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-new">new</span> <span class="token class-name"><span class="token builtin">Promise</span><span class="token operator">&lt;</span>Book<span class="token operator">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-const">const</span> book <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'Atomic Habits'</span><span class="token punctuation">,</span> author<span class="token operator">:</span> <span class="token string">'James Clear'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// const book = null;</span>
+
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>book<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">resolve</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span class="token punctuation">{</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'Failed to load book'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token keyword keyword-async">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-try">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-const">const</span> book <span class="token operator">=</span> <span class="token keyword keyword-await">await</span> <span class="token function">createPromise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//// -------- example -----------</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">ITodo</span> <span class="token punctuation">{</span>
+  userId<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  title<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  completed<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-const">const</span> getTodo <span class="token operator">=</span> <span class="token keyword keyword-async">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>ITodo <span class="token operator">|</span> <span class="token keyword keyword-undefined">undefined</span><span class="token operator">&gt;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-try">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-const">const</span> res <span class="token operator">=</span> <span class="token keyword keyword-await">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://jsonplaceholder.typicode.com/todos/1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-await">await</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getTodo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="conditional-types">Conditional types </h2>
+<p>Conditional types are typically used in TypeScript to define types that depend on other types, often in the context of generics and utility types.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ * Conditional types
+ */</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">a</span> <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">b</span> <span class="token operator">=</span> <span class="token keyword keyword-undefined">undefined</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name"><span class="token constant">A</span></span> <span class="token operator">=</span> a <span class="token keyword keyword-extends">extends</span> <span class="token class-name"><span class="token keyword keyword-null">null</span></span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name"><span class="token constant">B</span></span> <span class="token operator">=</span> a <span class="token keyword keyword-extends">extends</span> <span class="token class-name"><span class="token keyword keyword-null">null</span></span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> b <span class="token keyword keyword-extends">extends</span> <span class="token class-name"><span class="token keyword keyword-undefined">undefined</span></span> <span class="token operator">?</span> <span class="token keyword keyword-undefined">undefined</span> <span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+
+<span class="token comment">//---------------------------------------------------</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Vehicles</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  bike<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  car<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  train<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  plane<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">AvailableVehicle<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token constant">T</span> <span class="token keyword keyword-extends">extends</span> <span class="token keyword keyword-keyof">keyof</span> Vehicles <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">IsBikeAvailable</span> <span class="token operator">=</span> AvailableVehicle<span class="token operator">&lt;</span><span class="token string">'bike'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">IsCarAvailable</span> <span class="token operator">=</span> AvailableVehicle<span class="token operator">&lt;</span><span class="token string">'car'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">IsTrainAvailable</span> <span class="token operator">=</span> AvailableVehicle<span class="token operator">&lt;</span><span class="token string">'train'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">IsPlaneAvailable</span> <span class="token operator">=</span> AvailableVehicle<span class="token operator">&lt;</span><span class="token string">'plane'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">IsBoatAvailable</span> <span class="token operator">=</span> AvailableVehicle<span class="token operator">&lt;</span><span class="token string">'boat'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre><h2 id="mapped-types">Mapped Types </h2>
+<p>Mapped types are a powerful and flexible feature in TypeScript that allow you to create new types by transforming the properties of an existing type. They are particularly useful for creating utility types that modify or extract properties from other types in a concise and generic way. Mapped types leverage key remapping and type manipulation to generate new types based on existing ones.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-type">type</span> <span class="token class-name">Area</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  width<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  height<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Width</span> <span class="token operator">=</span> Area<span class="token punctuation">[</span><span class="token string">'width'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// lookup type</span>
+
+<span class="token class-name"><span class="token keyword keyword-type">type</span></span> AreaAsString <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>key <span class="token keyword keyword-in">in</span> <span class="token keyword keyword-keyof">keyof</span> Area<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">GenericArea<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>key <span class="token keyword keyword-in">in</span> <span class="token keyword keyword-keyof">keyof</span> <span class="token constant">T</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> area1<span class="token operator">:</span> GenericArea<span class="token operator">&lt;</span><span class="token punctuation">{</span> width<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span> height<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">}</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span> height<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> width<span class="token operator">:</span> <span class="token string">'3'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ----------------------------------------------------</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">ReadonlyType<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-readonly">readonly</span> <span class="token punctuation">[</span><span class="token constant">K</span> <span class="token keyword keyword-in">in</span> <span class="token keyword keyword-keyof">keyof</span> <span class="token constant">T</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token constant">K</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">MyPerson</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">ReadonlyPerson</span> <span class="token operator">=</span> ReadonlyType<span class="token operator">&lt;</span>MyPerson<span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment">// { readonly name: string; readonly age: number; }</span>
+
+<span class="token comment">// ---------------------------------------------------</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">PartialType<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span><span class="token constant">K</span> <span class="token keyword keyword-in">in</span> <span class="token keyword keyword-keyof">keyof</span> <span class="token constant">T</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token constant">K</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">PartialPerson</span> <span class="token operator">=</span> PartialType<span class="token operator">&lt;</span>MyPerson<span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment">// { name?: string; age?: number; }</span>
+
+<span class="token comment">// ----------------------------------------------------</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">PickType<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token punctuation">,</span> <span class="token constant">K</span> <span class="token keyword keyword-extends">extends</span> <span class="token keyword keyword-keyof">keyof</span> <span class="token constant">T</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span><span class="token constant">P</span> <span class="token keyword keyword-in">in</span> <span class="token constant">K</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token constant">P</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">NameOnly</span> <span class="token operator">=</span> PickType<span class="token operator">&lt;</span>MyPerson<span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment">// { name: string; }</span>
+</code></pre><p>Mapped types provide a powerful way to create generic and reusable type transformations in TypeScript, making your code more maintainable and less error-prone by reducing the need for manual type declarations. They are commonly used in libraries and frameworks to provide generic type utilities.</p>
+<h2 id="utility-types">Utility types </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-type">type</span> <span class="token class-name">User</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  firstName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  lastName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  contactNo<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Pick - Pick specific fields type</span>
+<span class="token class-name"><span class="token keyword keyword-type">type</span></span> Email <span class="token operator">=</span> Pick<span class="token operator">&lt;</span>User<span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Name</span> <span class="token operator">=</span> Pick<span class="token operator">&lt;</span>User<span class="token punctuation">,</span> <span class="token string">'firstName'</span> <span class="token operator">|</span> <span class="token string">'lastName'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Omit - remove specific fields type</span>
+<span class="token class-name"><span class="token keyword keyword-type">type</span></span> ContactInfo <span class="token operator">=</span> Omit<span class="token operator">&lt;</span>User<span class="token punctuation">,</span> <span class="token string">'firstName'</span> <span class="token operator">|</span> <span class="token string">'lastName'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-type">type</span> <span class="token class-name">Address</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  city<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  state<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  zipCode<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  country<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Required - Make Required from all optional fields</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">RequiredAddress</span> <span class="token operator">=</span> Required<span class="token operator">&lt;</span>Address<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Partial - make optional from all Required field</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">PartialAddress</span> <span class="token operator">=</span> Partial<span class="token operator">&lt;</span>Address<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Readonly - cannot modified that field</span>
+<span class="token keyword keyword-type">type</span> <span class="token class-name">UserReadonly</span> <span class="token operator">=</span> Readonly<span class="token operator">&lt;</span>User<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Record - define dynamic type of an object</span>
+<span class="token keyword keyword-const">const</span> emptyObject<span class="token operator">:</span> Record<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">unknown</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  firstName<span class="token operator">:</span> <span class="token string">'Mr.'</span><span class="token punctuation">,</span>
+  lastName<span class="token operator">:</span> <span class="token string">'Example'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">26</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><h1 id="object-oriented-programmingoop">Object Oriented Programming(OOP) </h1>
+<p>Object-oriented programming (OOP) is a programming paradigm or style that organizes and models software as a collection of objects, each of which represents an instance of a class.</p>
+<h2 id="4-main-pillars-of-oop">4 main pillars of OOP </h2>
+<ul>
+<li><code>Inheritance</code>: The ability of creating a new class from an existing class. Inheritance is when an object acquires the property of another object. Inheritance allows a class to acquire the properties and behavior,</li>
+<li><code>Polymorphism</code>: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables the same interface (method name) to be used for different data types or objects, and it provides flexibility in method implementation.</li>
+<li><code>Abstraction</code>: Hiding the implementation details inside and providing the necessary method to work.</li>
+<li><code>Encapsulation</code>: The action of enclosing something or in a capsule. Encapsulation is the concept of bundling data and methods that operate on that data into a single unit, an object. Encapsulation means that each object in your code should control it's own state. State is the current snapshot.</li>
+</ul>
+<h1 id="object-oriented-programmingoop-with-typescript">Object Oriented Programming(OOP) with typescript </h1>
+<h2 id="basic-structure-of-a-class">Basic structure of a class </h2>
+<p>Classes are the blueprints or templates for creating objects. They define the structure, attributes, and methods that objects of that class will have. Objects, on the other hand, are instances of classes that hold specific data and can perform actions.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Book</span> <span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>author <span class="token operator">=</span> author<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">printBook</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      id<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      author<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>author<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> bookOne <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Book</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'Deep Word'</span><span class="token punctuation">,</span> <span class="token string">'Cal Newport'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bookOne<span class="token punctuation">.</span><span class="token function">printBook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ------------- Short Hand ------------------------</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">BookShortHand</span> <span class="token punctuation">{</span>
+  <span class="token comment">// parameter properties</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token keyword keyword-public">public</span> id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token keyword keyword-public">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token keyword keyword-public">public</span> author<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token function">printBook</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      id<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      author<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>author<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> bookTwo <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">BookShortHand</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'Deep Word'</span><span class="token punctuation">,</span> <span class="token string">'Cal Newport'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bookTwo<span class="token punctuation">.</span><span class="token function">printBook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="inheritance">Inheritance </h2>
+<p>The ability of creating a new class from an existing class. Inheritance is when an object acquires the property of another object. Inheritance allows a class to acquire the properties and behavior</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-public">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-public">public</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Student</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> department<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> department<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>department <span class="token operator">=</span> department<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">printStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword keyword-void">void</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      email<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email<span class="token punctuation">,</span>
+      department<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>department<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Teacher</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> designation<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> department<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> designation<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> department<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>designation <span class="token operator">=</span> designation<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">printTeacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword keyword-void">void</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      email<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email<span class="token punctuation">,</span>
+      department<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>department<span class="token punctuation">,</span>
+      designation<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>designation<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> person <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Mr. Person'</span><span class="token punctuation">,</span> <span class="token string">'person@gmail.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> student <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">'Mr. Student'</span><span class="token punctuation">,</span> <span class="token string">'student@gmail.com'</span><span class="token punctuation">,</span> <span class="token string">'EEE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> teacher <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token string">'Mr. Teacher'</span><span class="token punctuation">,</span> <span class="token string">'teacher@gmail.com'</span><span class="token punctuation">,</span> <span class="token string">'EEE'</span><span class="token punctuation">,</span> <span class="token string">'Lecturer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+person<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+student<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+teacher<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="access-modifiers">Access modifiers </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token doc-comment comment">/**
+ *  - readonly   =&gt; cannot modify or update
+ *  - public     =&gt; can access anywhere
+ *  - private    =&gt; only accessible within class, cannot be accessible inside of inherited class
+ *  - protected  =&gt; accessible within own class, also inherited class
+ */</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">BankAccount</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-readonly">readonly</span> id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-protected">protected</span> _name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-private">private</span> _balance<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> balance<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>_name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>_balance <span class="token operator">=</span> balance<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">deposit</span><span class="token punctuation">(</span>amount<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>_balance <span class="token operator">+=</span> amount<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getAccountInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>id<span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>_name<span class="token punctuation">,</span> ballance<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>_balance <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> bankAccountOne <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">BankAccount</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'Mr. Z'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="getter-and-setter-function">Getter and Setter function </h2>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">ModuleFinished</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> count <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-get">get</span> <span class="token function">finishedModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-set">set</span> <span class="token function">addModule</span><span class="token punctuation">(</span>val<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>count <span class="token operator">+</span> val<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> course <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">ModuleFinished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// getter function of ModuleFinished class, invoking system is like accessing object</span>
+<span class="token comment">// can access like a property of an object</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>course<span class="token punctuation">.</span>finishedModule<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//setter function</span>
+course<span class="token punctuation">.</span>addModule <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+course<span class="token punctuation">.</span>addModule <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>course<span class="token punctuation">.</span>finishedModule<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="statics">Statics </h2>
+<p>In object-oriented programming (OOP), the static keyword is used to define properties and methods that belong to the class itself, rather than to instances (objects) of the class. These static members are shared across all instances of the class and can be accessed using the class name rather than an instance.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-static">static</span> pi<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">3.14159</span><span class="token punctuation">;</span>
+  radius<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>radius<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">circumference</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token number">2</span> <span class="token operator">*</span> Circle<span class="token punctuation">.</span>pi <span class="token operator">*</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>radius<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> circle1 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> circle2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Circle<span class="token punctuation">.</span>pi<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Accessing the static property</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle1<span class="token punctuation">.</span><span class="token function">circumference</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Using the instance method</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle2<span class="token punctuation">.</span><span class="token function">circumference</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Using the instance method</span>
+
+<span class="token comment">//------------------------------------------</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">MathUtil</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-static">static</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-static">static</span> <span class="token function">multiply</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> sum <span class="token operator">=</span> MathUtil<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Using the static method</span>
+<span class="token keyword keyword-const">const</span> product <span class="token operator">=</span> MathUtil<span class="token punctuation">.</span><span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Using the static method</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 7</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>product<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 30</span>
+</code></pre><h2 id="polymorphism">Polymorphism </h2>
+<p>If any particular method of any class, redesigned on other inherited class then we get different output, it is Polymorphism.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-public">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-public">public</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Student</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> department<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> department<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>department <span class="token operator">=</span> department<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      email<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email<span class="token punctuation">,</span>
+      department<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>department<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Teacher</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-public">public</span> designation<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> email<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> department<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> designation<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> email<span class="token punctuation">,</span> department<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>designation <span class="token operator">=</span> designation<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      email<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>email<span class="token punctuation">,</span>
+      department<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>department<span class="token punctuation">,</span>
+      designation<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>designation<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> person <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Mr. Person'</span><span class="token punctuation">,</span> <span class="token string">'person@gmail.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> student <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">'Mr. Student'</span><span class="token punctuation">,</span> <span class="token string">'student@gmail.com'</span><span class="token punctuation">,</span> <span class="token string">'EEE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> teacher <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token string">'Mr. Teacher'</span><span class="token punctuation">,</span> <span class="token string">'teacher@gmail.com'</span><span class="token punctuation">,</span> <span class="token string">'EEE'</span><span class="token punctuation">,</span> <span class="token string">'Lecturer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+person<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+student<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+teacher<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="abstraction">Abstraction </h2>
+<p>Abstraction in programming refers to the concept of hiding complex implementation details and exposing only the necessary information or functionalities to the user.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token comment">//------------------------</span>
+<span class="token comment">// Using interface</span>
+<span class="token comment">//------------------------</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">TakePhoto</span> <span class="token punctuation">{</span>
+  cameraMode<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  filter<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  burst<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//implements of properties in class</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">CountLikes</span> <span class="token punctuation">{</span>
+  likes<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//implements of methods in Class</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">Story</span> <span class="token punctuation">{</span>
+  <span class="token function">createStory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword keyword-void">void</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Instagram</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">TakePhoto</span><span class="token punctuation">,</span> Story<span class="token punctuation">,</span> CountLikes <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword keyword-public">public</span> cameraMode<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-public">public</span> filter<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-public">public</span> burst<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-public">public</span> likes<span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token function">createStory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword keyword-void">void</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      cameraMode<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>cameraMode<span class="token punctuation">,</span>
+      filter<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>filter<span class="token punctuation">,</span>
+      burst<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>burst<span class="token punctuation">,</span>
+      likes<span class="token operator">:</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>likes<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//------------------------</span>
+<span class="token comment">// Using Abstract class =&gt; cannot create instance of any abstract class</span>
+<span class="token comment">//------------------------</span>
+<span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token keyword keyword-protected">protected</span> color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-abstract">abstract</span> <span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span> <span class="token comment">// Abstract method without implementation</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Circle</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token keyword keyword-public">public</span> radius<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>radius <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Rectangle</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token keyword keyword-private">private</span> width<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> <span class="token keyword keyword-private">private</span> height<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> color<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>width <span class="token operator">*</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> redCircle <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> blueRectangle <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>redCircle<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 78.53981633974483</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>blueRectangle<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 24</span>
+</code></pre><h2 id="encapsulation">Encapsulation </h2>
+<p>Encapsulation is one of the fundamental principles of object-oriented programming (OOP). It involves bundling data (attributes or properties) and methods (functions) that operate on that data into a single unit, called an object. This unit is responsible for controlling access to its internal state and ensuring that data remains in a consistent and valid state. Encapsulation promotes data hiding and provides a way to protect data from unauthorized access and modification.</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts ts"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-private">private</span> name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-private">private</span> age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Getter method for 'name'</span>
+  <span class="token keyword keyword-public">public</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Setter method for 'name'</span>
+  <span class="token keyword keyword-public">public</span> <span class="token function">setName</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword keyword-void">void</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Getter method for 'age'</span>
+  <span class="token keyword keyword-public">public</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>age<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Setter method for 'age'</span>
+  <span class="token keyword keyword-public">public</span> <span class="token function">setAge</span><span class="token punctuation">(</span>age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword keyword-void">void</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-const">const</span> student <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">'Alice'</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Accessing and modifying properties through getter and setter methods</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Alice</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 20</span>
+
+student<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">'Bob'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+student<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Bob</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 25</span>
+</code></pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

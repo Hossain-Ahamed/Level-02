@@ -44,6 +44,7 @@
   }
 
 
+  
   const normal : NormalUser ={
     name : 'hossain'
   }

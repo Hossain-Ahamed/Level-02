@@ -30,7 +30,7 @@
   }
 
   const bankAccountOne = new BankAccount("1", "Mr. Z", 100);
-  bankAccountOne.deposit = 150;
+  bankAccountOne.deposit = 150; //function will be accsable like value
   console.log(bankAccountOne.balance);
 
   //

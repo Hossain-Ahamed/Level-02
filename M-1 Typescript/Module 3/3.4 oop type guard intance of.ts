@@ -1,12 +1,8 @@
 {
   // instance of
   class Animal {
-    name: string;
-    species: string;
-    constructor(name: string, species: string) {
-      this.name = name;
-      this.species = species;
-    }
+
+    constructor(name: string, species: string) {}
 
     makeSound() {
       console.log("i am making sound");
@@ -42,6 +38,9 @@
   const isCat = (animal : Animal) : animal is Cat=>{
     return animal instanceof Cat; 
   }
+  const isCatt = (animal : Animal) : animal is Cat =>{
+    return animal instanceof Cat
+  }
 
   const getAnimal = (animal: Animal) => {
     if (isDog(animal)) {
@@ -60,7 +59,10 @@
 
   const dog = new Dog("dog bhau", "dog");
   const cat = new Cat("cat bhau", "cat");
+  const animal = new Animal("a",'a')
 
   getAnimal(dog);
+  getAnimal(cat);
+  getAnimal(animal);
   //
 }

@@ -1084,7 +1084,83 @@ A type guard is some expression that performs a runtime check that guarantees th
 
 ```
 
-## Access modifiers
+### Type guard using OOP 3-4
+
+- Type narrowing is a process of refining or narrowing down the type using certain conditions with a particular code block. Here we specifies the type
+
+```ts
+
+  class Animal {
+    constructor(name: string, species: string) {}
+    makeSound() {
+      console.log("i am making sound");
+    }
+  }
+
+  class Dog extends Animal {
+    constructor(name: string, species: string) {
+      super(name, species);
+    }
+
+    makeBark() {
+      console.log("i am barking");
+    }
+  }
+
+  class Cat extends Animal {
+    constructor(name: string, species: string) {
+      super(name, species);
+    }
+
+    makeMeaw() {
+      console.log("i am mewing");
+    }
+  }
+
+```
+
+- To check type used `instaneof` => it checked the instance
+- instead of boolean return => `is` used. it specifies it only that specific type
+
+```ts
+
+  const isDog = (animal : Animal) : animal is Dog=>{
+    return animal instanceof Dog;
+  }
+
+  const isCat = (animal : Animal) : animal is Cat=>{
+    return animal instanceof Cat;
+  }
+  const isCatt = (animal : Animal) : animal is Cat =>{
+    return animal instanceof Cat
+  }
+
+  const getAnimal = (animal: Animal) => {
+    if (isDog(animal)) {
+      animal.makeBark(); // since its instance of dog so it get the function of dog
+    } else if (isCat(animal)) {
+      animal.makeMeaw();
+    } else {
+      animal.makeSound();
+    }
+  };
+
+```
+
+```ts
+// smart way
+
+  const dog = new Dog("dog bhau", "dog");
+  const cat = new Cat("cat bhau", "cat");
+  const animal = new Animal("a",'a')
+
+  getAnimal(dog);
+  getAnimal(cat);
+  getAnimal(animal);
+
+```
+
+## Access modifiers 3-5 `3.5,3.6`
 
 ```ts
 /**
@@ -1117,7 +1193,7 @@ class BankAccount {
 const bankAccountOne = new BankAccount('1', 'Mr. Z', 100);
 ```
 
-## Getter and Setter function
+## Getter and Setter function `3.5,3.6`
 
 ```ts
 class ModuleFinished {
@@ -1145,47 +1221,39 @@ course.addModule = 2;
 console.log(course.finishedModule);
 ```
 
-## Statics
+## Statics 3-7 `3.7`
 
 In object-oriented programming (OOP), the static keyword is used to define properties and methods that belong to the class itself, rather than to instances (objects) of the class. These static members are shared across all instances of the class and can be accessed using the class name rather than an instance.
 
 ```ts
-class Circle {
-  static pi: number = 3.14159;
-  radius: number;
+ class Counter {
+  
+    static count: number = 0;
+    static increment() {
+      return (Counter.count += 1);
+    }
+    static decrement() {
+      return (Counter.count -= 1);
+    }
 
-  constructor(radius: number) {
-    this.radius = radius;
+ 
+
+    nonStaticincrement() {
+      return (Counter.count += 1);
+    }
+    nonStaticdecrement() {
+      return (Counter.count -= 1);
+    }
+  
   }
 
-  circumference() {
-    return 2 * Circle.pi * this.radius;
-  }
-}
+  const c1 = new Counter();
+  const c2 = new Counter();
 
-const circle1 = new Circle(5);
-const circle2 = new Circle(10);
+  console.log(Counter.increment());  //1
+  console.log(Counter.increment()); //2
 
-console.log(Circle.pi); // Accessing the static property
-console.log(circle1.circumference()); // Using the instance method
-console.log(circle2.circumference()); // Using the instance method
-
-//------------------------------------------
-class MathUtil {
-  static add(x: number, y: number): number {
-    return x + y;
-  }
-
-  static multiply(x: number, y: number): number {
-    return x * y;
-  }
-}
-
-const sum = MathUtil.add(3, 4); // Using the static method
-const product = MathUtil.multiply(5, 6); // Using the static method
-
-console.log(sum); // Output: 7
-console.log(product); // Output: 30
+  console.log(c1.nonStaticincrement()) //3
 ```
 
 ## Polymorphism

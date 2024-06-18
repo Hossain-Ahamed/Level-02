@@ -1,0 +1,10 @@
+{
+  "b```": {
+    "scope": "markdown",
+    "prefix": "b```",
+    "body": [
+      "```bash\r\n\r\n```"
+    ],
+    "description": "des"
+  }
+}

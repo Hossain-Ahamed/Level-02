@@ -1,4 +1,6 @@
-export type Guardian = {
+import { Model } from 'mongoose';
+
+export type TGuardian = {
   fatherName: string;
   fatherOccupation: string;
   fatherContactNo: string;
@@ -18,9 +20,10 @@ export type UserName = {
   lastName: string;
 };
 
-export type Student = {
+export type TStudent = {
   id: string;
   name: UserName;
+  password: string;
   gender: 'male' | 'female' | 'others';
   dateOfBirth: string;
   contactNo: string;
@@ -29,8 +32,27 @@ export type Student = {
   email: string;
   presentAddress: string;
   permanentAddress: string;
-  guardian: Guardian;
+  guardian: TGuardian;
   localGuardian: LocalGuardian;
   profileImg?: string;
-  isActive: 'active' | 'inactive';
+  isActive: 'active' | 'blocked';
+  isDeleted : boolean;
 };
+
+//9-7--------------For creating static ------------------
+
+export interface TStudentModel extends Model<TStudent>{
+  isUserExists(id: string): Promise<TStudent |null>;
+}
+
+// 9-6  -------------------for creating instancne
+// export type TStudentMethods = {
+//   isUserExists(id: string): Promise<TStudent |null>;
+// };
+
+// // Create a new Model type that knows about IUserMethods...
+// export type TStudentModel = Model<
+//   TStudent,
+//   Record<string, never>,
+//   TStudentMethods
+// >;

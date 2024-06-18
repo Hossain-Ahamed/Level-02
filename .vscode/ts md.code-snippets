@@ -1,0 +1,10 @@
+{
+  "ts md": {
+    "scope": "markdown",
+    "prefix": "ts`",
+    "body": [
+      "```ts\r\n```"
+    ],
+    "description": "ts"
+  }
+}

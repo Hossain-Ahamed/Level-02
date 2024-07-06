@@ -170,6 +170,8 @@ export type TStudentModel = Model<
 
 ### pre and post `save` 9-8 `student.model.ts`
 
+pre hook has access of document
+
 use for password hash
 
 ```ts
@@ -197,7 +199,9 @@ studentSchema.pre('findOne',async function(next) {
   next();
 })
 ```
-- using aggregation 
+
+- using aggregation
+
 ```ts
 studentSchema.pre('aggregate',async function(next) {
   this.pipeline().unshift({$match : {isDeleted : {$ne : false}}})
@@ -206,9 +210,12 @@ studentSchema.pre('aggregate',async function(next) {
 ```
 
 # Virtuals
-To derive data from existing data 
+
+To derive data from existing data
+
 1. Turn on Virtual
 2. Use vurtual function
+
 ```ts
 const studentSchema = new Schema<TStudent, TStudentModel>({
   id: { type: String, required: true, unique: true },

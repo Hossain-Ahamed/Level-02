@@ -2,8 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import config from '../app/config';
 
 
-
-export interface CustomError extends Error {
+interface CustomError extends Error {
 	statusCode?: number;
 }
 
@@ -16,10 +15,16 @@ export const globalErrorHandler = (error: CustomError, req: Request, res: Respon
 		success: false,
 		message: message,
 		error: {
-			name: error.name,
 			code: statusCode,
 			description: error.message,
 			stack: config.stack === 'production' ? null : error.stack,
 		},
 	});
 }
+
+export const customError = (code ?:number, message ?: string):never =>{
+	const error =  new Error(message) as CustomError;
+	error.statusCode = code;
+	throw error;
+}
+

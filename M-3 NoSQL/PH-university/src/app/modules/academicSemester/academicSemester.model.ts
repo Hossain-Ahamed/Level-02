@@ -1,13 +1,15 @@
 import { model, Schema } from "mongoose";
-import { TAcademicSemester,} from "./academicSemester.interface";
+import { TAcademicSemester, } from "./academicSemester.interface";
 import { AcademicSemesterCodes, AcademicSemsterNames, Months } from "./academicSemester.constant";
+import { customError } from "../../../middlewares/globalErrorHandler";
+
 // 12-6
 
 const academicSemesterSchema = new Schema<TAcademicSemester>({
 	name: {
 		type: String,
 		required: true,
-		enum : AcademicSemsterNames
+		enum: AcademicSemsterNames
 	},
 	year: {
 		type: String,
@@ -16,21 +18,32 @@ const academicSemesterSchema = new Schema<TAcademicSemester>({
 	code: {
 		type: String,
 		required: true,
-		enum : AcademicSemesterCodes,
+		enum: AcademicSemesterCodes,
 	},
-	startMonth : {
-		type : String,
-		required:true,
-		enum : Months
+	startMonth: {
+		type: String,
+		required: true,
+		enum: Months
 	},
-	endMonth : {
-		type : String,
-		required:true,
-		enum : Months
+	endMonth: {
+		type: String,
+		required: true,
+		enum: Months
 	},
-},{
-	timestamps : true,
-	
+}, {
+	timestamps: true,
+
 })
 
-export const AcademicSemesterSchemaModel = model<TAcademicSemester>('AcademicSemester',academicSemesterSchema);
+academicSemesterSchema.pre('save', async function (next) {
+	const isSemExists = await AcademicSemesterSchemaModel.findOne({
+		name: this.name,
+		year: this.year,
+	})
+	if (isSemExists) {
+		next(customError(409, "Semester already exists"))
+	}
+	next();
+})
+
+export const AcademicSemesterSchemaModel = model<TAcademicSemester>('AcademicSemester', academicSemesterSchema);

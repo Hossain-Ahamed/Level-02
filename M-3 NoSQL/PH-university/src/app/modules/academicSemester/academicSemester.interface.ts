@@ -1,3 +1,7 @@
+export 	type TacademicSemsterCodeMappaer = {
+	[key : string] : string;
+}
+
 export type TMonths =
 	| "January"
 	| "February"
@@ -14,6 +18,7 @@ export type TMonths =
 
 export type TAcademicSemsterNames = 'Autumn' | 'Summer' | 'Fall'
 export type TAcademicSemsterCodes = '01' | '02' | '03'
+
 
 
 export type TAcademicSemester = {

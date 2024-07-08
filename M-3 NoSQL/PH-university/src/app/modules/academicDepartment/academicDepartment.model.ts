@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TAcademicDepartment } from "./academicDepartment.interface";
-import { customError } from "../../../middlewares/globalErrorHandler";
+import AppError from "../../errors/AppError";
 
 
 const AcademicDepartmentSchema = new Schema<TAcademicDepartment>({
@@ -11,7 +11,7 @@ const AcademicDepartmentSchema = new Schema<TAcademicDepartment>({
 	},
 	academicFaculty: {
 		type: Schema.Types.ObjectId,
-		ref: 'AcademicFaculty'
+		ref: 'academicFaculty'
 	},
 },
 	{
@@ -20,21 +20,25 @@ const AcademicDepartmentSchema = new Schema<TAcademicDepartment>({
 )
 
 AcademicDepartmentSchema.pre('save',async function (next) {
+	
 	const isExist = await AcamdemicDepartmentModel.findOne({
 	name : this.name
 	})
 	if (isExist) {
-		next(customError(409, "dept already exists"))
+
+		throw new AppError(409, "dept already exists")
 	}
 	next();
 })
 
 
 AcademicDepartmentSchema.pre('findOneAndUpdate',async function (next) {
+	
 	const query = this.getQuery();
 	const isDeptExist = await AcamdemicDepartmentModel.findOne(query)
 	if (!isDeptExist) {
-		next(customError(404, "dept  does not exists"))
+		throw new AppError(404, "dept  does not exists")
+
 	}
 	next();
 })
@@ -50,7 +54,7 @@ AcademicDepartmentSchema.pre('save',async function (next) {
 	name : this.name
 	})
 	if (isSemExists) {
-		next(customError(409, "Semester already exists"))
+		throw new AppError(409, "Semester already exists")
 	}
 	next();
 })

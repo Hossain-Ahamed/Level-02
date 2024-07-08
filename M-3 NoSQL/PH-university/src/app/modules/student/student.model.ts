@@ -7,6 +7,8 @@ import {
   TStudentModel,
   UserName,
 } from './student.interface';
+import AppError from '../../errors/AppError';
+
 
 
 
@@ -122,6 +124,10 @@ const studentSchema = new Schema<TStudent, TStudentModel>({
     type : Schema.Types.ObjectId,
     ref: "AcademicSemester"
   },
+  academicDepartment: {
+    type: Schema.Types.ObjectId,
+    ref: 'AcademicDepartment',
+  },
   isDeleted : {
     type:Boolean,
     default:false,
@@ -143,6 +149,17 @@ studentSchema.pre('find',async function(next) {
 studentSchema.pre('findOne',async function(next) {
   this.find({isDeleted :{$ne: true}});
   next();
+})
+
+studentSchema.pre('findOneAndUpdate',async function (next) {
+  const query = this.getQuery();
+  const isExist = await Student.findOne(query);
+
+  if(!isExist){
+   throw new AppError(404,'No student by this query')
+  }
+  next();
+  
 })
 
 studentSchema.pre('aggregate',async function(next) {

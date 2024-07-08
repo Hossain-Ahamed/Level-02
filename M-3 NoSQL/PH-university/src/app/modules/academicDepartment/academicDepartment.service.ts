@@ -8,11 +8,11 @@ const cretaeAcademicDepartmentIntoDB = async (payload : TAcademicDepartment)=>{
 } 
 
 const getAllAcademicDepartmentFromDB = async ()=>{
-	const result = await AcamdemicDepartmentModel.find();
+	const result = await AcamdemicDepartmentModel.find().populate('academicFaculty');
 	return result;
 }
 const getSingleAcademicDepartmentFromDB = async (id : string)=>{
-	const result = await AcamdemicDepartmentModel.findById(id);
+	const result = await AcamdemicDepartmentModel.findById(id).populate('academicFaculty');
 	return result;
 }
 

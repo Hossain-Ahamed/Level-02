@@ -3,7 +3,7 @@ import catchAsync from "../../../utils/catchAsync";
 import sendResponse from "../../../utils/sendResponse";
 import httpStatus from "http-status";
 import { AcademicSemesterServices } from "./academicSemester.service";
-import { customError } from "../../../middlewares/globalErrorHandler";
+import AppError from "../../errors/AppError";
 
 const getAllAcademicSemesters: RequestHandler = catchAsync(async (req, res) => {
   const result = await AcademicSemesterServices.getAllSemesterFromDB();
@@ -20,7 +20,7 @@ const getSingleAcademicSemester: RequestHandler = catchAsync(async (req, res) =>
   const { semesterId } = req.params;
   const result = await AcademicSemesterServices.getSingleAcademicSemester(semesterId);
   if(!result){
-    throw customError(404, "Semster data not found");
+    throw new AppError(404, "Semster data not found");
   }
   sendResponse(res, {
     success: true,

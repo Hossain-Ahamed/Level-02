@@ -170,6 +170,23 @@ export type TStudentModel = Model<
 
 ### pre and post `save` 9-8 `student.model.ts`
 
+```ts
+AcademicDepartmentSchema.pre('save',async function (next) {
+ console.log(this) //this will return document for save type keyword
+ next();
+})
+
+AcademicDepartmentSchema.pre('findOneAndUpdate',async function (next) {
+ console.log(this) //this will return query type thing this.getQuery() //for query type 
+ next();
+})
+AcademicDepartmentSchema.post('save',async function (doc,next) {
+ console.log(doc); //doc will return document for eeverytype of query
+ next();
+})
+
+```
+
 pre hook has access of document
 
 use for password hash
@@ -209,6 +226,14 @@ studentSchema.pre('aggregate',async function(next) {
 })
 ```
 
+-generalize
+
+```ts
+studentSchema.pre(/^find/,async function (next) {
+  
+})
+```
+
 # Virtuals
 
 To derive data from existing data
@@ -237,4 +262,93 @@ studentSchema.virtual('fullName').get(function(){
   const result = await Student.updateOne({id},{
     isDeleted: true
   })
+
+```
+## To update non primitive field 13-12
+Recieved :
+```bash
+"name": {
+  "lastName": "Ahamed"
+}
+    
+```
+ - falttenoject will make like `name.lastname : 'ahamed'`
+```ts
+const flattenNestedObject = (prefix:string, nestedObject: Record<string, unknown>) => {
+  const flatObject : Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(nestedObject)) {
+    flatObject[`${prefix}.${key}`] = value;
+  }
+  return flatObject;
+};
+```
+```ts
+const updateStudentIntoDB = async (id: string, payload : Partial<TStudent>) => {
+  const { name, ...remainingStudentData } = payload;
+  const modifiedData_ForDB : Record<string, unknown> = { ...remainingStudentData };
+
+  if (name && Object.keys(name).length) {
+    Object.assign(modifiedData_ForDB, flattenNestedObject('name', name));
+  }
+
+  const result = await Student.findOneAndUpdate({ id }, modifiedData_ForDB, { new: true });
+
+  return result;
+};
+
+```
+
+# Populate
+
+ to polulate inside there will be the variable of the field to be added to get the data
+
+- For child populate `.populate(path : 'parent_Var', populate : {path : 'child_ref_Name'})`
+
+```ts
+ const result = await Student.find()
+  .populate('admissionSemester')
+  .populate('academicDepartment')
+  .populate({
+  path : 'academicDepartment',
+  populate : {
+    path : 'AcademicFaculty'
+  }
+  });
+```
+
+# Transaction and Rollback 13-9 user.service.ts -> create student
+
+ START SESSION→ COMMI/ABORT →END SESSION
+
+- create
+
+```ts
+  //create session 
+  const session = await mongoose.startSession();
+  try {
+    // trasnsaction 1
+    const newUser = await User.create([userData], { session });
+    if (!newUser.length) { 
+      // throw error
+    }
+    //completed -->end
+    await session.commitTransaction();
+    await session.endSession();
+
+    return newStudent;
+  } catch (error) {
+    //session error
+    await session.abortTransaction();
+    await session.endSession();
+  }
+```
+
+- update 13- 10 delete
+
+```ts
+const result = await Student.findOneAndUpdate(
+      {id},
+      {isDeleted: true},
+      {new: true,session}
+    )
 ```

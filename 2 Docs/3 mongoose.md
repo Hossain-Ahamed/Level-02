@@ -18,6 +18,36 @@ Mongoose simplifies data management in Node.js applications, providing a robust 
 
 Interface -> Schema -> Model -> DB Query
 
+---
+
+**Table of Contents**
+
+- [Mongoose](#mongoose)
+    - [Introduction to Mongoose](#introduction-to-mongoose)
+    - [Key Points](#key-points)
+- [Validation](#validation)
+  - [required message](#required-message)
+  - [enum message](#enum-message)
+  - [unique field](#unique-field)
+  - [Custom Validation](#custom-validation)
+  - [validator for ts mongoose](#validator-for-ts-mongoose)
+    - [`validator` 9-3 student.model](#validator-9-3-studentmodel)
+    - [`Joi` 9-4 student.validation](#joi-9-4-studentvalidation)
+    - [Zod 9-5](#zod-9-5)
+- [Instance 9-6 see documentation and code `first project`](#instance-9-6-see-documentation-and-code-first-project)
+    - [Instance of static instance `See code + doc` + 9-7](#instance-of-static-instance-see-code--doc--9-7)
+- [Middle ware pre and post `save` 9-8 `student.model.ts`](#middle-ware-pre-and-post-save-9-8-studentmodelts)
+    - [query 9-10 `student.model.ts`](#query-9-10-studentmodelts)
+- [Virtuals](#virtuals)
+- [Update](#update)
+  - [To update non primitive field 13-12](#to-update-non-primitive-field-13-12)
+- [Populate](#populate)
+- [Query](#query)
+  - [Filtering](#filtering)
+  - [Skip](#skip)
+  - [limit](#limit)
+- [Transaction and Rollback 13-9 user.service.ts -\> create student](#transaction-and-rollback-13-9-userservicets---create-student)
+
 # Validation
 
 ## required message
@@ -149,7 +179,7 @@ npm install zod
 
 9-5
 
-## instance 9-6 see documenttation and code `first project`
+# Instance 9-6 see documentation and code `first project`
 
 ```ts
 export type TStudentMethods = {
@@ -164,11 +194,17 @@ export type TStudentModel = Model<
 >;
 ```
 
-### instance of static instance `code + doc` + 9-7
+### Instance of static instance `See code + doc` + 9-7
 
-## middle ware
+```ts
+//creating a custom static  method
+studentSchema.statics.isUserExists = async function(id:string) {
+  const existingUser = await Student.findOne({id});
+  return existingUser;
+}
+```
 
-### pre and post `save` 9-8 `student.model.ts`
+# Middle ware pre and post `save` 9-8 `student.model.ts`
 
 ```ts
 AcademicDepartmentSchema.pre('save',async function (next) {
@@ -264,15 +300,20 @@ studentSchema.virtual('fullName').get(function(){
   })
 
 ```
+
 ## To update non primitive field 13-12
+
 Recieved :
+
 ```bash
 "name": {
   "lastName": "Ahamed"
 }
-    
+  
 ```
- - falttenoject will make like `name.lastname : 'ahamed'`
+
+- falttenoject will make like `name.lastname : 'ahamed'`
+
 ```ts
 const flattenNestedObject = (prefix:string, nestedObject: Record<string, unknown>) => {
   const flatObject : Record<string, unknown> = {};
@@ -282,6 +323,7 @@ const flattenNestedObject = (prefix:string, nestedObject: Record<string, unknown
   return flatObject;
 };
 ```
+
 ```ts
 const updateStudentIntoDB = async (id: string, payload : Partial<TStudent>) => {
   const { name, ...remainingStudentData } = payload;
@@ -314,6 +356,29 @@ const updateStudentIntoDB = async (id: string, payload : Partial<TStudent>) => {
     path : 'AcademicFaculty'
   }
   });
+```
+
+
+# Query
+ video 14-9
+## Filtering  
+
+- `Fieldname` to see only that field
+- `-fieldName` to remove
+
+```ts
+.select('fieldName')
+```
+
+## Skip 
+Not to send the document. ie: Not sending the first 10 doc
+```ts
+.skip(10)
+```
+## limit
+limiting the document find size ie : 10 document max
+```ts
+.limit(10)
 ```
 
 # Transaction and Rollback 13-9 user.service.ts -> create student

@@ -1,3 +1,54 @@
+- [MongoDB Native driver](#mongodb-native-driver)
+- [Insert Documents 5-2](#insert-documents-5-2)
+- [Insert Multiple Documents](#insert-multiple-documents)
+- [Find](#find)
+  - [Get All Documents](#get-all-documents)
+  - [Get All Documents Formatted](#get-all-documents-formatted)
+  - [Find Documents](#find-documents)
+  - [Find One Document](#find-one-document)
+  - [Find-Specific Fields](#find-specific-fields)
+  - [regex find](#regex-find)
+- [Operator](#operator)
+  - [logical query Operator -`explicit and or`](#logical-query-operator--explicit-and-or)
+  - [element query Operator 5-6](#element-query-operator-5-6)
+  - [Search from array **`interest :[1,3,5]`**](#search-from-array-interest-135)
+- [Sort Documents](#sort-documents)
+- [Count Documents](#count-documents)
+- [Limit Documents](#limit-documents)
+- [Chaining](#chaining)
+- [Foreach](#foreach)
+- [Update Document](#update-document)
+  - [Update Specific Field](#update-specific-field)
+  - [Array Update](#array-update)
+    - [Add to array](#add-to-array)
+    - [Remove an index](#remove-an-index)
+  - [remove an field](#remove-an-field)
+- [Increment Field ($inc)](#increment-field-inc)
+- [Rename Field name](#rename-field-name)
+- [Delete Document](#delete-document)
+- [Sub-Documents](#sub-documents)
+- [Find By Element in Array ($elemMatch)](#find-by-element-in-array-elemmatch)
+- [Indexing](#indexing)
+  - [Add Indexing  6-9](#add-indexing--6-9)
+  - [Single field](#single-field)
+  - [Text index](#text-index)
+  - [Compound Index](#compound-index)
+  - [Delete  index :](#delete--index-)
+- [MongoDB Aggregation Framework](#mongodb-aggregation-framework)
+  - [Studio 3T Documentation](#studio-3t-documentation)
+  - [`$match` - query the documents `6-1`](#match---query-the-documents-6-1)
+  - [`$project` - select the field which is show or not](#project---select-the-field-which-is-show-or-not)
+  - [`$addFields` - add new field to return document](#addfields---add-new-field-to-return-document)
+  - [`$out` - create new collection with the pipeline document fields](#out---create-new-collection-with-the-pipeline-document-fields)
+  - [`$merge` - merger into existing collection](#merge---merger-into-existing-collection)
+  - [`$group` - group by fields 6-3](#group---group-by-fields-6-3)
+  - [`$unwind` - create separate fields from array 6-5](#unwind---create-separate-fields-from-array-6-5)
+  - [`$bucket` - create group between the boundaries and return the docs in that boundary 6-6](#bucket---create-group-between-the-boundaries-and-return-the-docs-in-that-boundary-6-6)
+  - [`$sort` - sort documents](#sort---sort-documents)
+  - [`$limit` - limit doc](#limit---limit-doc)
+  - [`$facet` - use multiple pipelines parallelly 6-7](#facet---use-multiple-pipelines-parallelly-6-7)
+  - [`$lookup` - join two collection 6-8](#lookup---join-two-collection-6-8)
+
 # MongoDB Native driver
 
 ```bash
@@ -53,32 +104,33 @@ db.posts.insertMany([
   }
 ])
 ```
+# Find
 
-# Get All Documents
+## Get All Documents
 
 ```bash
 db.posts.find()
 ```
 
-# Get All Documents Formatted
+## Get All Documents Formatted
 
 ```bash
 db.posts.find().pretty()
 ```
 
-# Find Documents
+## Find Documents
 
 ```bash
 db.posts.find({ category: 'News' })
 ```
 
-# Find One Document
+## Find One Document
 
 ```bash
 db.posts.findOne({ category: 'News' })
 ```
 
-# Find-Specific Fields
+## Find-Specific Fields
 
 - Field Filtering
 
@@ -95,6 +147,17 @@ db.getCollection("test")
 
 ```
 
+## regex find 
+
+```bash
+Student.find({
+    $or : [
+      'email' : {$regex : 'searchTerm', $options : 'i'},
+      'name' : {$regex : 'searchTerm', $options : 'i'},
+    ]
+  })
+
+```
 # Operator
 
 - Compression query Operator [Operator mongo](https://www.mongodb.com/docs/manual/reference/operator/query-comparison/ "Doc LINK")

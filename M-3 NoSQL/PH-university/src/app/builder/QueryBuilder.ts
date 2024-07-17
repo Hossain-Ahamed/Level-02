@@ -1,73 +1,71 @@
-import { FilterQuery, Query } from "mongoose";
+import { FilterQuery, Query } from 'mongoose';
 
 class QueryBuilder<T> {
+  public modelQuery: Query<T[], T>;
+  public query: Record<string, unknown>;
+  constructor(modelQuery: Query<T[], T>, query: Record<string, unknown>) {
+    this.modelQuery = modelQuery;
+    this.query = query;
+  }
 
-	public modelQuery: Query<T[], T>;
-	public query: Record<string, unknown>;
-	constructor(modelQuery: Query<T[], T>, query: Record<string, unknown>) {
-		this.modelQuery = modelQuery;
-		this.query = query;
-	}
+  //for searching through fields
+  search(searchableFields: string[]) {
+    const searchTerm = this?.query?.searchTerm;
+    if (searchTerm) {
+      this.modelQuery = this.modelQuery.find({
+        $or: searchableFields.map(
+          (field) =>
+            ({
+              [field]: { $regex: searchTerm, $options: 'i' },
+            }) as FilterQuery<T>, // Use mongoose FIlter query
+        ),
+      });
+    }
 
+    return this;
+  }
 
-	//for searching through fields
-	search(searchableFields: string[]) {
+  // filter : exclude the fields like limit sort page number from the query
+  filter() {
+    const queryObj = { ...this.query }; // copy the query
 
-		const searchTerm = this?.query?.searchTerm
-		if (searchTerm) {
-			this.modelQuery = this.modelQuery.find({
-				$or: searchableFields.map((field) => (
-					{
-						[field]: { $regex: searchTerm, $options: 'i' },
-					}
-				) as FilterQuery<T>, // Use mongoose FIlter query
-				),
-			})
-		}
+    //filter and remove
+    const excludableFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
 
-		return this;
-	}
+    excludableFields.map((el) => delete queryObj[el]); //delete from the obj
 
-	// filter : exclude the fields like limit sort page number from the query
-	filter() {
-		const queryObj = { ... this.query } // copy the query
+    // add to query by removing those field from find({}) and only with the searchquery of anything;
+    this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
 
-		//filter and remove
-		const excludableFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
+    return this;
+  }
 
-		excludableFields.map((el) => delete queryObj[el]); //delete from the obj
+  sort() {
+    const sort =
+      (this?.query?.sort as string)?.split(',')?.join(' ') || '-createdAt';
+    this.modelQuery = this.modelQuery.sort(sort as string);
 
-		// add to query by removing those field from find({}) and only with the searchquery of anything;
-		this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
+    return this;
+  }
 
-		return this;
-	}
+  paginate() {
+    const page = Number(this?.query?.page) || 1;
+    const limit = Number(this?.query?.limit) || 10;
+    const skip = (page - 1) * limit;
 
+    this.modelQuery = this.modelQuery.skip(skip).limit(limit);
 
-	sort() {
-		const sort = this?.query?.sort || '-createdAt';
-		this.modelQuery = this.modelQuery.sort(sort as string);
+    return this;
+  }
 
-		return this;
-	}
+  fields() {
+    // for select fields
+    const fields =
+      (this?.query?.fields as string)?.split(',')?.join(' ') || '-__v';
 
-	paginate() {
-		const page = Number(this?.query?.page) || 1;
-		const limit = Number(this?.query?.limit) || 10;
-		const skip = (page - 1) * limit;
-
-		this.modelQuery = this.modelQuery.skip(skip).limit(limit);
-
-		return this;
-	}
-
-	fields() {
-		// for sselect fields 
-		const fields = (this?.query?.fields as string)?.split(',')?.join(' ') || '-__v';
-
-		this.modelQuery = this.modelQuery.select(fields);
-		return this;
-	}
+    this.modelQuery = this.modelQuery.select(fields);
+    return this;
+  }
 }
 
 export default QueryBuilder;

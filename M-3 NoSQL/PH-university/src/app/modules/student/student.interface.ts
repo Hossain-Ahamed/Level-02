@@ -22,7 +22,7 @@ export type UserName = {
 
 export type TStudent = {
   id: string;
-  user : Types.ObjectId;
+  user: Types.ObjectId;
   name: UserName;
   password: string;
   gender: 'male' | 'female' | 'others';
@@ -36,16 +36,16 @@ export type TStudent = {
   guardian: TGuardian;
   localGuardian: LocalGuardian;
   profileImg?: string;
-  admissionSemester : Types.ObjectId;
-  academicDepartment : Types.ObjectId;
-  isDeleted : boolean;
+  admissionSemester: Types.ObjectId;
+  academicDepartment: Types.ObjectId;
+  isDeleted: boolean;
 };
 
 //9-7--------------For creating static ------------------
 
-export interface TStudentModel extends Model<TStudent>{
+export interface TStudentModel extends Model<TStudent> {
   // eslint-disable-next-line no-unused-vars
-  isUserExists(id: string): Promise<TStudent |null>;
+  isUserExists(id: string): Promise<TStudent | null>;
 }
 
 // 9-6  -------------------for creating instancne

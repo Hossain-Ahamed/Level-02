@@ -1,18 +1,20 @@
 import { z } from 'zod';
 
 const userNameValidationSchema = z.object({
-  firstName: z.string()
+  firstName: z
+    .string()
     .trim()
     .max(20, "name can't be greater than 20 characters")
-    .refine(value => value === value.charAt(0).toUpperCase() + value.slice(1), {
-      message: '{VALUE} is not in capitalize format',
-    }),
+    .refine(
+      (value) => value === value.charAt(0).toUpperCase() + value.slice(1),
+      {
+        message: '{VALUE} is not in capitalize format',
+      },
+    ),
   middleName: z.string().optional(),
-  lastName: z.string()
-    .refine(value => /^[A-Za-z]+$/.test(value), {
-      message: '{VALUE} is not valid',
-    })
-
+  lastName: z.string().refine((value) => /^[A-Za-z]+$/.test(value), {
+    message: '{VALUE} is not valid',
+  }),
 });
 
 const guardianValidationSchema = z.object({
@@ -39,9 +41,12 @@ const create_studentValidationSchema = z.object({
       gender: z.enum(['male', 'female', 'others']),
       dateOfBirth: z.string().optional(),
       contactNo: z.string().nonempty('Contact Number is required'),
-      emergencyContactNo: z.string().nonempty('Emergency Contact Number is required'),
+      emergencyContactNo: z
+        .string()
+        .nonempty('Emergency Contact Number is required'),
       bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']),
-      email: z.string()
+      email: z
+        .string()
         .email('{VALUE} is not a valid email')
         .nonempty('Email is required and must be unique'),
       presentAddress: z.string().nonempty('Present Address is required'),
@@ -49,27 +54,31 @@ const create_studentValidationSchema = z.object({
       guardian: guardianValidationSchema,
       localGuardian: localGuardianSchema,
       profileImg: z.string().optional(),
-      admissionSemester : z.string(),
-      academicDepartment : z.string(),
-    })
-  })
-
-})
-
-
+      admissionSemester: z.string(),
+      academicDepartment: z.string(),
+    }),
+  }),
+});
 
 const update_userNameValidationSchema = z.object({
-  firstName: z.string()
+  firstName: z
+    .string()
     .trim()
     .max(20, "name can't be greater than 20 characters")
-    .refine(value => value === value.charAt(0).toUpperCase() + value.slice(1), {
-      message: '{VALUE} is not in capitalize format',
-    }).optional(),
+    .refine(
+      (value) => value === value.charAt(0).toUpperCase() + value.slice(1),
+      {
+        message: '{VALUE} is not in capitalize format',
+      },
+    )
+    .optional(),
   middleName: z.string().optional(),
-  lastName: z.string()
-    .refine(value => /^[A-Za-z]+$/.test(value), {
+  lastName: z
+    .string()
+    .refine((value) => /^[A-Za-z]+$/.test(value), {
       message: '{VALUE} is not valid',
-    }).optional(),
+    })
+    .optional(),
 });
 
 const update_guardianValidationSchema = z.object({
@@ -88,30 +97,44 @@ const update_localGuardianSchema = z.object({
   address: z.string().nonempty().optional(),
 });
 
-
 const update_studentValidationSchema = z.object({
   body: z.object({
-    student: z.object({
-      name: update_userNameValidationSchema.optional(),
-      gender: z.enum(['male', 'female', 'others']).optional(),
-      dateOfBirth: z.string().optional(),
-      contactNo: z.string().nonempty('Contact Number is required').optional(),
-      emergencyContactNo: z.string().nonempty('Emergency Contact Number is required').optional(),
-      bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']).optional(),
-      email: z.string()
-        .email('{VALUE} is not a valid email')
-        .nonempty('Email is required and must be unique').optional(),
-      presentAddress: z.string().nonempty('Present Address is required').optional(),
-      permanentAddress: z.string().nonempty('Permanent Address is required').optional(),
-      guardian: update_guardianValidationSchema.optional(),
-      localGuardian: update_localGuardianSchema.optional(),
-      profileImg: z.string().optional(),
-      admissionSemester: z.string().optional(),
-      academicDepartment: z.string().optional(),
-    }).optional()
-  })
+    student: z
+      .object({
+        name: update_userNameValidationSchema.optional(),
+        gender: z.enum(['male', 'female', 'others']).optional(),
+        dateOfBirth: z.string().optional(),
+        contactNo: z.string().nonempty('Contact Number is required').optional(),
+        emergencyContactNo: z
+          .string()
+          .nonempty('Emergency Contact Number is required')
+          .optional(),
+        bloodGroup: z
+          .enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
+          .optional(),
+        email: z
+          .string()
+          .email('{VALUE} is not a valid email')
+          .nonempty('Email is required and must be unique')
+          .optional(),
+        presentAddress: z
+          .string()
+          .nonempty('Present Address is required')
+          .optional(),
+        permanentAddress: z
+          .string()
+          .nonempty('Permanent Address is required')
+          .optional(),
+        guardian: update_guardianValidationSchema.optional(),
+        localGuardian: update_localGuardianSchema.optional(),
+        profileImg: z.string().optional(),
+        admissionSemester: z.string().optional(),
+        academicDepartment: z.string().optional(),
+      })
+      .optional(),
+  }),
 });
 export const studentValidations = {
   create_studentValidationSchema,
-  update_studentValidationSchema
+  update_studentValidationSchema,
 };

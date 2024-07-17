@@ -17,21 +17,18 @@ app.use(cors());
 
 // app.use(logger)
 
-
 /*------------ APPLICATION ROUTES -------------------*/
 app.use('/api/v1', router);
 
-
-
 /*------------ Test route -------------------*/
-const test=(req: Request, res: Response) => {
+const test = (req: Request, res: Response) => {
   res.send('Hello World!');
-}
+};
 app.get('/', test);
 
 /**------------ GLOBAL ERROR HANDLER -------------------*/
 app.use(globalErrorHandler);
 
 /** ------------ NOT FOUND URL ------------------- */
-app.use(notFound)
+app.use(notFound);
 export default app;

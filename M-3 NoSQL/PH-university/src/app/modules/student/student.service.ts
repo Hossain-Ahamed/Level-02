@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose';
 import { Student } from './student.model';
 import AppError from '../../errors/AppError';
@@ -7,8 +6,6 @@ import { User } from '../user/user.model';
 import { TStudent } from './student.interface';
 import QueryBuilder from '../../builder/QueryBuilder';
 import { studentSearchableFields } from './student.constant';
-
-
 
 //get student
 const getAllStudentFromDB = async (query: Record<string, unknown>) => {
@@ -132,18 +129,22 @@ const getAllStudentFromDB = async (query: Record<string, unknown>) => {
 };
 
 const getAStudentFromDB = async (id: string) => {
-  const result = await Student.findOne({ id }).populate('admissionSemester')
+  const result = await Student.findOne({ id })
+    .populate('admissionSemester')
     .populate('academicDepartment')
     .populate({
       path: 'academicDepartment',
       populate: {
-        path: 'academicFaculty'
-      }
-    });;
+        path: 'academicFaculty',
+      },
+    });
   return result;
 };
 
-const flattenNestedObject = (prefix: string, nestedObject: Record<string, unknown>) => {
+const flattenNestedObject = (
+  prefix: string,
+  nestedObject: Record<string, unknown>,
+) => {
   const flatObject: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(nestedObject)) {
     flatObject[`${prefix}.${key}`] = value;
@@ -153,50 +154,56 @@ const flattenNestedObject = (prefix: string, nestedObject: Record<string, unknow
 
 const updateStudentIntoDB = async (id: string, payload: Partial<TStudent>) => {
   const { name, guardian, localGuardian, ...remainingStudentData } = payload;
-  const modifiedData_ForDB: Record<string, unknown> = { ...remainingStudentData };
+  const modifiedData_ForDB: Record<string, unknown> = {
+    ...remainingStudentData,
+  };
 
   if (name && Object.keys(name).length) {
     Object.assign(modifiedData_ForDB, flattenNestedObject('name', name));
   }
   if (guardian && Object.keys(guardian).length) {
-    Object.assign(modifiedData_ForDB, flattenNestedObject('guardian', guardian));
+    Object.assign(
+      modifiedData_ForDB,
+      flattenNestedObject('guardian', guardian),
+    );
   }
   if (localGuardian && Object.keys(localGuardian).length) {
-    Object.assign(modifiedData_ForDB, flattenNestedObject('localGuardian', localGuardian));
+    Object.assign(
+      modifiedData_ForDB,
+      flattenNestedObject('localGuardian', localGuardian),
+    );
   }
 
-  const result = await Student.findOneAndUpdate({ id }, modifiedData_ForDB, { new: true });
+  const result = await Student.findOneAndUpdate({ id }, modifiedData_ForDB, {
+    new: true,
+  });
 
   return result;
 };
 
-
-
 const deleteStudentFromDB = async (id: string) => {
-
   const session = await mongoose.startSession();
 
   try {
     session.startTransaction();
 
-
     const deletedStudent = await Student.findOneAndUpdate(
       { id },
       { isDeleted: true },
-      { new: true, session }
-    )
+      { new: true, session },
+    );
 
     if (!deletedStudent) {
-      throw new AppError(httpStatus.BAD_REQUEST, "Failed to delete student")
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete student');
     }
 
     const deletedUser = await User.findOneAndUpdate(
       { id },
       { isDeleted: true },
-      { new: true, session }
-    )
+      { new: true, session },
+    );
     if (!deletedUser) {
-      throw new AppError(httpStatus.BAD_REQUEST, "Failed to delete user")
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete user');
     }
 
     await session.commitTransaction();
@@ -207,13 +214,12 @@ const deleteStudentFromDB = async (id: string) => {
   } catch (error: any) {
     await session.abortTransaction();
     await session.endSession();
-    throw new Error(error)
+    throw new Error(error);
   }
-
-}
+};
 export const StudentServices = {
   getAllStudentFromDB,
   getAStudentFromDB,
   updateStudentIntoDB,
-  deleteStudentFromDB
+  deleteStudentFromDB,
 };

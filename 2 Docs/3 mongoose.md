@@ -1,4 +1,4 @@
-# Mongoose
+1. Mongoose
 
 ### Introduction to Mongoose
 
@@ -22,9 +22,6 @@ Interface -> Schema -> Model -> DB Query
 
 **Table of Contents**
 
-- [Mongoose](#mongoose)
-    - [Introduction to Mongoose](#introduction-to-mongoose)
-    - [Key Points](#key-points)
 - [Validation](#validation)
   - [required message](#required-message)
   - [enum message](#enum-message)
@@ -40,7 +37,7 @@ Interface -> Schema -> Model -> DB Query
     - [query 9-10 `student.model.ts`](#query-9-10-studentmodelts)
 - [Virtuals](#virtuals)
 - [Update](#update)
-  - [To update non primitive field 13-12](#to-update-non-primitive-field-13-12)
+  - [Update non primitive field 13-12](#update-non-primitive-field-13-12)
 - [Populate](#populate)
 - [Query](#query)
   - [Filtering](#filtering)
@@ -301,7 +298,7 @@ studentSchema.virtual('fullName').get(function(){
 
 ```
 
-## To update non primitive field 13-12
+## Update non primitive field 13-12
 
 Recieved :
 
@@ -358,10 +355,11 @@ const updateStudentIntoDB = async (id: string, payload : Partial<TStudent>) => {
   });
 ```
 
-
 # Query
+
  video 14-9
-## Filtering  
+
+## Filtering
 
 - `Fieldname` to see only that field
 - `-fieldName` to remove
@@ -370,13 +368,18 @@ const updateStudentIntoDB = async (id: string, payload : Partial<TStudent>) => {
 .select('fieldName')
 ```
 
-## Skip 
+## Skip
+
 Not to send the document. ie: Not sending the first 10 doc
+
 ```ts
 .skip(10)
 ```
+
 ## limit
+
 limiting the document find size ie : 10 document max
+
 ```ts
 .limit(10)
 ```

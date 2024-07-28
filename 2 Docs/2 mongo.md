@@ -12,6 +12,11 @@
   - [logical query Operator -`explicit and or`](#logical-query-operator--explicit-and-or)
   - [element query Operator 5-6](#element-query-operator-5-6)
   - [Search from array **`interest :[1,3,5]`**](#search-from-array-interest-135)
+    - [Exactly match of array](#exactly-match-of-array)
+    - [Search in array by position](#search-in-array-by-position)
+    - [`ELemmatch` - The $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.](#elemmatch---the-elemmatch-operator-matches-documents-that-contain-an-array-field-with-at-least-one-element-that-matches-all-the-specified-query-criteria)
+    - [Find By Element in Array ($elemMatch)](#find-by-element-in-array-elemmatch)
+  - [Text Search](#text-search)
 - [Sort Documents](#sort-documents)
 - [Count Documents](#count-documents)
 - [Limit Documents](#limit-documents)
@@ -27,7 +32,6 @@
 - [Rename Field name](#rename-field-name)
 - [Delete Document](#delete-document)
 - [Sub-Documents](#sub-documents)
-- [Find By Element in Array ($elemMatch)](#find-by-element-in-array-elemmatch)
 - [Indexing](#indexing)
   - [Add Indexing  6-9](#add-indexing--6-9)
   - [Single field](#single-field)
@@ -48,6 +52,7 @@
   - [`$limit` - limit doc](#limit---limit-doc)
   - [`$facet` - use multiple pipelines parallelly 6-7](#facet---use-multiple-pipelines-parallelly-6-7)
   - [`$lookup` - join two collection 6-8](#lookup---join-two-collection-6-8)
+
 
 # MongoDB Native driver
 
@@ -104,6 +109,7 @@ db.posts.insertMany([
   }
 ])
 ```
+
 # Find
 
 ## Get All Documents
@@ -147,7 +153,9 @@ db.getCollection("test")
 
 ```
 
-## regex find 
+## regex find
+
+- `$options : 'i'` for case insestive search
 
 ```bash
 Student.find({
@@ -158,6 +166,7 @@ Student.find({
   })
 
 ```
+
 # Operator
 
 - Compression query Operator [Operator mongo](https://www.mongodb.com/docs/manual/reference/operator/query-comparison/ "Doc LINK")
@@ -182,7 +191,6 @@ Student.find({
   ```bash
   db.collection_name.find({ $and: [{ $ne: 30 }, { $gte: 18 }] })
   ```
-
 - explicit or
 
 ```bash
@@ -227,13 +235,11 @@ Student.find({
   ```bash
   db.collection_name.find({ name: { $exist: true } })
   ```
-
 - to check the type of that entity
 
   ```bash
   db.collection_name.find({ age: { $type: "string" } })
   ```
-
 - to find by size of array
 
 ```bash
@@ -263,30 +269,56 @@ or, `$all` Search if the elements exist [it wont check the position]
   db.test.find({ interests: {$all : [ "Cooking" , "Travelling" ] }},{interests:1})
 ```
 
-- Exactly match of array
+### Exactly match of array
 
 ```bash
 db.test.find({ interests:[ "Cooking" , "Travelling" ] })
 ```
 
-- Search in array by position
+### Search in array by position
 
 ```bash
 # db.test.find({"array_name.Position_No":"value"})
 db.test.find({"interests.2":"Cooking"},{interests:1})
 ```
 
-- `ELemmatch` - The $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.
+### `ELemmatch` - The $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.
 
-  ```bash
-  db.test.find({ 
-      skills: {$elemMatch :{
-          name : "JAVASCRIPT",
-       level : "Intermidiate"
+```bash
+db.test.find({ 
+    skills: {$elemMatch :{
+        name : "JAVASCRIPT",
+     level : "Intermidiate"
+}
+
+}},{skills:1})
+
+
+```
+
+### Find By Element in Array ($elemMatch)
+
+```bash
+db.posts.find({
+  comments: {
+     $elemMatch: {
+       user: 'Mary Williams'
+       }
+    }
   }
+)
+```
 
-  }},{skills:1})
-  ```
+
+## Text Search
+
+```bash
+db.posts.find({
+  $text: {
+    $search: "\"Post O\""
+    }
+})
+```
 
 # Sort Documents
 
@@ -475,22 +507,10 @@ db.posts.update({ title: 'Post One' },
 })
 ```
 
-# Find By Element in Array (\$elemMatch)
-
-```bash
-db.posts.find({
-  comments: {
-     $elemMatch: {
-       user: 'Mary Williams'
-       }
-    }
-  }
-)
-```
-
 # Indexing
 
 ## Add Indexing  6-9
+
 Create an index to search faster like _id in mongo
 
 ## Single field
@@ -499,21 +519,14 @@ Create an index to search faster like _id in mongo
 db.posts.createIndex({ email: 1 })
 ```
 
-## Text index 
+## Text index
+
 ```bash
 db.posts.createIndex({ about: "text" })
 ```
--  Text Search
-
-```bash
-db.posts.find({
-  $text: {
-    $search: "\"Post O\""
-    }
-})
-```
 
 ## Compound Index
+
  Cretae index depends on ascend or Descend by adding in index tab in mongo
 
 ## Delete  index :
@@ -521,8 +534,6 @@ db.posts.find({
 ```js
 db.getCollection("massive-data").dropIndex({email : 1})
 ```
-
-
 
 # MongoDB Aggregation Framework
 
@@ -790,7 +801,7 @@ db.test.aggregate([
                     }
                 }
             ],
-          
+      
             // pipeline-3
         }
     }

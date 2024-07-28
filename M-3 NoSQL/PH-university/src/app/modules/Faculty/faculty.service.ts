@@ -28,7 +28,7 @@ const getAllFaculty = async (query: Record<string, unknown>) => {
 };
 
 const getSingleFaculty = async (id: string) => {
-  const result = await FacultyModel.findOne({ id })
+  const result = await FacultyModel.findById(id)
     .populate('AcademicDepartment')
     .populate({
       path: 'AcademicDepartment',
@@ -62,8 +62,8 @@ const updateFacultyInDB = async (id: string, payload: Partial<TFaculty>) => {
     Object.assign(modifiedData_ForDB, flattenNestedObject('name', name));
   }
 
-  const result = await FacultyModel.findOneAndUpdate(
-    { id: id },
+  const result = await FacultyModel.findByIdAndUpdate(
+    id,
     modifiedData_ForDB,
     { new: true, runValidators: true },
   );
@@ -75,8 +75,8 @@ const deleteFacultyFromDB = async (id: string) => {
 
   try {
     session.startTransaction();
-    const deletedFaculty = await FacultyModel.findOneAndUpdate(
-      { id },
+    const deletedFaculty = await FacultyModel.findByIdAndUpdate(
+      id,
       { isDeleted: true },
       { new: true, session },
     );
@@ -86,7 +86,7 @@ const deleteFacultyFromDB = async (id: string) => {
     }
 
     const deletedUser = await User.findOneAndUpdate(
-      { id: deletedFaculty.id },
+      deletedFaculty.user,
       { isDeleted: true },
       { new: true, session },
     );
@@ -96,9 +96,8 @@ const deleteFacultyFromDB = async (id: string) => {
 
     await session.commitTransaction();
     await session.endSession();
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
-    
     await session.abortTransaction();
     await session.endSession();
     throw new AppError(

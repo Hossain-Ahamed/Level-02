@@ -22,7 +22,7 @@ app.use('/api/v1', router);
 
 /*------------ Test route -------------------*/
 const test = (req: Request, res: Response) => {
-  res.send('Hello World!');
+  res.send('PH Unviersity server is RUNNIG !!! 😎😎😎');
 };
 app.get('/', test);
 

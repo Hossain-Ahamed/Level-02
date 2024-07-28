@@ -1,4 +1,4 @@
-# TypeScript
+# 1. TypeScript
 
 TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. TypeScript is often used in web development to build large-scale applications and is particularly popular with developers using frameworks like Angular.
 
@@ -8,51 +8,51 @@ TypeScript is a strongly typed programming language that builds on JavaScript, g
 - [Learn TypeScript – The Ultimate Beginners Guide](https://www.freecodecamp.org/news/learn-typescript-beginners-guide/)
 - [TypeScript Handbook for React Developers – How to Build a Type-Safe Todo App](https://www.freecodecamp.org/news/typescript-tutorial-for-react-developers/)
 
-# Table of Contents
+# 2. Table of Contents
 
-- [TypeScript](#typescript)
-- [Table of Contents](#table-of-contents)
-- [Pros and Cons of Typescript](#pros-and-cons-of-typescript)
-    - [Pros](#pros)
-    - [Cons](#cons)
-- [Install TypeScript and TS config  `video 1-4`](#install-typescript-and-ts-config--video-1-4)
-- [Data Types of Typescript (example)](#data-types-of-typescript-example)
-    - [Basis Types](#basis-types)
-  - [Primitive Data types](#primitive-data-types)
-  - [Non-primitive Data types](#non-primitive-data-types)
-  - [Function](#function)
-  - [Spread \& Rest Operator 1-7](#spread--rest-operator-1-7)
-  - [Destructure 1-8](#destructure-1-8)
-  - [Union and Intersection types](#union-and-intersection-types)
-  - [Never type- Null - Unknown 1.11 `2.11`](#never-type--null---unknown-111-211)
-  - [Enum type](#enum-type)
-  - [Type Alias 1-9  `2.7 +`](#type-alias-1-9--27-)
-  - [Interfaces  2-2 `2.2`](#interfaces--2-2-22)
-  - [Type Assertion 2-1   `2.1`](#type-assertion-2-1---21)
-  - [Generic 2.3 `2.3+2.4`](#generic-23-2324)
-  - [Constraints in typescript  2-6 `2.6`](#constraints-in-typescript--2-6-26)
-  - [Asynchronous TypeScript - 2-8 `2.8`  Promise](#asynchronous-typescript---2-8-28--promise)
-  - [Conditional types 2-9 `2.9`](#conditional-types-2-9-29)
-  - [Mapped Types  2-9 `2.9`](#mapped-types--2-9-29)
-  - [Utility types -2-11 - see code](#utility-types--2-11---see-code)
-- [Object Oriented Programming(OOP)](#object-oriented-programmingoop)
-  - [4 main pillars of OOP (AEIP shortcut)](#4-main-pillars-of-oop-aeip-shortcut)
-  - [Basic structure of a class 3-1 `3.1`](#basic-structure-of-a-class-3-1-31)
-  - [Inheritance](#inheritance)
-  - [Type guards \& in guard 3-3 `3.3`](#type-guards--in-guard-3-3-33)
-    - [Type guard using OOP 3-4](#type-guard-using-oop-3-4)
-  - [Access modifiers 3-5 `3.5,3.6`](#access-modifiers-3-5-3536)
-  - [Getter and Setter function `3.5,3.6`](#getter-and-setter-function-3536)
-  - [Statics 3-7 `3.7`](#statics-3-7-37)
-  - [Polymorphism](#polymorphism)
-  - [Abstraction](#abstraction)
-  - [Encapsulation](#encapsulation)
+- [1. TypeScript](#1-typescript)
+- [2. Table of Contents](#2-table-of-contents)
+- [3. Pros and Cons of Typescript](#3-pros-and-cons-of-typescript)
+    - [3.0.1. Pros](#301-pros)
+    - [3.0.2. Cons](#302-cons)
+- [4. Install TypeScript and TS config  `video 1-4`](#4-install-typescript-and-ts-config--video-1-4)
+- [5. Data Types of Typescript (example)](#5-data-types-of-typescript-example)
+    - [5.0.1. Basis Types](#501-basis-types)
+  - [5.1. Primitive Data types](#51-primitive-data-types)
+  - [5.2. Non-primitive Data types](#52-non-primitive-data-types)
+  - [5.3. Function](#53-function)
+  - [5.4. Spread \& Rest Operator 1-7](#54-spread--rest-operator-1-7)
+  - [5.5. Destructure 1-8](#55-destructure-1-8)
+  - [5.6. Union and Intersection types](#56-union-and-intersection-types)
+  - [5.7. Never type- Null - Unknown 1.11 `2.11`](#57-never-type--null---unknown-111-211)
+  - [5.8. Enum type](#58-enum-type)
+  - [5.9. Type Alias 1-9  `2.7 +`](#59-type-alias-1-9--27-)
+  - [5.10. Interfaces  2-2 `2.2`](#510-interfaces--2-2-22)
+  - [5.11. Type Assertion 2-1   `2.1`](#511-type-assertion-2-1---21)
+  - [5.12. Generic 2.3 `2.3+2.4`](#512-generic-23-2324)
+  - [5.13. Constraints in typescript  2-6 `2.6`](#513-constraints-in-typescript--2-6-26)
+  - [5.14. Asynchronous TypeScript - 2-8 `2.8`  Promise](#514-asynchronous-typescript---2-8-28--promise)
+  - [5.15. Conditional types 2-9 `2.9`](#515-conditional-types-2-9-29)
+  - [5.16. Mapped Types  2-9 `2.9`](#516-mapped-types--2-9-29)
+  - [5.17. Utility types -2-11 - see code](#517-utility-types--2-11---see-code)
+- [6. Object Oriented Programming(OOP)](#6-object-oriented-programmingoop)
+  - [6.1. 4 main pillars of OOP `(AEIP shortcut)`](#61-4-main-pillars-of-oop-aeip-shortcut)
+  - [6.2. Basic structure of a class 3-1 `3.1`](#62-basic-structure-of-a-class-3-1-31)
+  - [6.3. Inheritance](#63-inheritance)
+  - [6.4. Type guards \& in guard 3-3 `3.3`](#64-type-guards--in-guard-3-3-33)
+    - [6.4.1. Type guard using OOP 3-4](#641-type-guard-using-oop-3-4)
+  - [6.5. Access modifiers 3-5 `3.5,3.6`](#65-access-modifiers-3-5-3536)
+  - [6.6. Getter and Setter function `3.5,3.6`](#66-getter-and-setter-function-3536)
+  - [6.7. Statics 3-7 `3.7`](#67-statics-3-7-37)
+  - [6.8. Polymorphism](#68-polymorphism)
+  - [6.9. Abstraction](#69-abstraction)
+  - [6.10. Encapsulation](#610-encapsulation)
 
-# Pros and Cons of Typescript
+# 3. Pros and Cons of Typescript
 
 Every programming languages is created to serve few purpose, so that there have pros and cons.Here are some of the key pros and cons of TypeScript:
 
-### Pros
+### 3.0.1. Pros
 
 1. `Static Typing`: TypeScript enforces static typing, which means you can catch type-related errors at compile time rather than runtime. This can help improve code quality and catch bugs early in the development process.
 2. `Enhanced Tooling`: TypeScript provides excellent tooling and editor support. Popular code editors like Visual Studio Code offer rich TypeScript integration, including auto-completion, error checking, and code navigation.
@@ -61,7 +61,7 @@ Every programming languages is created to serve few purpose, so that there have 
 5. `Rich Ecosystem`: TypeScript has a rich ecosystem with a variety of libraries and frameworks designed to work with it, making it suitable for building complex applications.
 6. `Transpilation`: TypeScript code can be transpiled into plain JavaScript, making it compatible with all major browsers and environments.
 
-### Cons
+### 3.0.2. Cons
 
 1. `Learning Curve`: TypeScript introduces a learning curve for developers who are new to static typing. It may take time to fully grasp TypeScript's type system and its nuances.
 2. `Overhead`: Adding type annotations can make the codebase slightly more verbose, which can be seen as an overhead, especially for small projects.
@@ -71,7 +71,7 @@ Every programming languages is created to serve few purpose, so that there have 
 
 In summary, TypeScript is a powerful language that offers many advantages for building large-scale applications, but it comes with a learning curve and some overhead. The decision to use TypeScript depends on the specific needs of a project and the preferences of the development team.
 
-# Install TypeScript and TS config  `video 1-4`
+# 4. Install TypeScript and TS config  `video 1-4`
 
 - NVM
 
@@ -104,9 +104,9 @@ nvm use version_no //to switch version
  ts-node-dev --respawn --transpile-only "2.10 mapped types.ts"
 ```
 
-# Data Types of Typescript (example)
+# 5. Data Types of Typescript (example)
 
-### Basis Types
+### 5.0.1. Basis Types
 
 - Primitive Types
 
@@ -125,7 +125,7 @@ nvm use version_no //to switch version
   - Tuple
   - Object
 
-## Primitive Data types
+## 5.1. Primitive Data types
 
 ```ts
 
@@ -170,7 +170,7 @@ function throwError(message: string): never {
 }
 ```
 
-## Non-primitive Data types
+## 5.2. Non-primitive Data types
 
 ```ts
 /**
@@ -206,7 +206,7 @@ const bookOne: {
 };
 ```
 
-## Function
+## 5.3. Function
 
 ```ts
 //Normal Function
@@ -251,7 +251,7 @@ type Add = (n1 : number, n2:number) => number
 const addFunction : Add = (n1,n2)=> n1+n2;
 ```
 
-## Spread & Rest Operator 1-7
+## 5.4. Spread & Rest Operator 1-7
 
 ```ts
 // rest function
@@ -269,7 +269,7 @@ n1.push(...n2);
 console.log(n1);
 ```
 
-## Destructure 1-8
+## 5.5. Destructure 1-8
 
 ```ts
 const {
@@ -284,7 +284,7 @@ const [,,three, ...rest] = arr;
 // rest will take 4,5,6,7,8
 ```
 
-## Union and Intersection types
+## 5.6. Union and Intersection types
 
 ```ts
 {
@@ -372,7 +372,7 @@ const [,,three, ...rest] = arr;
 }
 ```
 
-## Never type- Null - Unknown 1.11 `2.11`
+## 5.7. Never type- Null - Unknown 1.11 `2.11`
 
 - `Never type` is a type which use to error throw and never returns anything
 - `nullable`  can be used as optional
@@ -405,7 +405,7 @@ const [,,three, ...rest] = arr;
 }
 ```
 
-## Enum type
+## 5.8. Enum type
 
 ```ts
 enum Role {
@@ -419,7 +419,7 @@ const superAdmin: string = Role.SUPER_ADMIN;
 const operator: string = Role.OPERATOR;
 ```
 
-## Type Alias 1-9  `2.7 +`
+## 5.9. Type Alias 1-9  `2.7 +`
 
 Type alias is a way to create a new name for an existing type or to define complex types that may be used multiple times
 
@@ -450,7 +450,7 @@ type CreateFullName = (fName: string, lName: string) => string; // for function
 const createFullName: CreateFullName = (fName, lName) => `${fName} ${lName}`;
 ```
 
-## Interfaces  2-2 `2.2`
+## 5.10. Interfaces  2-2 `2.2`
 
 An interface is a way to define type for the structure of an object. It describes the properties, methods, and their types that an object should have. Interfaces are a fundamental part of TypeScript and are used for defining object shapes and ensuring type checking.
 
@@ -506,7 +506,7 @@ class User implements Author {
 
 [Differences Between Type Aliases and Interfaces](https://blog.bitsrc.io/type-vs-interface-in-typescript-cf3c00bc04ae)
 
-## Type Assertion 2-1   `2.1`
+## 5.11. Type Assertion 2-1   `2.1`
 
 Type assertion in TypeScript is a way to tell the **TypeScript compiler that you know more about the type of a value tha**n it does. It's like telling TypeScript, "Trust me, I've checked the type, and it's safe." Type assertion is useful in situations where you have more specific knowledge about the types in your code than TypeScript can infer.
 
@@ -529,6 +529,7 @@ Type assertion can be done in two ways: with angle brackets (<>) or with the as 
 
   console.log(strLength); // Output: 16
   ```
+
 - **other examples**
 
   ```ts
@@ -550,6 +551,7 @@ Type assertion can be done in two ways: with angle brackets (<>) or with the as 
   const resultTwo = kgToGram('5') as string;
 
   ```
+
 - **Try catch Block**
 
   ```ts
@@ -564,7 +566,7 @@ Type assertion can be done in two ways: with angle brackets (<>) or with the as 
   }
   ```
 
-## Generic 2.3 `2.3+2.4`
+## 5.12. Generic 2.3 `2.3+2.4`
 
 Generics in TypeScript allow you to create reusable components, functions, and classes that can work with a variety of data types. They provide a way to write code that is both flexible and type-safe. Generics are especially useful when you want to create functions or classes that work with different data types without losing type information.
 
@@ -602,6 +604,7 @@ Generics in TypeScript allow you to create reusable components, functions, and c
     '1232',
   ];
   ```
+
 - Generic with Interface
 
   ```ts
@@ -633,6 +636,7 @@ Generics in TypeScript allow you to create reusable components, functions, and c
     graduated: true,
   };
   ```
+
 - Function with Generic - regular
 
 ```ts
@@ -676,7 +680,7 @@ const addCourseToStudent = <T>(student : T)=>{
 const std1  = addCourseToStudent ({name : 'x', email : 'djs@gmail.com', dev : 'nlwd'})
 ```
 
-## Constraints in typescript  2-6 `2.6`
+## 5.13. Constraints in typescript  2-6 `2.6`
 
 **Generic constraints allow you to restrict the types that can be used as type parameters in a generic function or class.**
 
@@ -714,7 +718,7 @@ const newBookTwo = addBook({
 - generic Constraints with keyof operator 2-7 `2.7`
 
 ```ts
-;    type Vehicle ={
+  type Vehicle ={
         bike : string;
         car : string;
         ship : string;
@@ -737,7 +741,7 @@ const newBookTwo = addBook({
 
 ```
 
-## Asynchronous TypeScript - 2-8 `2.8`  Promise
+## 5.14. Asynchronous TypeScript - 2-8 `2.8`  Promise
 
 ```ts
  type Types = {
@@ -786,7 +790,7 @@ const getTodo = async (): Promise<ITodo | undefined> => {
 console.log(getTodo());
 ```
 
-## Conditional types 2-9 `2.9`
+## 5.15. Conditional types 2-9 `2.9`
 
 Conditional types are typically used in TypeScript to define types that depend on other types, often in the context of generics and utility types.
 
@@ -815,7 +819,7 @@ type IsTructorAvailable = AvailableVehicle<'tructor'>; //false
 
 ```
 
-## Mapped Types  2-9 `2.9`
+## 5.16. Mapped Types  2-9 `2.9`
 
 Mapped types are a powerful and flexible feature in TypeScript that allow you to create new types by transforming the properties of an existing type. They are particularly useful for creating utility types that modify or extract properties from other types in a concise and generic way. Mapped types leverage key remapping and type manipulation to generate new types based on existing ones.
 
@@ -879,7 +883,7 @@ type NameOnly = PickType<MyPerson, 'name'>; // { name: string; } // another one 
 
 Mapped types provide a powerful way to create generic and reusable type transformations in TypeScript, making your code more maintainable and less error-prone by reducing the need for manual type declarations. They are commonly used in libraries and frameworks to provide generic type utilities.
 
-## Utility types -2-11 - see code
+## 5.17. Utility types -2-11 - see code
 
 ```ts
 type User = {
@@ -920,18 +924,18 @@ const emptyObject: Record<string, unknown> = {
 };
 ```
 
-# Object Oriented Programming(OOP)
+# 6. Object Oriented Programming(OOP)
 
 Object-oriented programming (OOP) is a programming paradigm or style that organizes and models software as a collection of objects, each of which represents an instance of a class.
 
-## 4 main pillars of OOP (AEIP shortcut)
+## 6.1. 4 main pillars of OOP `(AEIP shortcut)`
 
 - `Inheritance`: The ability of creating a new class from an existing class. Inheritance is when an object acquires the property of another object. Inheritance allows a class to acquire the properties and behavior,
 - `Polymorphism`: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables the same interface (method name) to be used for different data types or objects, and it provides flexibility in method implementation.
 - `Abstraction`: Hiding the implementation details inside and providing the necessary method to work.
 - `Encapsulation`: The action of enclosing something or in a capsule. Encapsulation is the concept of bundling data and methods that operate on that data into a single unit, an object. Encapsulation means that each object in your code should control it's own state. State is the current snapshot.
 
-## Basic structure of a class 3-1 `3.1`
+## 6.2. Basic structure of a class 3-1 `3.1`
 
 Classes are the blueprints or templates for creating objects. They define the structure, attributes, and methods that objects of that class will have. Objects, on the other hand, are instances of classes that hold specific data and can perform actions.
 
@@ -982,7 +986,7 @@ const bookTwo = new BookShortHand('1', 'Deep Word', 'Cal Newport');
 bookTwo.printBook();
 ```
 
-## Inheritance
+## 6.3. Inheritance
 
 The ability of creating a new class from an existing class. Inheritance is when an object acquires the property of another object. Inheritance allows a class to acquire the properties and behavior
 
@@ -1046,7 +1050,7 @@ student.print();
 teacher.print();
 ```
 
-## Type guards & in guard 3-3 `3.3`
+## 6.4. Type guards & in guard 3-3 `3.3`
 
 A type guard is some expression that performs a runtime check that guarantees the type in some scope
 
@@ -1095,7 +1099,7 @@ A type guard is some expression that performs a runtime check that guarantees th
 
 ```
 
-### Type guard using OOP 3-4
+### 6.4.1. Type guard using OOP 3-4
 
 - Type narrowing is a process of refining or narrowing down the type using certain conditions with a particular code block. Here we specifies the type
 
@@ -1171,7 +1175,7 @@ A type guard is some expression that performs a runtime check that guarantees th
 
 ```
 
-## Access modifiers 3-5 `3.5,3.6`
+## 6.5. Access modifiers 3-5 `3.5,3.6`
 
 ```ts
 /**
@@ -1204,7 +1208,7 @@ class BankAccount {
 const bankAccountOne = new BankAccount('1', 'Mr. Z', 100);
 ```
 
-## Getter and Setter function `3.5,3.6`
+## 6.6. Getter and Setter function `3.5,3.6`
 
 ```ts
 class ModuleFinished {
@@ -1232,7 +1236,7 @@ course.addModule = 2;
 console.log(course.finishedModule);
 ```
 
-## Statics 3-7 `3.7`
+## 6.7. Statics 3-7 `3.7`
 
 In object-oriented programming (OOP), the static keyword is used to define properties and methods that belong to the class itself, rather than to instances (objects) of the class. These static members are shared across all instances of the class and can be accessed using the class name rather than an instance.
 
@@ -1267,7 +1271,7 @@ In object-oriented programming (OOP), the static keyword is used to define prope
   console.log(c1.nonStaticincrement()) //3
 ```
 
-## Polymorphism
+## 6.8. Polymorphism
 
 If any particular method of any class, redesigned on other inherited class then we get different output, it is Polymorphism.
 
@@ -1331,7 +1335,7 @@ student.print();
 teacher.print();
 ```
 
-## Abstraction
+## 6.9. Abstraction
 
 Abstraction in programming refers to the concept of hiding complex implementation details and exposing only the necessary information or functionalities to the user.
 
@@ -1409,7 +1413,7 @@ console.log(redCircle.getArea()); // Output: 78.53981633974483
 console.log(blueRectangle.getArea()); // Output: 24
 ```
 
-## Encapsulation
+## 6.10. Encapsulation
 
 Encapsulation is one of the fundamental principles of object-oriented programming (OOP). It involves bundling data (attributes or properties) and methods (functions) that operate on that data into a single unit, called an object. This unit is responsible for controlling access to its internal state and ensuring that data remains in a consistent and valid state. Encapsulation promotes data hiding and provides a way to protect data from unauthorized access and modification.
 

@@ -3,12 +3,15 @@ import { FilterQuery, Query } from 'mongoose';
 class QueryBuilder<T> {
   public modelQuery: Query<T[], T>;
   public query: Record<string, unknown>;
+
+
   constructor(modelQuery: Query<T[], T>, query: Record<string, unknown>) {
     this.modelQuery = modelQuery;
     this.query = query;
   }
 
-  //for searching through fields
+ 
+  /** ------------   SEARCH in fields by REGEX    ----------------------*/  //for searching through fields
   search(searchableFields: string[]) {
     const searchTerm = this?.query?.searchTerm;
     if (searchTerm) {
@@ -25,7 +28,7 @@ class QueryBuilder<T> {
     return this;
   }
 
-  // filter : exclude the fields like limit sort page number from the query
+  /** ------------   Filter    ----------------------*/ //exclude the fields like limit sort page number from the query
   filter() {
     const queryObj = { ...this.query }; // copy the query
 
@@ -40,6 +43,8 @@ class QueryBuilder<T> {
     return this;
   }
 
+
+  /** ------------   SORT    ----------------------*/
   sort() {
     const sort =
       (this?.query?.sort as string)?.split(',')?.join(' ') || '-createdAt';
@@ -48,6 +53,8 @@ class QueryBuilder<T> {
     return this;
   }
 
+
+ /** ------------   PAGINATION    ----------------------*/
   paginate() {
     const page = Number(this?.query?.page) || 1;
     const limit = Number(this?.query?.limit) || 10;
@@ -58,6 +65,7 @@ class QueryBuilder<T> {
     return this;
   }
 
+  /** ------------   SELECTION     ----------------------*/
   fields() {
     // for select fields
     const fields =

@@ -21,7 +21,7 @@ const getAllAdminsFromDB = async (query: Record<string, unknown>) => {
 };
 
 const getSingleAdminFromDB = async (id: string) => {
-  const result = await AdminModel.findOne({ id });
+  const result = await AdminModel.findById(id);
   return result;
 };
 
@@ -38,8 +38,8 @@ const updateAdminIntoDB = async (id: string, payload: Partial<TAdmin>) => {
     }
   }
 
-  const result = await AdminModel.findOneAndUpdate(
-    { id },
+  const result = await AdminModel.findByIdAndUpdate(
+     id ,
     modifiedUpdatedData,
     {
       new: true,
@@ -55,8 +55,8 @@ const deleteAdminFromDB = async (id: string) => {
   try {
     session.startTransaction();
 
-    const deletedAdmin = await AdminModel.findOneAndUpdate(
-      { id },
+    const deletedAdmin = await AdminModel.findByIdAndUpdate(
+      id,
       { isDeleted: true },
       { new: true, session },
     );
@@ -69,7 +69,7 @@ const deleteAdminFromDB = async (id: string) => {
     const userId = deletedAdmin.user;
 
     const deletedUser = await User.findOneAndUpdate(
-      { id: userId },
+      userId,
       { isDeleted: true },
       { new: true, session },
     );

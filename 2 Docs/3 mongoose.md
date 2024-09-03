@@ -32,12 +32,14 @@ Interface -> Schema -> Model -> DB Query
     - [`Joi` 9-4 student.validation](#joi-9-4-studentvalidation)
     - [Zod 9-5](#zod-9-5)
 - [Instance 9-6 see documentation and code `first project`](#instance-9-6-see-documentation-and-code-first-project)
-    - [Instance of static instance `See code + doc` + 9-7](#instance-of-static-instance-see-code--doc--9-7)
+  - [Instance of static instance `See code + doc` + 9-7](#instance-of-static-instance-see-code--doc--9-7)
 - [Middle ware pre and post `save` 9-8 `student.model.ts`](#middle-ware-pre-and-post-save-9-8-studentmodelts)
-    - [query 9-10 `student.model.ts`](#query-9-10-studentmodelts)
+  - [query 9-10 `student.model.ts`](#query-9-10-studentmodelts)
 - [Virtuals](#virtuals)
 - [Update](#update)
   - [Update non primitive field 13-12](#update-non-primitive-field-13-12)
+  - [Update \& Pull from array of object `15-7` + `update course`](#update--pull-from-array-of-object-15-7--update-course)
+  - [unique update to array using `Add to set` 15-8](#unique-update-to-array-using-add-to-set-15-8)
 - [Populate](#populate)
 - [Query](#query)
   - [Filtering](#filtering)
@@ -321,6 +323,23 @@ const flattenNestedObject = (prefix:string, nestedObject: Record<string, unknown
 };
 ```
 
+## Update & Pull from array of object `15-7` + `update course`
+
+```ts
+await CourseModel.findByIdAndUpdate(id,{
+    $pull : { Array_Name : { Field_Name_in_that_array : {$in : _Array_of_those_matched_String }}}
+   }
+```
+
+```ts
+await CourseModel.findByIdAndUpdate(id,
+   {
+    $pull : {
+     preRequisiteCourses : { course : {$in : deletedPrerequisites }}
+    }
+   }
+```
+
 ```ts
 const updateStudentIntoDB = async (id: string, payload : Partial<TStudent>) => {
   const { name, ...remainingStudentData } = payload;
@@ -335,6 +354,42 @@ const updateStudentIntoDB = async (id: string, payload : Partial<TStudent>) => {
   return result;
 };
 
+```
+
+## Unique update to array using `Add to set` 15-8
+
+* `$addtoset` is used to add unique in array
+
+```ts
+const newPrerequisiteCourses = await CourseModel.findByIdAndUpdate(id,
+	{
+		$addToSet: {
+			preRequisiteCourses: { $each: newPrerequisiteCourse }
+		}
+	}
+)
+```
+
+---
+
+> **NB:** using `$each` & `$addtoset` would not check in the mongo, that double entry occured or not.  `coruse update course.service.ts `
+>
+> - As it was an `array of object` . `_id` was created in each object, so **turning it off will solve this issue**
+
+```ts
+const preRequisiteCoursesSchema = new Schema<TPreRequisiteCourse>({
+	course: {
+		type: Schema.Types.ObjectId,
+		ref: 'Course',
+	},
+	isDeleted: {
+		type: Boolean,
+		default: false
+	}
+}, {
+	_id: false,
+	timestamps: true,
+})
 ```
 
 # Populate

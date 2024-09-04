@@ -39,7 +39,7 @@ Interface -> Schema -> Model -> DB Query
 - [Update](#update)
   - [Update non primitive field 13-12](#update-non-primitive-field-13-12)
   - [Update \& Pull from array of object `15-7` + `update course`](#update--pull-from-array-of-object-15-7--update-course)
-  - [unique update to array using `Add to set` 15-8](#unique-update-to-array-using-add-to-set-15-8)
+  - [Unique update to array using `Add to set` 15-8](#unique-update-to-array-using-add-to-set-15-8)
 - [Populate](#populate)
 - [Query](#query)
   - [Filtering](#filtering)
@@ -323,7 +323,11 @@ const flattenNestedObject = (prefix:string, nestedObject: Record<string, unknown
 };
 ```
 
-## Update & Pull from array of object `15-7` + `update course`
+## Pull from array of object `15-7` + `update course`
+
+| To pull from an array | add to array  use |
+| :-------------------: | ----------------- |
+|        ``in``        | ``each``          |
 
 ```ts
 await CourseModel.findByIdAndUpdate(id,{
@@ -394,7 +398,7 @@ const preRequisiteCoursesSchema = new Schema<TPreRequisiteCourse>({
 
 # Populate
 
- to polulate inside there will be the variable of the field to be added to get the data
+ to polulate inside there will be the variable of the field to be added to get the data | $each |
 
 - For child populate `.populate(path : 'parent_Var', populate : {path : 'child_ref_Name'})`
 

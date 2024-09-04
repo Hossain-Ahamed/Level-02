@@ -372,7 +372,7 @@ const newPrerequisiteCourses = await CourseModel.findByIdAndUpdate(id,
 
 ---
 
-> **NB:** using `$each` & `$addtoset` would not check in the mongo, that double entry occured or not.  `coruse update course.service.ts `
+> **NB:** using `$each` & `$addtoset` cant check properly.  `coruse update course.service.ts `
 >
 > - As it was an `array of object` . `_id` was created in each object, so **turning it off will solve this issue**
 

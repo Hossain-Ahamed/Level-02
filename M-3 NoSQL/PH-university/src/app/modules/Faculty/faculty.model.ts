@@ -96,12 +96,12 @@ const facultySchema = new Schema<TFaculty, TFacultyModel>(
 );
 
 facultySchema.pre('find', async function (next) {
-  this.find({ isDeleted: { $ne: false } });
+  this.find({ isDeleted: { $ne: true } });
   next();
 });
 
 facultySchema.pre('findOne', async function (next) {
-  this.find({ isDeleted: { $ne: false } });
+  this.find({ isDeleted: { $ne: true } });
   next();
 });
 

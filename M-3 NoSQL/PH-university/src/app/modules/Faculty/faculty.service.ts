@@ -7,14 +7,9 @@ import httpStatus from 'http-status';
 import { User } from '../user/user.model';
 import AppError from './../../errors/AppError';
 
-const getAllFaculty = async (query: Record<string, unknown>) => {
+const getAllFacultiesFromDB = async (query: Record<string, unknown>) => {
   const facultyQuery = new QueryBuilder(
-    FacultyModel.find().populate({
-      path: 'AcademicDepartment',
-      populate: {
-        path: 'AcademicFaculty',
-      },
-    }),
+    FacultyModel.find().populate('academicDepartment'),
     query,
   )
     .search(FacultySearchableFields)
@@ -27,46 +22,29 @@ const getAllFaculty = async (query: Record<string, unknown>) => {
   return result;
 };
 
-const getSingleFaculty = async (id: string) => {
-  const result = await FacultyModel.findById(id)
-    .populate('AcademicDepartment')
-    .populate({
-      path: 'AcademicDepartment',
-      populate: {
-        path: 'AcademicFaculty',
-      },
-    });
+const getSingleFacultyFromDB = async (id: string) => {
+  const result = await FacultyModel.findById(id).populate('academicDepartment');
 
   return result;
 };
 
-const flattenNestedObject = (
-  prefix: string,
-  nestedObject: Record<string, unknown>,
-) => {
-  const flatObject: Record<string, unknown> = {};
-  for (const [key, value] of Object.entries(nestedObject)) {
-    flatObject[`${prefix}.${key}`] = value;
-  }
-  return flatObject;
-};
-
-const updateFacultyInDB = async (id: string, payload: Partial<TFaculty>) => {
+const updateFacultyIntoDB = async (id: string, payload: Partial<TFaculty>) => {
   const { name, ...remainingFacultyData } = payload;
 
-  const modifiedData_ForDB: Record<string, unknown> = {
+  const modifiedUpdatedData: Record<string, unknown> = {
     ...remainingFacultyData,
   };
 
   if (name && Object.keys(name).length) {
-    Object.assign(modifiedData_ForDB, flattenNestedObject('name', name));
+    for (const [key, value] of Object.entries(name)) {
+      modifiedUpdatedData[`name.${key}`] = value;
+    }
   }
 
-  const result = await FacultyModel.findByIdAndUpdate(
-    id,
-    modifiedData_ForDB,
-    { new: true, runValidators: true },
-  );
+  const result = await FacultyModel.findByIdAndUpdate(id, modifiedUpdatedData, {
+    new: true,
+    runValidators: true,
+  });
   return result;
 };
 
@@ -75,6 +53,7 @@ const deleteFacultyFromDB = async (id: string) => {
 
   try {
     session.startTransaction();
+
     const deletedFaculty = await FacultyModel.findByIdAndUpdate(
       id,
       { isDeleted: true },
@@ -85,32 +64,34 @@ const deleteFacultyFromDB = async (id: string) => {
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete faculty');
     }
 
-    const deletedUser = await User.findOneAndUpdate(
-      deletedFaculty.user,
+    // get user _id from deletedFaculty
+    const userId = deletedFaculty.user;
+
+    const deletedUser = await User.findByIdAndUpdate(
+      userId,
       { isDeleted: true },
       { new: true, session },
     );
+
     if (!deletedUser) {
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete user');
     }
 
     await session.commitTransaction();
     await session.endSession();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+    return deletedFaculty;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     await session.abortTransaction();
     await session.endSession();
-    throw new AppError(
-      httpStatus.INTERNAL_SERVER_ERROR,
-      'Failed to delete faculty',
-      err,
-    );
+    throw new Error(err);
   }
 };
 
 export const FacultyServices = {
-  getAllFaculty,
-  getSingleFaculty,
-  updateFacultyInDB,
+  getAllFacultiesFromDB,
+  getSingleFacultyFromDB,
+  updateFacultyIntoDB,
   deleteFacultyFromDB,
 };

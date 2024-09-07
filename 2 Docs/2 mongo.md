@@ -53,7 +53,6 @@
   - [`$facet` - use multiple pipelines parallelly 6-7](#facet---use-multiple-pipelines-parallelly-6-7)
   - [`$lookup` - join two collection 6-8](#lookup---join-two-collection-6-8)
 
-
 # MongoDB Native driver
 
 ```bash
@@ -263,7 +262,7 @@ db.collection_name.find({interest :{$in[1,2,3]}})
   })
 ```
 
-or, `$all` Search if the elements exist [it wont check the position]
+or, `$all` Search if all the elements exist [it wont check the position]
 
 ```bash
   db.test.find({ interests: {$all : [ "Cooking" , "Travelling" ] }},{interests:1})
@@ -308,7 +307,6 @@ db.posts.find({
   }
 )
 ```
-
 
 ## Text Search
 
@@ -801,7 +799,7 @@ db.test.aggregate([
                     }
                 }
             ],
-      
+    
             // pipeline-3
         }
     }

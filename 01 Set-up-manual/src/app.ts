@@ -1,6 +1,11 @@
-import express, { NextFunction, Request, Response } from "express";
-import cors from "cors";
-import { middlewares } from "./middleware/middleware";
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+// import { globalErrorHandler } from './middlewares/globalErrorHandler';
+// import { logger } from './middlewares/logger';
+// import { notFound } from './middlewares/notFound';
+// import router from './routes';
 
 const app = express();
 
@@ -10,30 +15,20 @@ app.use(cors());
 
 /*---------------- MIDDLEWARES -----------------------*/
 
-// app.use(middlewares.logger);
-
+// app.use(logger)
 
 /*------------ APPLICATION ROUTES -------------------*/
+// app.use('/api/v1', router);
 
-/*--------------------------TEST --------------------*/
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  try {
-    res.send("Hello to my user and order management project!");
-  } catch (error) {
-    next(error);
-  }
-});
+/*------------ Test route -------------------*/
+const test = (req: Request, res: Response) => {
+  res.send('PH Unviersity server is RUNNIG !!! 😎😎😎');
+};
+app.get('/', test);
 
 /**------------ GLOBAL ERROR HANDLER -------------------*/
-app.use(middlewares.errorHandler);
+// app.use(globalErrorHandler);
 
 /** ------------ NOT FOUND URL ------------------- */
-app.all("*", (req: Request, res: Response) => {
-  res.status(404).json({
-    success: false,
-    urlName: req.url,
-    message: "URL Not found",
-  });
-});
-
+// app.use(notFound);
 export default app;

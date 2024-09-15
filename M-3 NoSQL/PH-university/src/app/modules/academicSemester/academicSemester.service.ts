@@ -1,14 +1,14 @@
 import AppError from '../../errors/AppError';
 import { academicSemsterCodeMappaer } from './academicSemester.constant';
 import { TAcademicSemester } from './academicSemester.interface';
-import { AcademicSemesterSchemaModel } from './academicSemester.model';
+import { AcademicSemesterModel } from './academicSemester.model';
 
 const createAcademicSemesterIntoDB = async (payLoad: TAcademicSemester) => {
   if (academicSemsterCodeMappaer[payLoad.name] !== payLoad.code) {
     throw new AppError(404, 'Invalid semester code');
   }
 
-  const result = await AcademicSemesterSchemaModel.create(payLoad);
+  const result = await AcademicSemesterModel.create(payLoad);
   return result;
 };
 
@@ -24,7 +24,7 @@ const updateAcademicSemesterIntoDB = async (
     throw new AppError(404, 'Invalid Semester Code');
   }
 
-  const result = await AcademicSemesterSchemaModel.findOneAndUpdate(
+  const result = await AcademicSemesterModel.findOneAndUpdate(
     { _id: id },
     payload,
     {
@@ -35,11 +35,11 @@ const updateAcademicSemesterIntoDB = async (
 };
 
 const getAllSemesterFromDB = async () => {
-  return await AcademicSemesterSchemaModel.find().sort({ _id: 1 });
+  return await AcademicSemesterModel.find().sort({ _id: 1 });
 };
 
 const getSingleAcademicSemester = async (semesterID: string) => {
-  const result = await AcademicSemesterSchemaModel.findById(semesterID);
+  const result = await AcademicSemesterModel.findById(semesterID);
   return result;
 };
 

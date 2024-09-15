@@ -7,9 +7,7 @@ const router = express.Router();
 
 router.get('/', FacultyControllers.getAllFaculty);
 router.get('/:facultyID', FacultyControllers.getSingleFaculty);
-router.patch(
-  '/:facultyID',
-  validateRequest(FacultyValidations.Update_FacultyValidationSchema),
+router.patch('/:facultyID', validateRequest(FacultyValidations.Update_FacultyValidationSchema),
   FacultyControllers.updateFaculty,
 );
 router.delete('/:facultyID', FacultyControllers.deleteFaculty);

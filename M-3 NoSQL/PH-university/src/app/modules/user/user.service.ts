@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import config from '../../config';
 import AppError from '../../errors/AppError';
-import { AcademicSemesterSchemaModel } from '../academicSemester/academicSemester.model';
+import { AcademicSemesterModel } from '../academicSemester/academicSemester.model';
 import { TStudent } from '../student/student.interface';
 import { Student } from '../student/student.model';
 import { TUSer } from './user.interface';
@@ -25,7 +25,7 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
   userData.role = 'student'; //set student role --> as I received by route
 
   //find academic sesmster info
-  const admissionSemester = await AcademicSemesterSchemaModel.findById(
+  const admissionSemester = await AcademicSemesterModel.findById(
     payload.admissionSemester,
   );
 
@@ -114,7 +114,7 @@ const createFacultyIntoDB = async (password: string, payload: TFaculty) => {
     await session.endSession();
 
     return newFaculty;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     await session.abortTransaction();
     await session.endSession();

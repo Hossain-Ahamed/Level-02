@@ -163,10 +163,9 @@ Student.find({
       'name' : {$regex : 'searchTerm', $options : 'i'},
     ]
   })
-
 ```
 
-# Operator
+## Operator
 
 - Compression query Operator [Operator mongo](https://www.mongodb.com/docs/manual/reference/operator/query-comparison/ "Doc LINK")
 
@@ -183,7 +182,7 @@ Student.find({
   db.collection_name.find({ age: { $in: [18 , 30 ] }})
   ```
 
-## logical query Operator -`explicit and or`
+### logical query Operator -`explicit and or`
 
 - explicit and
 
@@ -227,7 +226,7 @@ Student.find({
 })
 ```
 
-## element query Operator 5-6
+### element query Operator 5-6
 
 - to find if the entity exist :
 
@@ -799,7 +798,7 @@ db.test.aggregate([
                     }
                 }
             ],
-    
+  
             // pipeline-3
         }
     }

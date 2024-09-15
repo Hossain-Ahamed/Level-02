@@ -6,9 +6,9 @@ import { AdminValidations } from './admin.validation';
 const router = express.Router();
 
 router.get('/', AdminControllers.getAllAdmins);
-router.get('/adminID', AdminControllers.getSingleAdmin);
+router.get('/:adminID', AdminControllers.getSingleAdmin);
 router.patch(
-  '/adminID',
+  '/:adminID',
   validateRequest(AdminValidations.updateAdminValidationSchema),
   AdminControllers.updateAdmin,
 );

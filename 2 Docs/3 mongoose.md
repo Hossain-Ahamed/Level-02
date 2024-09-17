@@ -453,6 +453,7 @@ limiting the document find size ie : 10 document max
   //create session 
   const session = await mongoose.startSession();
   try {
+     session.startTransaction();
     // trasnsaction 1
     const newUser = await User.create([userData], { session });
     if (!newUser.length) { 

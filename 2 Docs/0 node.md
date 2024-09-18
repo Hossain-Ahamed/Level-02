@@ -1,6 +1,6 @@
-# Insert something to Node express 
+# Insert something to Node express
 
-- Insert a field `user` to `Request` in express 18-6 `index.d.ts`
+- Insert a field `user` to `Request` in express  `index.d.ts` 18-6
 
 ```js
 import { JwtPayload } from 'jsonwebtoken';

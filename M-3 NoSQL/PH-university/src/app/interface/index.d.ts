@@ -1,8 +1,3 @@
-# Insert something to Node express 
-
-- Insert a field `user` to `Request` in express 18-6 `index.d.ts`
-
-```js
 import { JwtPayload } from 'jsonwebtoken';
 
 declare global {
@@ -12,4 +7,3 @@ declare global {
 		}
 	}
 }
-```

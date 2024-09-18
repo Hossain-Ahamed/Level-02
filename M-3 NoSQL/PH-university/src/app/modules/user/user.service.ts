@@ -4,7 +4,7 @@ import AppError from '../../errors/AppError';
 import { AcademicSemesterModel } from '../academicSemester/academicSemester.model';
 import { TStudent } from '../student/student.interface';
 import { Student } from '../student/student.model';
-import { TUSer } from './user.interface';
+import { TUser } from './user.interface';
 import { User } from './user.model';
 import {
   generateAdminId,
@@ -20,7 +20,7 @@ import { AdminModel } from '../admin/admin.model';
 
 const createStudentIntoDb = async (password: string, payload: TStudent) => {
   //create a user object
-  const userData: Partial<TUSer> = {};
+  const userData: Partial<TUser> = {};
   userData.password = password || (config.default_password as string); //if password is not given use default pass
   userData.role = 'student'; //set student role --> as I received by route
 
@@ -73,7 +73,7 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
 };
 
 const createFacultyIntoDB = async (password: string, payload: TFaculty) => {
-  const userData: Partial<TUSer> = {};
+  const userData: Partial<TUser> = {};
 
   userData.role = 'faculty';
 
@@ -123,7 +123,7 @@ const createFacultyIntoDB = async (password: string, payload: TFaculty) => {
 };
 
 const createAdminIntoDB = async (password: string, payload: TAdmin) => {
-  const userData: Partial<TUSer> = {};
+  const userData: Partial<TUser> = {};
 
   userData.password = password || (config.default_password as string);
 

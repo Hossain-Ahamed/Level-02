@@ -8,6 +8,7 @@ import { User } from '../user/user.model';
 import AppError from './../../errors/AppError';
 
 const getAllFacultiesFromDB = async (query: Record<string, unknown>) => {
+
   const facultyQuery = new QueryBuilder(
     FacultyModel.find().populate('academicDepartment'),
     query,

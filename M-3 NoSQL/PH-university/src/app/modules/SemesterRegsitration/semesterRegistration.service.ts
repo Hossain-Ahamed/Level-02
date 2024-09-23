@@ -115,7 +115,7 @@ const deleteSemesterRegistrationsFromDB = async (id: string) => {
 	}catch(error){
 		await session.abortTransaction();
 		await session.endSession();
-		throw new AppError(httpStatus.BAD_REQUEST, "Unable to delete Registered Semester")
+		throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
 	}
 	
 } 

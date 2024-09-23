@@ -9,5 +9,8 @@ export default {
   bcrypt_salt_round: process.env.BSCRYPT_SALT_ROUND,
   default_password: process.env.DEFAULT_PASS,
   NODE_ENV: process.env.NODE_ENV,
-  JWT_ACCESS_SECRET : process.env.JWT_ACCESS_SECRET
+  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
+  JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
+  JWT_ACCESS_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN,
+  JWT_REFRESH_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN,
 };

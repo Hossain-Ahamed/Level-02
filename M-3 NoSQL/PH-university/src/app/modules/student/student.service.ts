@@ -212,10 +212,10 @@ const deleteStudentFromDB = async (id: string) => {
 
     return deletedStudent;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
+  } catch (error) {
     await session.abortTransaction();
     await session.endSession();
-    throw new Error(error);
+    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
   }
 };
 export const StudentServices = {

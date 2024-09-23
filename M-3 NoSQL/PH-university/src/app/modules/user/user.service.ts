@@ -46,6 +46,7 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
     //create a user --> trasnsaction 1
     const newUser = await User.create([userData], { session });
     if (!newUser.length) {
+
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to create user');
     }
 
@@ -55,7 +56,9 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
 
     //create a student ---------> transaction 2
     const newStudent = await Student.create([payload], { session });
+
     if (!newStudent.length) {
+
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to create student');
     }
 
@@ -64,11 +67,12 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
     await session.endSession();
 
     return newStudent;
-  } catch (error) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error ) {
     //session error
     await session.abortTransaction();
     await session.endSession();
-    throw new Error('failed to create');
+    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
   }
 };
 

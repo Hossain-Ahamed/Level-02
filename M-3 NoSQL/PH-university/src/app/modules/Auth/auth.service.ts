@@ -2,8 +2,10 @@ import httpStatus from "http-status";
 import AppError from "../../errors/AppError";
 import { User } from "../user/user.model";
 import { TLoginUser } from "./auth.interface";
-import jwt from 'jsonwebtoken'
+import  { JwtPayload } from 'jsonwebtoken'
 import config from "../../config";
+import bcrypt from 'bcrypt'
+import { createToken } from "./auth.utils";
 const loginUser = async(payload : TLoginUser)=>{
 
 	// check if the userExist 
@@ -37,13 +39,58 @@ const loginUser = async(payload : TLoginUser)=>{
 		userId : user.id,
 		role : user.role
 	}
-	const accessToken = jwt.sign(jwtPayload, config.JWT_ACCESS_SECRET as string, { expiresIn: '10d' });
+	const accessToken = createToken(jwtPayload,config.JWT_ACCESS_SECRET as string,config.JWT_ACCESS_EXPIRES_IN as string);
+	
+	
+	const refreshToken =createToken(jwtPayload,config.JWT_REFRESH_SECRET as string,config.JWT_REFRESH_EXPIRES_IN as string);
+	
+	
 	return {
 		accessToken,
+		refreshToken,
 		needsPasswordChange : user?.needsPasswordChange,
 	}
 }
 
+
+const changePassword= async (userData : JwtPayload, payload : {oldPassword : string, newPassword : string})=>{
+	
+	// check if the userExist 
+	const user = await User.isUserExistsByCustomId(userData.userId);
+	if(!user){
+		throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+	}
+	// checking if the user is already deleted 
+	const isDeleted = user?.isDeleted;
+	if(isDeleted){
+		throw new AppError(httpStatus.FORBIDDEN, 'User is already removed from system');
+	}
+	// checking if the user is blocked 
+	const userStatus = user?.status;
+	if(userStatus==="blocked"){
+		throw new AppError(httpStatus.FORBIDDEN, 'User is blocked');
+	}
+	//checking if the old password is correcttly matched with db password
+	if(!await User.isPasswordMatched(payload.oldPassword,user?.password)){
+		throw new AppError(httpStatus.FORBIDDEN, 'old Password is not correct');
+	}
+
+	//hash the new password
+
+	const newHashedPassword = await bcrypt.hash(payload.newPassword,Number(config.bcrypt_salt_round))
+	 await User.findOneAndUpdate({
+		id : user.id,
+		role : user.role
+	},
+	{
+		password : newHashedPassword,
+		needsPasswordChange : false,
+		passwordChangedAt : new Date(),
+	},
+)
+return null;
+}
 export const AuthServices = {
-	loginUser
+	loginUser,
+	changePassword
 }

@@ -23,6 +23,7 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
   const userData: Partial<TUser> = {};
   userData.password = password || (config.default_password as string); //if password is not given use default pass
   userData.role = 'student'; //set student role --> as I received by route
+  userData.email = payload.email;
 
   //find academic sesmster info
   const admissionSemester = await AcademicSemesterModel.findById(
@@ -80,7 +81,7 @@ const createFacultyIntoDB = async (password: string, payload: TFaculty) => {
   const userData: Partial<TUser> = {};
 
   userData.role = 'faculty';
-
+  userData.email = payload.email;
   userData.password = password || config.default_password;
 
   const academicDepartment = await AcamdemicDepartmentModel.findById(
@@ -132,7 +133,7 @@ const createAdminIntoDB = async (password: string, payload: TAdmin) => {
   userData.password = password || (config.default_password as string);
 
   userData.role = 'admin';
-
+  userData.email = payload.email;
   const session = await mongoose.startSession();
 
   try {

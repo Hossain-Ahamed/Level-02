@@ -427,6 +427,13 @@ const preRequisiteCoursesSchema = new Schema<TPreRequisiteCourse>({
 .select('fieldName')
 ```
 
+* to get a field that is exlcuded by `select : 0` , and you want that field, then you need to exclusivey send them by `.select('field_name')`
+* It will send only that data, to get rest of all data
+
+```ts
+.select('+field_name')
+```
+
 ## Skip
 
 Not to send the document. ie: Not sending the first 10 doc

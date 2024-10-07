@@ -17,6 +17,7 @@ import { FacultyModel } from '../Faculty/faculty.model';
 import { AcamdemicDepartmentModel } from '../academicDepartment/academicDepartment.model';
 import { TAdmin } from '../admin/admin.interface';
 import { AdminModel } from '../admin/admin.model';
+import { verifyToken } from '../Auth/auth.utils';
 
 const createStudentIntoDb = async (password: string, payload: TStudent) => {
   //create a user object
@@ -68,12 +69,12 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
     await session.endSession();
 
     return newStudent;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error ) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error) {
     //session error
     await session.abortTransaction();
     await session.endSession();
-    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
+    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred', (error as Error)?.stack);
   }
 };
 
@@ -171,8 +172,59 @@ const createAdminIntoDB = async (password: string, payload: TAdmin) => {
   }
 };
 
+const getMyProfile = async (token: string) => {
+  const decoded = verifyToken(token, config.JWT_ACCESS_SECRET as string)
+  const { userId, role } = decoded;
+  const user = await User.isUserExistsByCustomId(userId);
+
+  if (!user) {
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+  }
+
+
+  // checking if the user is already deleted 
+  const isDeleted = user?.isDeleted;
+  if (isDeleted) {
+    throw new AppError(httpStatus.FORBIDDEN, 'User is already removed from system');
+  }
+
+  // checking if the user is blocked 
+  const userStatus = user?.status;
+  if (userStatus === "blocked") {
+    throw new AppError(httpStatus.FORBIDDEN, 'User is blocked');
+  }
+  let result;
+  if (role === 'student') {
+    result = await Student.findOne({ id: userId }).populate('admissionSemester')
+      .populate('academicDepartment')
+      .populate({
+        path: 'academicDepartment',
+        populate: {
+          path: 'academicFaculty',
+        },
+      });
+  }
+  if (role === "admin") {
+    result = await AdminModel.findOne({ id: userId })
+  }
+  if (role === "faculty") {
+    result = await FacultyModel.findOne({ id: userId }).populate('admissionSemester')
+      .populate('academicDepartment')
+      .populate({
+        path: 'academicDepartment',
+        populate: {
+          path: 'academicFaculty',
+        },
+      });
+  }
+
+
+  return result;
+};
+
 export const UserServices = {
   createStudentIntoDb,
   createFacultyIntoDB,
   createAdminIntoDB,
+  getMyProfile
 };

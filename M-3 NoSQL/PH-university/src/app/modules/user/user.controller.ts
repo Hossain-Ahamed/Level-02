@@ -3,7 +3,7 @@ import { UserServices } from './user.service';
 import sendResponse from '../../../utils/sendResponse';
 import httpStatus from 'http-status';
 import catchAsync from '../../../utils/catchAsync';
-
+import AppError from '../../errors/AppError';
 const createStudent: RequestHandler = catchAsync(async (req, res) => {
   const { password, student: studentData } = req.body;
 
@@ -45,8 +45,29 @@ const createAdmin: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
+const getMyProfile = catchAsync(async (req, res) => {
+
+  const token = req.headers.authorization;
+
+  if(!token){
+    throw new AppError(httpStatus.FORBIDDEN,"Not authrozied")
+  }
+ 
+
+  const result = await UserServices.getMyProfile(token);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User data found succcessfully',
+    data: result,
+  });
+});
+
+
 export const userControllers = {
   createStudent,
   createFaculty,
   createAdmin,
+  getMyProfile,
 };

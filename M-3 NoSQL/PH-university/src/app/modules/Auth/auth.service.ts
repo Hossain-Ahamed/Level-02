@@ -5,7 +5,7 @@ import { TLoginUser } from "./auth.interface";
 import { JwtPayload } from 'jsonwebtoken'
 import config from "../../config";
 import bcrypt from 'bcrypt'
-import { createToken } from "./auth.utils";
+import { createToken, verifyToken } from "./auth.utils";
 import jwt from 'jsonwebtoken'
 import { sendEmail } from "../../../utils/sendEmail";
 const loginUser = async (payload: TLoginUser) => {
@@ -196,7 +196,7 @@ const resetPassword = async (payload: { id: string, newPassword: string }, token
 		throw new AppError(httpStatus.FORBIDDEN, 'User is blocked');
 	}
 
-	const decoded = jwt.verify(token, config.JWT_ACCESS_SECRET as string) as JwtPayload
+	const decoded = verifyToken(token,config.JWT_REFRESH_SECRET as string);
 
 	if(decoded?.userId !== id){
 		throw new AppError(httpStatus.FORBIDDEN, 'User ID not matched with the requested user ID');
@@ -215,6 +215,8 @@ const resetPassword = async (payload: { id: string, newPassword: string }, token
 	)
 
 }
+
+
 export const AuthServices = {
 	loginUser,
 	changePassword,

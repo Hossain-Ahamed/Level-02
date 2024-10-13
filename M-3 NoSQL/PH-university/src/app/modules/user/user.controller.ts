@@ -3,19 +3,17 @@ import { UserServices } from './user.service';
 import sendResponse from '../../../utils/sendResponse';
 import httpStatus from 'http-status';
 import catchAsync from '../../../utils/catchAsync';
-import AppError from '../../errors/AppError';
 const createStudent: RequestHandler = catchAsync(async (req, res) => {
-  const { password, student: studentData } = req.body;
-
+  console.log(req.file)
+  // const { password, student: studentData } = req.body;
   //   const zodParseData = StudentZodValidationSchema.parse(studentData);
-
-  const result = await UserServices.createStudentIntoDb(password, studentData);
+  // const result = await UserServices.createStudentIntoDb(password, studentData);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Student created successfully',
-    data: result,
+    data: null,
   });
 });
 
@@ -47,14 +45,15 @@ const createAdmin: RequestHandler = catchAsync(async (req, res) => {
 
 const getMyProfile = catchAsync(async (req, res) => {
 
-  const token = req.headers.authorization;
+  //   const token = req.headers.authorization;
+  // console.log(req.user)
+  //   if(!token){
+  //     throw new AppError(httpStatus.FORBIDDEN,"Not authrozied")
+  //   }
 
-  if(!token){
-    throw new AppError(httpStatus.FORBIDDEN,"Not authrozied")
-  }
- 
+  const { userId, role } = req.user;
 
-  const result = await UserServices.getMyProfile(token);
+  const result = await UserServices.getMyProfile(userId, role);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -64,10 +63,21 @@ const getMyProfile = catchAsync(async (req, res) => {
   });
 });
 
+const changeStatus = catchAsync(async (req, res) => {
+  const id = req.params?.id
+  const result = await UserServices.changeUserStatusIntoDB(id, req.body);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User status changed succcessfully',
+    data: result,
+  });
+});
 
 export const userControllers = {
   createStudent,
   createFaculty,
   createAdmin,
   getMyProfile,
+  changeStatus,
 };

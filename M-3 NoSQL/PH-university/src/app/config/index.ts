@@ -13,5 +13,8 @@ export default {
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
   JWT_ACCESS_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN,
   JWT_REFRESH_EXPIRES_IN: process.env.JWT_ACCESS_EXPIRES_IN,
-  RESET_PASSWORD_URI : process.env.RESET_PASSWORD_URI
+  RESET_PASSWORD_URI: process.env.RESET_PASSWORD_URI,
+  Clourdinary_cloud_name: process.env.Clourdinary_cloud_name,
+  Clourdinary_api_key: process.env.Clourdinary_api_key,
+  Clourdinary_api_secret: process.env.Clourdinary_api_secret,
 };

@@ -4,7 +4,7 @@ import AppError from '../../errors/AppError';
 import { AcademicSemesterModel } from '../academicSemester/academicSemester.model';
 import { TStudent } from '../student/student.interface';
 import { Student } from '../student/student.model';
-import { TUser } from './user.interface';
+import { TUser, TUserRole } from './user.interface';
 import { User } from './user.model';
 import {
   generateAdminId,
@@ -17,7 +17,6 @@ import { FacultyModel } from '../Faculty/faculty.model';
 import { AcamdemicDepartmentModel } from '../academicDepartment/academicDepartment.model';
 import { TAdmin } from '../admin/admin.interface';
 import { AdminModel } from '../admin/admin.model';
-import { verifyToken } from '../Auth/auth.utils';
 
 const createStudentIntoDb = async (password: string, payload: TStudent) => {
   //create a user object
@@ -172,9 +171,7 @@ const createAdminIntoDB = async (password: string, payload: TAdmin) => {
   }
 };
 
-const getMyProfile = async (token: string) => {
-  const decoded = verifyToken(token, config.JWT_ACCESS_SECRET as string)
-  const { userId, role } = decoded;
+const getMyProfile = async (userId: string, role : TUserRole) => {
   const user = await User.isUserExistsByCustomId(userId);
 
   if (!user) {
@@ -222,9 +219,16 @@ const getMyProfile = async (token: string) => {
   return result;
 };
 
+// 19-8
+const changeUserStatusIntoDB = async (id: string, payload : {status : string}) => {
+ const result = await User.findByIdAndUpdate(id,payload,{new : true})
+  return result;
+};
+
 export const UserServices = {
   createStudentIntoDb,
   createFacultyIntoDB,
   createAdminIntoDB,
-  getMyProfile
+  getMyProfile,
+  changeUserStatusIntoDB
 };

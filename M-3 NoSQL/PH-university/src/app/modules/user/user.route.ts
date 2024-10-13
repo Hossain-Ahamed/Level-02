@@ -5,13 +5,16 @@ import { validateRequest } from '../../../middlewares/validateRequest';
 import { FacultyValidations } from '../Faculty/faculty.validation';
 import { AdminValidations } from '../admin/admin.validation';
 import { auth } from '../../../middlewares/auth';
+import { UserValidation } from './user.validation';
+import { upload } from '../../../utils/sendImageToCloudinary';
 
 const router = express.Router();
 
 router.post(
   '/create-student',
   auth('admin'),
-  validateRequest(studentValidations.create_studentValidationSchema),
+  upload.single('file'),
+  // validateRequest(studentValidations.create_studentValidationSchema),
   userControllers.createStudent,
 );
 router.post(
@@ -27,6 +30,7 @@ router.post(
   userControllers.createAdmin,
 );
 
+router.post('/change-status/:id',auth('admin'),validateRequest(UserValidation.changeUsersStatusValidationSchema),userControllers.changeStatus);
 router.get('/me',auth('admin','student','faculty'),userControllers.getMyProfile)
 
 export const UserRoutes = router;

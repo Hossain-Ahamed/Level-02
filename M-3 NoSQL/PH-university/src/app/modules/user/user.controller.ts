@@ -4,16 +4,17 @@ import sendResponse from '../../../utils/sendResponse';
 import httpStatus from 'http-status';
 import catchAsync from '../../../utils/catchAsync';
 const createStudent: RequestHandler = catchAsync(async (req, res) => {
-  console.log(req.file)
-  // const { password, student: studentData } = req.body;
-  //   const zodParseData = StudentZodValidationSchema.parse(studentData);
-  // const result = await UserServices.createStudentIntoDb(password, studentData);
+  
+  const { password, student: studentData } = req.body;
+
+  // const zodParseData = StudentZodValidationSchema.parse(studentData);
+  const result = await UserServices.createStudentIntoDb(req.file, password, studentData);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Student created successfully',
-    data: null,
+    data: result,
   });
 });
 

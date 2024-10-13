@@ -17,8 +17,10 @@ import { FacultyModel } from '../Faculty/faculty.model';
 import { AcamdemicDepartmentModel } from '../academicDepartment/academicDepartment.model';
 import { TAdmin } from '../admin/admin.interface';
 import { AdminModel } from '../admin/admin.model';
+import { sendImageToCloudinary } from '../../../utils/sendImageToCloudinary';
 
-const createStudentIntoDb = async (password: string, payload: TStudent) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const createStudentIntoDb = async (file: any, password: string, payload: TStudent) => {
   //create a user object
   const userData: Partial<TUser> = {};
   userData.password = password || (config.default_password as string); //if password is not given use default pass
@@ -44,16 +46,24 @@ const createStudentIntoDb = async (password: string, payload: TStudent) => {
     //generate student id
     userData.id = await generateStudentID(admissionSemester);
 
+
+    //send image to cloudinary
+    const imageName = `${userData.id}${payload?.name?.firstName}`
+    const path = file.path;
+
+    const {secure_url}= await sendImageToCloudinary(imageName,path);
+    
     //create a user --> trasnsaction 1
     const newUser = await User.create([userData], { session });
     if (!newUser.length) {
-
+      
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to create user');
     }
-
+    
     // Set id and _id in student payload
     payload.id = newUser[0].id; // Embedded id
     payload.user = newUser[0]._id; // Reference _id
+    payload.profileImg = secure_url;
 
     //create a student ---------> transaction 2
     const newStudent = await Student.create([payload], { session });
@@ -171,7 +181,7 @@ const createAdminIntoDB = async (password: string, payload: TAdmin) => {
   }
 };
 
-const getMyProfile = async (userId: string, role : TUserRole) => {
+const getMyProfile = async (userId: string, role: TUserRole) => {
   const user = await User.isUserExistsByCustomId(userId);
 
   if (!user) {
@@ -220,8 +230,8 @@ const getMyProfile = async (userId: string, role : TUserRole) => {
 };
 
 // 19-8
-const changeUserStatusIntoDB = async (id: string, payload : {status : string}) => {
- const result = await User.findByIdAndUpdate(id,payload,{new : true})
+const changeUserStatusIntoDB = async (id: string, payload: { status: string }) => {
+  const result = await User.findByIdAndUpdate(id, payload, { new: true })
   return result;
 };
 

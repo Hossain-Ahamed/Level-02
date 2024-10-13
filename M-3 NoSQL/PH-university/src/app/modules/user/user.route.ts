@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { userControllers } from './user.controller';
 import { studentValidations } from '../student/student.validation';
 import { validateRequest } from '../../../middlewares/validateRequest';
@@ -14,7 +14,11 @@ router.post(
   '/create-student',
   auth('admin'),
   upload.single('file'),
-  // validateRequest(studentValidations.create_studentValidationSchema),
+  (req:Request,res: Response,next:NextFunction)=>{
+    req.body = JSON.parse(req.body?.data);
+    next();
+  },
+  validateRequest(studentValidations.create_studentValidationSchema),
   userControllers.createStudent,
 );
 router.post(

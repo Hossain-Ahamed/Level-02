@@ -14,7 +14,7 @@ const Create_Faculty_UserNameValidationSchema = z.object({
 });
 const Create_FacultyValidationSchema = z.object({
   body: z.object({
-    password: z.string().max(20),
+    password: z.string().max(20).optional(),
     faculty: z.object({
       designation: z.string(),
       name: Create_Faculty_UserNameValidationSchema,
@@ -27,7 +27,7 @@ const Create_FacultyValidationSchema = z.object({
       presentAddress: z.string(),
       permanentAddress: z.string(),
       academicDepartment: z.string(),
-      profileImg: z.string(),
+      // profileImg: z.string(),
     }),
   }),
 });
@@ -59,7 +59,7 @@ const Update_FacultyValidationSchema = z.object({
       presentAddress: z.string().optional(),
       permanentAddress: z.string().optional(),
       academicDepartment: z.string(),
-      profileImg: z.string(),
+      // profileImg: z.string(),
     }),
   }),
 });

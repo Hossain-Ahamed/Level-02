@@ -12,7 +12,8 @@ const createEnrolledCourseIntoDB = async (userId:string, payload: TEnrolledCours
 	/**
 	 * Check if offered course exist
 	 * check if the student is already enrolled
-	 * create an enrolled course
+	 * create an enrolled course 
+	 * 
 	 */
 
 	const student = await Student.findOne({id: userId}).select('_id')
@@ -35,7 +36,7 @@ const createEnrolledCourseIntoDB = async (userId:string, payload: TEnrolledCours
 		offeredCourse,
 		student : student._id
 	})
-	
+
 	if(isAlreadyEnrolled){
 		throw new AppError(httpStatus.CONFLICT, "already enrolled")
 	}

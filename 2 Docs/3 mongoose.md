@@ -475,6 +475,7 @@ limiting the document find size ie : 10 document max
     //session error
     await session.abortTransaction();
     await session.endSession();
+    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
   }
 ```
 

@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open PowerShell and Git Bash",
+      "command": "echo",
+      "type": "shell",
+      "problemMatcher": [],
+      "windows": {
+        "options": {
+          "shellArgs": ["-NoExit", "-Command", "& {start-process powershell}"]
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "dependsOn": [
+        "PowerShell",
+        "Git Bash"
+      ]
+    },
+    {
+      "label": "PowerShell",
+      "type": "shell",
+      "command": "powershell.exe",
+      "problemMatcher": [],
+      "group": {
+        "kind": "none",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "Git Bash",
+      "type": "shell",
+      "command": "\"C:\\Program Files\\Git\\bin\\bash.exe\"",
+      "problemMatcher": [],
+      "group": {
+        "kind": "none",
+        "isDefault": false
+      }
+    }
+  ]
+}

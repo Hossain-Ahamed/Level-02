@@ -40,6 +40,8 @@ const createEnrolledCourseIntoDB = async (userId:string, payload: TEnrolledCours
 	if(isAlreadyEnrolled){
 		throw new AppError(httpStatus.CONFLICT, "already enrolled")
 	}
+
+	const result = await EnrolledCourseModel.create()
 }
 
 export const EnrolledCourseServices = {

@@ -6,6 +6,7 @@ import EnrolledCourseModel from "./enrolledCourse.model";
 import { Student } from "../student/student.model";
 import mongoose from "mongoose";
 import { SemesterRegistrationModel } from "../SemesterRegsitration/semesterRegistration.model";
+import { CourseModel } from "../Course/course.model";
 
 
 const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCourse) => {
@@ -14,6 +15,7 @@ const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCour
 	/**
 	 * Check if offered course exist
 	 * check if the student is already enrolled
+	 * check if the max credit exceeded or not
 	 * create an enrolled course 
 	 * 
 	 */
@@ -43,22 +45,51 @@ const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCour
 		throw new AppError(httpStatus.CONFLICT, "already enrolled")
 	}
 
+	const courseData = await CourseModel.findById(isOfferedCourseExists?.course, { credits: 1 });
+
 	//check total credit exceeds max credit or not
-	const RegisteredSemesterData = await SemesterRegistrationModel.findById(isOfferedCourseExists.semesterRegistration).select('maxCredit');
+	const RegisteredSemesterData = await SemesterRegistrationModel.findById(isOfferedCourseExists.semesterRegistration, { maxCredit: 1 });
 
 	//total enrolled credits + new enrolled credits > maxCrdit ? 
-		// 20-5
-	const enrolledCourses = await EnrolledCourseModel.aggregate([
+	const enrolledCourses = await EnrolledCourseModel.aggregate([// 20-5
 		{
 			$match: {
 				semesterRegistration: isOfferedCourseExists.semesterRegistration,
 				student: student._id,
 
 			}
+		},
+		{
+			$lookup: {
+				from: "courses",
+				localField: "course",
+				foreignField: "_id",
+				as: "enrolledCourseData"
+			}
+		},
+		{
+			$unwind: '$enrolledCourseData'
+		},
+		{
+			$group: {
+				_id: null,
+				totalEnrolledCredits: { $sum: '$enrolledCourseData.credits' }
+			}
+		},
+		{
+			$project: {
+				_id: 0,
+				totalEnrolledCredits: 1
+			}
 		}
 	])
+	const AlreadyEnrolledCredits = enrolledCourses.length > 0 ? enrolledCourses[0].totalEnrolledCredits : 0;
+	const maxCreditLimit = RegisteredSemesterData?.maxCredit;
+	const newCourseCredits = courseData?.credits
 
-
+	if (AlreadyEnrolledCredits && maxCreditLimit && AlreadyEnrolledCredits + newCourseCredits > maxCreditLimit) {
+		throw new AppError(httpStatus.BAD_REQUEST, "You have exceeded max number of credit")
+	}
 	const session = await mongoose.startSession();
 	try {
 		session.startTransaction();
@@ -79,8 +110,9 @@ const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCour
 			throw new AppError(httpStatus.BAD_REQUEST, "Failed to enrol to this course");
 		}
 
-	
-		// const maxCapacity = isOfferedCourseExists.maxCapacity;
+
+		//// const maxCapacity = isOfferedCourseExists.maxCapacity;
+		//decreese max capcity of the course after one student enrolled
 		await OfferedCourseModel.findByIdAndUpdate(offeredCourse,
 			{
 				$inc: { maxCapacity: -1 }

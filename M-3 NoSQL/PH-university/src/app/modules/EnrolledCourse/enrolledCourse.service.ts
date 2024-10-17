@@ -5,6 +5,7 @@ import { TEnrolledCourse } from "./enrolledCourse.interface"
 import EnrolledCourseModel from "./enrolledCourse.model";
 import { Student } from "../student/student.model";
 import mongoose from "mongoose";
+import { SemesterRegistrationModel } from "../SemesterRegsitration/semesterRegistration.model";
 
 
 const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCourse) => {
@@ -17,7 +18,7 @@ const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCour
 	 * 
 	 */
 
-	const student = await Student.findOne({ id: userId }).select('_id')
+	const student = await Student.findOne({ id: userId }, { _id: 1 })
 	if (!student) {
 		throw new AppError(httpStatus.NOT_FOUND, "student not found")
 	}
@@ -42,6 +43,20 @@ const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCour
 		throw new AppError(httpStatus.CONFLICT, "already enrolled")
 	}
 
+	//check total credit exceeds max credit or not
+	const RegisteredSemesterData = await SemesterRegistrationModel.findById(isOfferedCourseExists.semesterRegistration).select('maxCredit');
+
+	//total enrolled credits + new enrolled credits > maxCrdit ? 
+		// 20-5
+	const enrolledCourses = await EnrolledCourseModel.aggregate([
+		{
+			$match: {
+				semesterRegistration: isOfferedCourseExists.semesterRegistration,
+				student: student._id,
+
+			}
+		}
+	])
 
 
 	const session = await mongoose.startSession();
@@ -57,13 +72,14 @@ const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCour
 			course: isOfferedCourseExists.course,
 			student: student._id,
 			faculty: isOfferedCourseExists.faculty,
-			isEnrolled : true
+			isEnrolled: true
 		}], { session })
 
 		if (!result) {
 			throw new AppError(httpStatus.BAD_REQUEST, "Failed to enrol to this course");
 		}
 
+	
 		// const maxCapacity = isOfferedCourseExists.maxCapacity;
 		await OfferedCourseModel.findByIdAndUpdate(offeredCourse,
 			{

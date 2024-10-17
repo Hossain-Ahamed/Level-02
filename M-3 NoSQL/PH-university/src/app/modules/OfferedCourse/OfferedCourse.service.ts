@@ -85,8 +85,8 @@ const createOfferedCourseIntoDB = async (payload: TOfferedCourse) => {
 		faculty,
 		days: { $in: days },
 	}).select('days startTime endTime');
-
-
+	
+	
 	const newSchedule = {
 		days,
 		startTime,

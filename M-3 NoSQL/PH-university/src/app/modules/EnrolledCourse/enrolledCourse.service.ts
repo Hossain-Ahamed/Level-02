@@ -7,6 +7,7 @@ import { Student } from "../student/student.model";
 import mongoose from "mongoose";
 import { SemesterRegistrationModel } from "../SemesterRegsitration/semesterRegistration.model";
 import { CourseModel } from "../Course/course.model";
+import { FacultyModel } from "../Faculty/faculty.model";
 
 
 const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCourse) => {
@@ -139,6 +140,60 @@ const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCour
 
 }
 
+const updateEnrolledCourseMarks = async(facultyId:string,payload : Partial<TEnrolledCourse>)=>{
+
+	const {semesterRegistration,offeredCourse,student,courseMarks} = payload;
+
+	const facultyData = await FacultyModel.findOne({id : facultyId},{_id:1});
+	if(!facultyData){
+		throw new AppError(httpStatus.NOT_FOUND, "faculty not found")
+	}
+
+	const isRegisteredSemesterExist = await SemesterRegistrationModel.findById(semesterRegistration);
+	if (!isRegisteredSemesterExist) {
+		throw new AppError(httpStatus.NOT_FOUND, "Semester Registration  not found")
+	}
+
+	const isOfferedCourseExist = await OfferedCourseModel.findById(offeredCourse);
+	if (!isOfferedCourseExist) {
+		throw new AppError(httpStatus.NOT_FOUND, "Offered Course not found")
+	}
+
+	const isStudentExist = await Student.findById(student);
+	if (!isStudentExist) {
+		throw new AppError(httpStatus.NOT_FOUND, "Student not found")
+	}
+
+	const isRequestedCourseBelongToFaculty = await EnrolledCourseModel.findOne({
+		semesterRegistration,
+		offeredCourse,
+		student : student,
+		faculty : facultyData._id,
+
+	});
+	if (!isRequestedCourseBelongToFaculty) {
+		throw new AppError(httpStatus.FORBIDDEN, "Your are forbidden to make change")
+	}
+
+//dynamic data
+
+	const modifiedData : Record<string,number>= {...courseMarks}
+
+	if(courseMarks && Object.keys(courseMarks).length){
+		for(const [key,value] of Object.entries(courseMarks)){
+			modifiedData[`courseMarks.${key}`]=value;
+		}
+	}
+
+	const result = await EnrolledCourseModel.findByIdAndUpdate(isRequestedCourseBelongToFaculty._id, modifiedData,{new:true});
+
+	return result;
+
+
+
+}
+
 export const EnrolledCourseServices = {
-	createEnrolledCourseIntoDB
+	createEnrolledCourseIntoDB,
+	updateEnrolledCourseMarks
 }

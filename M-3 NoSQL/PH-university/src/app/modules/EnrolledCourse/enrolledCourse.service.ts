@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import { SemesterRegistrationModel } from "../SemesterRegsitration/semesterRegistration.model";
 import { CourseModel } from "../Course/course.model";
 import { FacultyModel } from "../Faculty/faculty.model";
+import { calculateGradeAndPoints, SumMarks } from "./enrolledCourse.utils";
 
 
 const createEnrolledCourseIntoDB = async (userId: string, payload: TEnrolledCourse) => {
@@ -177,7 +178,20 @@ const updateEnrolledCourseMarks = async(facultyId:string,payload : Partial<TEnro
 
 //dynamic data
 
-	const modifiedData : Record<string,number>= {...courseMarks}
+	const modifiedData : Record<string,unknown>= {...courseMarks}
+
+	if(courseMarks?.finalTerm){
+		const {classTest1,classTest2,midTerm} = isRequestedCourseBelongToFaculty.courseMarks;
+	
+		// const totalMarks = Math.ceil(classTest1*0.1) +  Math.ceil(classTest2*0.1) +  Math.ceil(midTerm*0.3)+ Math.ceil(courseMarks?.finalTerm*0.5);
+	    
+		const totalMarks = SumMarks(classTest1,classTest2,midTerm,courseMarks.finalTerm);
+		const {grade,gradePoints} = calculateGradeAndPoints(totalMarks);
+
+		modifiedData.grade = grade;
+		modifiedData.gradePoints = gradePoints;
+		modifiedData.isCompleted = true;
+	}
 
 	if(courseMarks && Object.keys(courseMarks).length){
 		for(const [key,value] of Object.entries(courseMarks)){

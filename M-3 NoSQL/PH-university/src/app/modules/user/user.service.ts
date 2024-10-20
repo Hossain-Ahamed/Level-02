@@ -51,7 +51,7 @@ const createStudentIntoDb = async (file: any, password: string, payload: TStuden
     const imageName = `${userData.id}${payload?.name?.firstName}`
     const path = file.path;
 
-    const { secure_url } = await sendImageToCloudinary(imageName, path) as {secure_url : string};
+    const { secure_url } = await sendImageToCloudinary(imageName, path) as { secure_url: string };
 
     //create a user --> trasnsaction 1
     const newUser = await User.create([userData], { session });
@@ -121,7 +121,7 @@ const createFacultyIntoDB = async (file: any, password: string, payload: TFacult
     const imageName = `${userData.id}${payload?.name?.firstName}`
     const path = file.path;
 
-    const { secure_url } = await sendImageToCloudinary(imageName, path) as {secure_url : string};
+    const { secure_url } = await sendImageToCloudinary(imageName, path) as { secure_url: string };
 
     payload.profileImg = secure_url;
     payload.id = newUser[0].id;
@@ -168,15 +168,17 @@ const createAdminIntoDB = async (file: any, password: string, payload: TAdmin) =
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to create admin');
     }
 
-    //send image to cloudinary
+    /**  --------------------- UPLOADING IMAGE ---------------------------------------------- */
     const imageName = `${userData.id}${payload?.name?.firstName}`
-    const path = file.path;
+    const path = file.path; // uplaoded image in local files 
 
-    const { secure_url } = await sendImageToCloudinary(imageName, path) as {secure_url : string};
+    const { secure_url } = await sendImageToCloudinary(imageName, path) as { secure_url: string }; // send image to cloudinary
+    payload.profileImg = secure_url; // cloudinary image link attachment 
+
     // set id , _id as user
     payload.id = newUser[0].id;
     payload.user = newUser[0]._id; //reference _id
-    payload.profileImg = secure_url;
+
     // create a admin (transaction-2)
     const newAdmin = await AdminModel.create([payload], { session });
 

@@ -14,16 +14,7 @@ router.post(
   AcademicDepartmentControllers.createAcademicDepartment,
 );
 router.get('/', AcademicDepartmentControllers.getAllAcademicDepartments);
-router.get(
-  '/:deptId',
-  AcademicDepartmentControllers.getSingleAcademicDepartment,
-);
-router.patch(
-  '/:deptId',
-  validateRequest(
-    academicFacultyValidation.updatecademicFacultyValidationSchema,
-  ),
-  AcademicDepartmentControllers.updateAcademicDepartment,
-);
+router.get('/:deptId',AcademicDepartmentControllers.getSingleAcademicDepartment,);
+router.patch('/:deptId',validateRequest(academicFacultyValidation.updatecademicFacultyValidationSchema),AcademicDepartmentControllers.updateAcademicDepartment);
 
 export const AcademicDepartmentRouters = router;

@@ -3,11 +3,12 @@ import { StudentController } from './student.controller';
 import { validateRequest } from './../../../middlewares/validateRequest';
 import { studentValidations } from './student.validation';
 import { auth } from '../../../middlewares/auth';
+import { USER_ROLE } from '../user/user.constant';
 
 const router = express.Router();
 
 // router.post('/create-student', StudentController.createStudent);
-router.get('/',auth('admin','faculty'), StudentController.getAllStudents);
+router.get('/',auth(USER_ROLE.admin,USER_ROLE.superAdmin,USER_ROLE.faculty), StudentController.getAllStudents);
 router.get('/:id',auth('admin','faculty'), StudentController.getSingleStudent);
 router.patch(
   '/:studentId',

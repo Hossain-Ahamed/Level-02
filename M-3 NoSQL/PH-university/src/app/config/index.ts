@@ -17,4 +17,5 @@ export default {
   Clourdinary_cloud_name: process.env.Clourdinary_cloud_name,
   Clourdinary_api_key: process.env.Clourdinary_api_key,
   Clourdinary_api_secret: process.env.Clourdinary_api_secret,
+  super_admin_password : process.env.SUPER_ADMIN_PASSWORD,
 };

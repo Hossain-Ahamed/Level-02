@@ -8,7 +8,7 @@ export interface TUser {
   password: string;
   needsPasswordChange: boolean;
   passwordChangedAt ?: Date,
-  role: 'admin' | 'student' | 'faculty';
+  role: 'admin' | 'student' | 'faculty' | 'superAdmin';
   status: string;
   isDeleted: boolean;
 };
@@ -24,3 +24,4 @@ export interface UserModel extends Model<TUser> {
 
 
 export type TUserRole = keyof typeof USER_ROLE
+// export type TUserRole = (typeof USER_ROLE)[keyof typeof USER_ROLE];

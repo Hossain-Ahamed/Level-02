@@ -9,6 +9,8 @@ cloudinary.config({
 	api_key: config.Clourdinary_api_key,
 	api_secret: config.Clourdinary_api_secret,
 });
+
+//upload and delete the local file
 export const sendImageToCloudinary = (imageName: string, path: string): Promise<Record<string, unknown>> => {
 	return new Promise((resolve, reject) => {
 		cloudinary.uploader.upload(path, { public_id: imageName.trim() }, function (error, result) {

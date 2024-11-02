@@ -20,7 +20,11 @@ import { AdminModel } from '../admin/admin.model';
 import { sendImageToCloudinary } from '../../../utils/sendImageToCloudinary';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createStudentIntoDb = async (file: any, password: string, payload: TStudent) => {
+const createStudentIntoDb = async (
+  file: any,
+  password: string,
+  payload: TStudent,
+) => {
   //create a user object
   const userData: Partial<TUser> = {};
   userData.password = password || (config.default_password as string); //if password is not given use default pass
@@ -56,32 +60,28 @@ const createStudentIntoDb = async (file: any, password: string, payload: TStuden
     //generate student id
     userData.id = await generateStudentID(admissionSemester);
 
-
     //send image to cloudinary
-    if(file){
-      const imageName = `${userData.id}${payload?.name?.firstName}`
-      const path = file.path; // uplaoded image in local files 
-      const { secure_url } = await sendImageToCloudinary(imageName, path) ;
+    if (file) {
+      const imageName = `${userData.id}${payload?.name?.firstName}`;
+      const path = file.path; // uplaoded image in local files
+      const { secure_url } = await sendImageToCloudinary(imageName, path);
       payload.profileImg = secure_url as string;
     }
 
     //create a user --> trasnsaction 1
     const newUser = await User.create([userData], { session });
     if (!newUser.length) {
-
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to create user');
     }
 
     // Set id and _id in student payload
     payload.id = newUser[0].id; // Embedded id
     payload.user = newUser[0]._id; // Reference _id
-   
 
     //create a student ---------> transaction 2
     const newStudent = await Student.create([payload], { session });
 
     if (!newStudent.length) {
-
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to create student');
     }
 
@@ -95,12 +95,20 @@ const createStudentIntoDb = async (file: any, password: string, payload: TStuden
     //session error
     await session.abortTransaction();
     await session.endSession();
-    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred', (error as Error)?.stack);
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      (error as Error).message || 'An unknown error occurred',
+      (error as Error)?.stack,
+    );
   }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createFacultyIntoDB = async (file: any, password: string, payload: TFaculty) => {
+const createFacultyIntoDB = async (
+  file: any,
+  password: string,
+  payload: TFaculty,
+) => {
   const userData: Partial<TUser> = {};
 
   userData.role = 'faculty';
@@ -130,10 +138,10 @@ const createFacultyIntoDB = async (file: any, password: string, payload: TFacult
     }
 
     //send image to cloudinary
-    if(file){
-      const imageName = `${userData.id}${payload?.name?.firstName}`
-      const path = file.path; // uplaoded image in local files 
-      const { secure_url } = await sendImageToCloudinary(imageName, path) ;
+    if (file) {
+      const imageName = `${userData.id}${payload?.name?.firstName}`;
+      const path = file.path; // uplaoded image in local files
+      const { secure_url } = await sendImageToCloudinary(imageName, path);
       payload.profileImg = secure_url as string;
     }
 
@@ -159,7 +167,11 @@ const createFacultyIntoDB = async (file: any, password: string, payload: TFacult
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createAdminIntoDB = async (file: any, password: string, payload: TAdmin) => {
+const createAdminIntoDB = async (
+  file: any,
+  password: string,
+  payload: TAdmin,
+) => {
   const userData: Partial<TUser> = {};
 
   userData.password = password || (config.default_password as string);
@@ -182,10 +194,10 @@ const createAdminIntoDB = async (file: any, password: string, payload: TAdmin) =
     }
 
     /**  --------------------- UPLOADING IMAGE ---------------------------------------------- */
-    if(file){
-      const imageName = `${userData.id}${payload?.name?.firstName}`
-      const path = file.path; // uplaoded image in local files 
-      const { secure_url } = await sendImageToCloudinary(imageName, path) ;
+    if (file) {
+      const imageName = `${userData.id}${payload?.name?.firstName}`;
+      const path = file.path; // uplaoded image in local files
+      const { secure_url } = await sendImageToCloudinary(imageName, path);
       payload.profileImg = secure_url as string;
     }
 
@@ -219,21 +231,24 @@ const getMyProfile = async (userId: string, role: TUserRole) => {
     throw new AppError(httpStatus.NOT_FOUND, 'User not found');
   }
 
-
-  // checking if the user is already deleted 
+  // checking if the user is already deleted
   const isDeleted = user?.isDeleted;
   if (isDeleted) {
-    throw new AppError(httpStatus.FORBIDDEN, 'User is already removed from system');
+    throw new AppError(
+      httpStatus.FORBIDDEN,
+      'User is already removed from system',
+    );
   }
 
-  // checking if the user is blocked 
+  // checking if the user is blocked
   const userStatus = user?.status;
-  if (userStatus === "blocked") {
+  if (userStatus === 'blocked') {
     throw new AppError(httpStatus.FORBIDDEN, 'User is blocked');
   }
   let result;
   if (role === 'student') {
-    result = await Student.findOne({ id: userId }).populate('admissionSemester')
+    result = await Student.findOne({ id: userId })
+      .populate('admissionSemester')
       .populate('academicDepartment')
       .populate({
         path: 'academicDepartment',
@@ -242,11 +257,12 @@ const getMyProfile = async (userId: string, role: TUserRole) => {
         },
       });
   }
-  if (role === "admin") {
-    result = await AdminModel.findOne({ id: userId })
+  if (role === 'admin') {
+    result = await AdminModel.findOne({ id: userId });
   }
-  if (role === "faculty") {
-    result = await FacultyModel.findOne({ id: userId }).populate('admissionSemester')
+  if (role === 'faculty') {
+    result = await FacultyModel.findOne({ id: userId })
+      .populate('admissionSemester')
       .populate('academicDepartment')
       .populate({
         path: 'academicDepartment',
@@ -255,14 +271,16 @@ const getMyProfile = async (userId: string, role: TUserRole) => {
         },
       });
   }
-
 
   return result;
 };
 
 // 19-8
-const changeUserStatusIntoDB = async (id: string, payload: { status: string }) => {
-  const result = await User.findByIdAndUpdate(id, payload, { new: true })
+const changeUserStatusIntoDB = async (
+  id: string,
+  payload: { status: string },
+) => {
+  const result = await User.findByIdAndUpdate(id, payload, { new: true });
   return result;
 };
 
@@ -271,5 +289,5 @@ export const UserServices = {
   createFacultyIntoDB,
   createAdminIntoDB,
   getMyProfile,
-  changeUserStatusIntoDB
+  changeUserStatusIntoDB,
 };

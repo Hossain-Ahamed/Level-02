@@ -10,14 +10,23 @@ const router = express.Router();
 
 router.post(
   '/create-academic-department',
-  auth(USER_ROLE.superAdmin,USER_ROLE.admin),
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(
     AcademicDepartmentValidations.createAcademicDepartmentValidationSchema,
   ),
   AcademicDepartmentControllers.createAcademicDepartment,
 );
 router.get('/', AcademicDepartmentControllers.getAllAcademicDepartments);
-router.get('/:deptId',AcademicDepartmentControllers.getSingleAcademicDepartment,);
-router.patch('/:deptId',validateRequest(academicFacultyValidation.updatecademicFacultyValidationSchema),AcademicDepartmentControllers.updateAcademicDepartment);
+router.get(
+  '/:deptId',
+  AcademicDepartmentControllers.getSingleAcademicDepartment,
+);
+router.patch(
+  '/:deptId',
+  validateRequest(
+    academicFacultyValidation.updatecademicFacultyValidationSchema,
+  ),
+  AcademicDepartmentControllers.updateAcademicDepartment,
+);
 
 export const AcademicDepartmentRouters = router;

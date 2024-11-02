@@ -23,12 +23,15 @@ const setErrorDetails = (simplifiedError: {
 // 14-2,3
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-export const globalErrorHandler: ErrorRequestHandler = ( err,req,res,next) => {
+export const globalErrorHandler: ErrorRequestHandler = (
+  err,
+  req,
+  res,
+  next,
+) => {
   // setting default values
   let statusCode = 500;
   let message = 'An unexpected error occurred';
-
-  
 
   let errorSources: TErrorSources = [
     {

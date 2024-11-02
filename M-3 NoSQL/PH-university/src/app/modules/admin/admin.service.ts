@@ -18,7 +18,7 @@ const getAllAdminsFromDB = async (query: Record<string, unknown>) => {
 
   const result = await adminQuery.modelQuery;
   const meta = await adminQuery.countTotal();
-  return {meta,result};
+  return { meta, result };
 };
 
 const getSingleAdminFromDB = async (id: string) => {
@@ -39,14 +39,10 @@ const updateAdminIntoDB = async (id: string, payload: Partial<TAdmin>) => {
     }
   }
 
-  const result = await AdminModel.findByIdAndUpdate(
-     id ,
-    modifiedUpdatedData,
-    {
-      new: true,
-      runValidators: true,
-    },
-  );
+  const result = await AdminModel.findByIdAndUpdate(id, modifiedUpdatedData, {
+    new: true,
+    runValidators: true,
+  });
   return result;
 };
 
@@ -86,7 +82,11 @@ const deleteAdminFromDB = async (id: string) => {
   } catch (error) {
     await session.abortTransaction();
     await session.endSession();
-    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      (error as Error).message || 'An unknown error occurred',
+      (error as Error)?.stack,
+    );
   }
 };
 

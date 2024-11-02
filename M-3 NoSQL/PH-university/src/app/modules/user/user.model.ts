@@ -10,10 +10,10 @@ const userSchema = new Schema<TUser, UserModel>(
       required: true,
       unique: true,
     },
-    email : {
-      type : String,
-      required : true,
-      unique : true,
+    email: {
+      type: String,
+      required: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -29,7 +29,7 @@ const userSchema = new Schema<TUser, UserModel>(
     },
     role: {
       type: String,
-      enum: ['superAdmin','admin', 'student', 'faculty'],
+      enum: ['superAdmin', 'admin', 'student', 'faculty'],
     },
     status: {
       type: String,
@@ -66,14 +66,18 @@ userSchema.post('save', function (doc, next) {
 
 userSchema.statics.isUserExistsByCustomId = async function (id: string) {
   return await User.findOne({ id }).select('+password');
-}
-userSchema.statics.isPasswordMatched = async function (plainTextPassword: string, hashPassword: string) {
+};
+userSchema.statics.isPasswordMatched = async function (
+  plainTextPassword: string,
+  hashPassword: string,
+) {
   return await bcrypt.compare(plainTextPassword, hashPassword);
-}
-userSchema.statics.isJWTIssuedBeforePasswordChanged =
-  function (passwordChangedAt: Date, JwtIssuedTimeStamp: number) {
-
-    const  passwordChangedTime= new Date(passwordChangedAt).getTime()/1000
-    return passwordChangedTime > JwtIssuedTimeStamp
-  }
+};
+userSchema.statics.isJWTIssuedBeforePasswordChanged = function (
+  passwordChangedAt: Date,
+  JwtIssuedTimeStamp: number,
+) {
+  const passwordChangedTime = new Date(passwordChangedAt).getTime() / 1000;
+  return passwordChangedTime > JwtIssuedTimeStamp;
+};
 export const User = model<TUser, UserModel>('User', userSchema);

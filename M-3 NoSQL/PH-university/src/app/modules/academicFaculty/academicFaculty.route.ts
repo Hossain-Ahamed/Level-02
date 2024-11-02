@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post(
   '/create-academic-faculty',
-  auth(USER_ROLE.superAdmin,USER_ROLE.admin),
+  auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   validateRequest(
     academicFacultyValidation.createacademicFacultyValidationSchema,
   ),

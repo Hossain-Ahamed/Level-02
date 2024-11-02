@@ -4,14 +4,12 @@ class QueryBuilder<T> {
   public modelQuery: Query<T[], T>;
   public query: Record<string, unknown>;
 
-
   constructor(modelQuery: Query<T[], T>, query: Record<string, unknown>) {
     this.modelQuery = modelQuery;
     this.query = query;
   }
 
-
-  /** ------------   SEARCH in fields by REGEX    ----------------------*/  //for searching through fields
+  /** ------------   SEARCH in fields by REGEX    ----------------------*/ //for searching through fields
   search(searchableFields: string[]) {
     const searchTerm = this?.query?.searchTerm;
     if (searchTerm) {
@@ -43,7 +41,6 @@ class QueryBuilder<T> {
     return this;
   }
 
-
   /** ------------   SORT    ----------------------*/
   sort() {
     const sort =
@@ -52,7 +49,6 @@ class QueryBuilder<T> {
 
     return this;
   }
-
 
   /** ------------   PAGINATION    ----------------------*/
   paginate() {
@@ -75,8 +71,9 @@ class QueryBuilder<T> {
     return this;
   }
 
- /**---------------- To Get the meta data; ie: page, total data etc  --------------------- */
-  async countTotal() { //20-11
+  /**---------------- To Get the meta data; ie: page, total data etc  --------------------- */
+  async countTotal() {
+    //20-11
     const totalQueries = this.modelQuery.getFilter();
     const total = await this.modelQuery.model.countDocuments(totalQueries);
 
@@ -94,10 +91,6 @@ class QueryBuilder<T> {
 }
 
 export default QueryBuilder;
-
-
-
-
 
 /* // 14-9
  const queryObj = { ...query } //  copying req.query object so that we can mutate the copy object 

@@ -4,11 +4,14 @@ import sendResponse from '../../../utils/sendResponse';
 import httpStatus from 'http-status';
 import catchAsync from '../../../utils/catchAsync';
 const createStudent: RequestHandler = catchAsync(async (req, res) => {
-  
   const { password, student: studentData } = req.body;
 
   // const zodParseData = StudentZodValidationSchema.parse(studentData);
-  const result = await UserServices.createStudentIntoDb(req.file, password, studentData);
+  const result = await UserServices.createStudentIntoDb(
+    req.file,
+    password,
+    studentData,
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -21,7 +24,11 @@ const createStudent: RequestHandler = catchAsync(async (req, res) => {
 const createFaculty: RequestHandler = catchAsync(async (req, res) => {
   const { password, faculty } = req.body;
 
-  const result = await UserServices.createFacultyIntoDB(req.file, password, faculty);
+  const result = await UserServices.createFacultyIntoDB(
+    req.file,
+    password,
+    faculty,
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -34,7 +41,11 @@ const createFaculty: RequestHandler = catchAsync(async (req, res) => {
 const createAdmin: RequestHandler = catchAsync(async (req, res) => {
   const { password, admin } = req.body;
 
-  const result = await UserServices.createAdminIntoDB(req.file,password, admin);
+  const result = await UserServices.createAdminIntoDB(
+    req.file,
+    password,
+    admin,
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -45,7 +56,6 @@ const createAdmin: RequestHandler = catchAsync(async (req, res) => {
 });
 
 const getMyProfile = catchAsync(async (req, res) => {
-
   //   const token = req.headers.authorization;
   // console.log(req.user)
   //   if(!token){
@@ -65,7 +75,7 @@ const getMyProfile = catchAsync(async (req, res) => {
 });
 
 const changeStatus = catchAsync(async (req, res) => {
-  const id = req.params?.id
+  const id = req.params?.id;
   const result = await UserServices.changeUserStatusIntoDB(id, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,

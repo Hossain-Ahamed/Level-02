@@ -8,14 +8,26 @@ import { USER_ROLE } from '../user/user.constant';
 const router = express.Router();
 
 // router.post('/create-student', StudentController.createStudent);
-router.get('/', auth(USER_ROLE.admin, USER_ROLE.superAdmin, USER_ROLE.faculty), StudentController.getAllStudents);
-router.get('/:id', auth(USER_ROLE.admin, USER_ROLE.superAdmin, USER_ROLE.faculty), StudentController.getSingleStudent);
+router.get(
+  '/',
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin, USER_ROLE.faculty),
+  StudentController.getAllStudents,
+);
+router.get(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin, USER_ROLE.faculty),
+  StudentController.getSingleStudent,
+);
 router.patch(
   '/:studentId',
   auth(USER_ROLE.admin, USER_ROLE.superAdmin),
   validateRequest(studentValidations.update_studentValidationSchema),
   StudentController.updateStudent,
 );
-router.delete('/delete-student/:id', auth(USER_ROLE.admin, USER_ROLE.superAdmin), StudentController.deleteStudent);
+router.delete(
+  '/delete-student/:id',
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin),
+  StudentController.deleteStudent,
+);
 
 export const StudentRoutes = router;

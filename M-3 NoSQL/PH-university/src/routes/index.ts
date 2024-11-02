@@ -56,13 +56,13 @@ const moduleRoutes = [
     route: OfferedCourseRouter,
   },
   {
-    path : '/auth',
-    route : AuthRouter,
+    path: '/auth',
+    route: AuthRouter,
   },
   {
-    path : '/enrolled-courses',
-    route : EnrolledCourseRoutes,
-  }
+    path: '/enrolled-courses',
+    route: EnrolledCourseRoutes,
+  },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

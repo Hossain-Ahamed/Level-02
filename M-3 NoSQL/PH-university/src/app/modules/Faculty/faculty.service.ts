@@ -8,7 +8,6 @@ import { User } from '../user/user.model';
 import AppError from './../../errors/AppError';
 
 const getAllFacultiesFromDB = async (query: Record<string, unknown>) => {
-
   const facultyQuery = new QueryBuilder(
     FacultyModel.find().populate('academicDepartment'),
     query,
@@ -21,7 +20,7 @@ const getAllFacultiesFromDB = async (query: Record<string, unknown>) => {
 
   const result = await facultyQuery.modelQuery;
   const meta = await facultyQuery.countTotal();
-  return {meta,result};
+  return { meta, result };
 };
 
 const getSingleFacultyFromDB = async (id: string) => {
@@ -82,11 +81,15 @@ const deleteFacultyFromDB = async (id: string) => {
     await session.commitTransaction();
     await session.endSession();
 
-    return deletedFaculty
+    return deletedFaculty;
   } catch (error) {
     await session.abortTransaction();
     await session.endSession();
-    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      (error as Error).message || 'An unknown error occurred',
+      (error as Error)?.stack,
+    );
   }
 };
 

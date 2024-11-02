@@ -126,11 +126,11 @@ const getAllStudentFromDB = async (query: Record<string, unknown>) => {
 
   const result = await studentQuery.modelQuery;
   const meta = await studentQuery.countTotal();
-  return {meta,result};
+  return { meta, result };
 };
 
 const getAStudentFromDB = async (id: string) => {
-  const result = await Student.findById( id )
+  const result = await Student.findById(id)
     .populate('admissionSemester')
     .populate('academicDepartment')
     .populate({
@@ -175,9 +175,9 @@ const updateStudentIntoDB = async (id: string, payload: Partial<TStudent>) => {
     );
   }
 
-  const result = await Student.findByIdAndUpdate( id , modifiedData_ForDB, {
+  const result = await Student.findByIdAndUpdate(id, modifiedData_ForDB, {
     new: true,
-    runValidators:true
+    runValidators: true,
   });
 
   return result;
@@ -216,7 +216,11 @@ const deleteStudentFromDB = async (id: string) => {
   } catch (error) {
     await session.abortTransaction();
     await session.endSession();
-    throw new AppError(httpStatus.BAD_REQUEST, (error as Error).message || 'An unknown error occurred',(error as Error)?.stack);
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      (error as Error).message || 'An unknown error occurred',
+      (error as Error)?.stack,
+    );
   }
 };
 export const StudentServices = {

@@ -35,6 +35,7 @@ const Counter = () => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ToDo = () => {
   const controller = new AbortController();
   const signal = controller.signal;

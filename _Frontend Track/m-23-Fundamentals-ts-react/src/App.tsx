@@ -10,13 +10,14 @@ import { ThemeContext, TThemenContext } from "./context/ThemeProvider";
 import { MenuItem, MenuList } from "./context/Menu";
 import GameResult from "./pages/GameResult";
 import UserContainer from "./components/UserContainer";
+import Select from "./components/Select";
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const { dark, setDark } = useContext(ThemeContext) as TThemenContext;
+  // const [counter, setCounter] = useState(0);
+  // const { dark, setDark } = useContext(ThemeContext) as TThemenContext;
   return (
     <div
-      className={`${dark ? "bg-black- text-white-" : "bg-white- text-black-" }  w-screen h-screen`}
+      // className={`${dark ? "bg-black- text-white-" : "bg-white- text-black-" }  w-screen h-screen`}
     >
       {/* <button
         className="border-b rounded p-2"
@@ -36,9 +37,14 @@ function App() {
       </MenuList> */}
 
       {/* <GameResult/> */}
-      <UserContainer/>
+      {/* <UserContainer/> */}
 
-
+<Select>
+  <Select.SelectOption value={'1'}>option 1</Select.SelectOption>
+  <Select.SelectOption value={'2'}>option 2</Select.SelectOption>
+  <Select.SelectOption value={'3'}>option 3</Select.SelectOption>
+  <Select.SelectOption value={'4'}>option 4</Select.SelectOption>
+</Select>
     </div>
   );
 }

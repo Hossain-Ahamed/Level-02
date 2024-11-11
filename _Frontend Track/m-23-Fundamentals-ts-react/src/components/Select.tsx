@@ -36,6 +36,5 @@ const useSelectContext = () => {
   if (!context) {
     throw new Error("Context out of bound");
   }
-
   return context;
 };

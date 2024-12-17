@@ -1,14 +1,16 @@
 
 import './App.css'
 import MainLayout from './components/layout/MainLayout'
+import Container from './components/UI/Container';
 
 function App() {
 
   return (
-    <>
-    <h1>React App</h1>
-      <MainLayout/>
-    </>
+   <Container>
+
+     <MainLayout/>
+   </Container>
+
   )
 }
 

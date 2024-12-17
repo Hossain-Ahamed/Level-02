@@ -1,57 +1,57 @@
-- [MongoDB Native driver](#mongodb-native-driver)
-- [Insert Documents 5-2](#insert-documents-5-2)
-- [Insert Multiple Documents](#insert-multiple-documents)
-- [Find](#find)
-  - [Get All Documents](#get-all-documents)
-  - [Get All Documents Formatted](#get-all-documents-formatted)
-  - [Find Documents](#find-documents)
-  - [Find One Document](#find-one-document)
-  - [Find-Specific Fields](#find-specific-fields)
-  - [regex find](#regex-find)
-- [Operator](#operator)
-  - [logical query Operator -`explicit and or`](#logical-query-operator--explicit-and-or)
-  - [element query Operator 5-6](#element-query-operator-5-6)
-  - [Search from array **`interest :[1,3,5]`**](#search-from-array-interest-135)
-    - [Exactly match of array](#exactly-match-of-array)
-    - [Search in array by position](#search-in-array-by-position)
-    - [`ELemmatch` - The $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.](#elemmatch---the-elemmatch-operator-matches-documents-that-contain-an-array-field-with-at-least-one-element-that-matches-all-the-specified-query-criteria)
-    - [Find By Element in Array ($elemMatch)](#find-by-element-in-array-elemmatch)
-  - [Text Search](#text-search)
-- [Sort Documents](#sort-documents)
-- [Count Documents](#count-documents)
-- [Limit Documents](#limit-documents)
-- [Chaining](#chaining)
-- [Foreach](#foreach)
-- [Update Document](#update-document)
-  - [Update Specific Field](#update-specific-field)
-  - [Array Update](#array-update)
-    - [Add to array](#add-to-array)
-    - [Remove an index](#remove-an-index)
-  - [remove an field](#remove-an-field)
-- [Increment Field ($inc)](#increment-field-inc)
-- [Rename Field name](#rename-field-name)
-- [Delete Document](#delete-document)
-- [Sub-Documents](#sub-documents)
-- [Indexing](#indexing)
-  - [Add Indexing  6-9](#add-indexing--6-9)
-  - [Single field](#single-field)
-  - [Text index](#text-index)
-  - [Compound Index](#compound-index)
-  - [Delete  index :](#delete--index-)
-- [MongoDB Aggregation Framework](#mongodb-aggregation-framework)
-  - [Studio 3T Documentation](#studio-3t-documentation)
-  - [`$match` - query the documents `6-1`](#match---query-the-documents-6-1)
-  - [`$project` - select the field which is show or not](#project---select-the-field-which-is-show-or-not)
-  - [`$addFields` - add new field to return document](#addfields---add-new-field-to-return-document)
-  - [`$out` - create new collection with the pipeline document fields](#out---create-new-collection-with-the-pipeline-document-fields)
-  - [`$merge` - merger into existing collection](#merge---merger-into-existing-collection)
-  - [`$group` - group by fields 6-3](#group---group-by-fields-6-3)
-  - [`$unwind` - create separate fields from array 6-5](#unwind---create-separate-fields-from-array-6-5)
-  - [`$bucket` - create group between the boundaries and return the docs in that boundary 6-6](#bucket---create-group-between-the-boundaries-and-return-the-docs-in-that-boundary-6-6)
-  - [`$sort` - sort documents](#sort---sort-documents)
-  - [`$limit` - limit doc](#limit---limit-doc)
-  - [`$facet` - use multiple pipelines parallelly 6-7](#facet---use-multiple-pipelines-parallelly-6-7)
-  - [`$lookup` - join two collection 6-8](#lookup---join-two-collection-6-8)
+* [MongoDB Native driver](#mongodb-native-driver)
+* [Insert Documents 5-2](#insert-documents-5-2)
+* [Insert Multiple Documents](#insert-multiple-documents)
+* [Find](#find)
+  * [Get All Documents](#get-all-documents)
+  * [Get All Documents Formatted](#get-all-documents-formatted)
+  * [Find Documents](#find-documents)
+  * [Find One Document](#find-one-document)
+  * [Find-Specific Fields](#find-specific-fields)
+  * [regex find](#regex-find)
+* [Operator](#operator)
+  * [logical query Operator -](#logical-query-operator--explicit-and-or)`explicit and or`
+  * [element query Operator 5-6](#element-query-operator-5-6)
+  * [Search from array ](#search-from-array-interest-135)`interest :[1,3,5]`
+    * [Exactly match of array](#exactly-match-of-array)
+    * [Search in array by position](#search-in-array-by-position)
+    * `ELemmatch` - The $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.
+    * [Find By Element in Array ($elemMatch)](#find-by-element-in-array-elemmatch)
+  * [Text Search](#text-search)
+* [Sort Documents](#sort-documents)
+* [Count Documents](#count-documents)
+* [Limit Documents](#limit-documents)
+* [Chaining](#chaining)
+* [Foreach](#foreach)
+* [Update Document](#update-document)
+  * [Update Specific Field](#update-specific-field)
+  * [Array Update](#array-update)
+    * [Add to array](#add-to-array)
+    * [Remove an index](#remove-an-index)
+  * [remove an field](#remove-an-field)
+* [Increment Field ($inc)](#increment-field-inc)
+* [Rename Field name](#rename-field-name)
+* [Delete Document](#delete-document)
+* [Sub-Documents](#sub-documents)
+* [Indexing](#indexing)
+  * [Add Indexing  6-9](#add-indexing--6-9)
+  * [Single field](#single-field)
+  * [Text index](#text-index)
+  * [Compound Index](#compound-index)
+  * [Delete  index :](#delete--index-)
+* [MongoDB Aggregation Framework](#mongodb-aggregation-framework)
+  * [Studio 3T Documentation](#studio-3t-documentation)
+  * `$match` - query the documents `6-1`
+  * `$project` - select the field which is show or not
+  * `$addFields` - add new field to return document
+  * `$out` - create new collection with the pipeline document fields
+  * `$merge` - merger into existing collection
+  * `$group` - group by fields 6-3
+  * `$unwind` - create separate fields from array 6-5
+  * `$bucket` - create group between the boundaries and return the docs in that boundary 6-6
+  * `$sort` - sort documents
+  * `$limit` - limit doc
+  * `$facet` - use multiple pipelines parallelly 6-7
+  * `$lookup` - join two collection 6-8
 
 # MongoDB Native driver
 
@@ -64,19 +64,20 @@ db.createCollection('posts') # Create Collection
 show collections # Show Collections
 ```
 
-- Install `- 5-1-A (windows) - 5-1-b (Mac & Linux)`
+* Install `- 5-1-A (windows) - 5-1-b (Mac & Linux)`
+
 
 1. install mongodb shell
-2. collect the path - C:\Program Files\MongoDB\Server\7.0\bin
+2. collect the path - C:\\Program Files\\MongoDB\\Server\\7.0\\bin
 3. Add to path in environment variable
 
-- check version
+* check version
 
 ```bash
 mongod --version
 ```
 
-- mongodb shell
+* mongodb shell
 
 ```bash
 mongod --version
@@ -137,24 +138,22 @@ db.posts.findOne({ category: 'News' })
 
 ## Find-Specific Fields
 
-- Field Filtering
+* Field Filtering
 
 ```bash
 db.posts.findOne({ title: 'Post One' }, { title: 1,  author: 1 })
-
 ```
 
-- project : Project can only be used for `find`, it does not work for `findOne`
+* project : Project can only be used for `find`, it does not work for `findOne`
 
 ```bash
 db.getCollection("test")
 .find({"age":17}).project({languages : 1})
-
 ```
 
 ## regex find
 
-- `$options : 'i'` for case insestive search
+* `$options : 'i'` for case insestive search
 
 ```bash
 Student.find({
@@ -167,7 +166,7 @@ Student.find({
 
 ## Operator
 
-- Compression query Operator [Operator mongo](https://www.mongodb.com/docs/manual/reference/operator/query-comparison/ "Doc LINK")
+* Compression query Operator [Operator mongo](https://www.mongodb.com/docs/manual/reference/operator/query-comparison/)
 
   ```bash
   db.collection_name.find({ age: { $eq: 30 }}) # Equal to value
@@ -176,7 +175,7 @@ Student.find({
   db.collection_name.find({ age: { $gte: 18 }}) # Greater than or Equal to value
   db.collection_name.find({ age: { $lt: 50 }}) # Less than to value
   db.collection_name.find({ age: { $lte: 50 }}) # less than or Equal to value
-
+  
   # implicit and
   db.collection_name.find({ age: { $gte: 18, $lte: 30 }})
   db.collection_name.find({ age: { $in: [18 , 30 ] }})
@@ -184,12 +183,12 @@ Student.find({
 
 ### logical query Operator -`explicit and or`
 
-- explicit and
+* explicit and
 
   ```bash
   db.collection_name.find({ $and: [{ $ne: 30 }, { $gte: 18 }] })
   ```
-- explicit or
+* explicit or
 
 ```bash
   db.collection_name.find({ 
@@ -211,7 +210,7 @@ Student.find({
   })
 ```
 
-- or for array of object 5-5
+* or for array of object 5-5
 
 ```bash
  db.test.find({
@@ -228,23 +227,23 @@ Student.find({
 
 ### element query Operator 5-6
 
-- to find if the entity exist :
+* to find if the entity exist :
 
   ```bash
   db.collection_name.find({ name: { $exist: true } })
   ```
-- to check the type of that entity
+* to check the type of that entity
 
   ```bash
   db.collection_name.find({ age: { $type: "string" } })
   ```
-- to find by size of array
+* to find by size of array
 
 ```bash
 db.test.find({friends:{$size: 0 }})
 ```
 
-## Search from array **`interest :[1,3,5]`**
+## Search from array `interest :[1,3,5]`
 
 ```bash
 db.collection_name.find({interest : 4})
@@ -261,7 +260,7 @@ db.collection_name.find({interest :{$in[1,2,3]}})
   })
 ```
 
-or, `$all` Search if all the elements exist [it wont check the position]
+or, `$all` Search if all the elements exist \[it wont check the position\]
 
 ```bash
   db.test.find({ interests: {$all : [ "Cooking" , "Travelling" ] }},{interests:1})
@@ -290,7 +289,6 @@ db.test.find({
 }
 
 }},{skills:1})
-
 
 ```
 
@@ -384,7 +382,7 @@ db.posts.update({ title: 'Post Two' },
 
 ### Add to array
 
-- Add to set (make unique)
+* Add to set (make unique)
 
 ```bash
 db.test.updateOne(
@@ -402,7 +400,7 @@ db.test.updateOne(
 })
 ```
 
-- Using push (Good approach) - **Allow duplcate entry**
+* Using push (Good approach) - **Allow duplcate entry**
 
 ```bash
 db.test.updateOne(
@@ -416,6 +414,7 @@ db.test.updateOne(
 ```
 
 ### Remove an index
+
 
 1. `pull` is used to remvoe by value
 2. `pullAll` is used to remove for for multiple remove
@@ -448,7 +447,7 @@ db.test.updateOne(
 })
 ```
 
-# Increment Field (\$inc)
+# Increment Field ($inc)
 
 ```bash
 db.posts.update({ title: 'Post Two' },
@@ -524,7 +523,7 @@ db.posts.createIndex({ about: "text" })
 
 ## Compound Index
 
- Cretae index depends on ascend or Descend by adding in index tab in mongo
+Cretae index depends on ascend or Descend by adding in index tab in mongo
 
 ## Delete  index :
 
@@ -608,12 +607,14 @@ out creates a new collection with the output received by using the pipeline
 
 `_id`  is the mendatory, the grouping will happened under this field
 
-- group is used to group by the value under that field
-- `_id` : null --> all will be considered as single group
-- `$push` is for pushing the data to the array of object, it returns those data to every group accordingly
+* group is used to group by the value under that field
+* `_id` : null --> all will be considered as single group
+* `$push` is for pushing the data to the array of object, it returns those data to every group accordingly
+
+  
   1. `$$ROOT` -> returns all data
   2. `$field_name` => return that field data
-- `$sum` => to sum up the count
+* `$sum` => to sum up the count
 
 ```js
 db.test.aggregate([
@@ -669,7 +670,7 @@ db.test.aggregate([
 ])
 ```
 
-- show interest(ineterests is an array) by age group
+* show interest(ineterests is an array) by age group
 
 ```js
 db.test.aggregate([
@@ -768,7 +769,7 @@ db.test.aggregate([
     )
 ```
 
-- Example :
+* Example :
 
 ```js
 db.test.aggregate([
@@ -822,4 +823,6 @@ db.test.aggregate([
     ])
 ```
 
-- Embedding Vs Referencing
+* Embedding Vs Referencing
+
+

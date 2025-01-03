@@ -1,5 +1,6 @@
 @import "./styles/button.css";
 @import "./styles/typograpy.css";
+@import "./styles/form.css";
 
 @tailwind base;
 @tailwind components;

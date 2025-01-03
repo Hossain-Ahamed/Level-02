@@ -1,0 +1,28 @@
+@layer base {
+  [type="text"],
+  input:where(:not([type])),
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  select,
+  [multiple],
+  textarea,
+  select {
+    @apply w-full rounded shadow-sm border border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500;
+  }
+
+  [type='checkbox'],
+  [type='radio']
+  {
+    @apply border border-gray-500 checked:bg-purple-500 rounded-md  focus:ring focus:ring-purple-500 text-purple-500;
+  }
+ 
+}

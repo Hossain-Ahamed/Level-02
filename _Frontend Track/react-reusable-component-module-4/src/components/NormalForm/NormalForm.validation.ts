@@ -9,5 +9,4 @@ export const SignUpSchema = z.object({
     })
     .min(8, "too short"),
 });
-
 export type TNormalForm = z.infer<typeof SignUpSchema>;

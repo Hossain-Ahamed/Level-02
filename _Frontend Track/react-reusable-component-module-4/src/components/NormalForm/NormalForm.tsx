@@ -23,7 +23,7 @@ const NormalForm = () => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={cn("border border-red-400 p-5 mx-auto", {
+        className={cn("border border-red-400 p-5 mx-auto flex ", {
           "max-w-5xl": double,
           "max-w-md": !double,
         })}

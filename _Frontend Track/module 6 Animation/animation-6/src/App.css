@@ -1,21 +1,31 @@
-.main {
-  /* border: 2px solid black; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* overflow: hidden; */
-  /* position: relative; */
+.btn {
+  border : 2px solid tomato;
+  color: tomato;
+  padding: 10px 20px;
+  background-color: transparent;
+  transition-duration : 500ms;
+  transition-timing-function: ease;
+  position : relative;
+  overflow: hidden;
+}
+.btn:hover{
+  color: white;
 }
 
-.box-1 {
-  /* position: absolute; */
-  background-color: red;
-  width: 150px;
-  height: 150px;
+.btn::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background-color: tomato;
+  position: absolute;
+  top: 0;
+  right:0;
+  transition-property: all;
   transition-duration: 500ms;
   transition-timing-function: ease;
+  transform: translate(100%);
+  z-index: -1;
 }
-
-.box-1:hover {
-  transform: rotate(35deg);
+.btn:hover:after{
+ transform: translate(0px);
 }

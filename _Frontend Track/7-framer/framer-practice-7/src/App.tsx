@@ -1,16 +1,13 @@
-import { motion } from "motion/react";
-import React from "react";
+import React from 'react';
+import Lesson2 from './Pages/Lesson2';
+import Lesson3 from './Pages/Lesson3';
 
-const initial = {rotate:0};
-const animate = {rotate:0};
 const App = () => {
   return (
-    <div>
-      <motion.div className="size-64 bg-indigo-500 rounded-lg"
-      initial={initial}
-      animate={animate}
-      transition={{duration:0,type:'spring'}}></motion.div>
-    </div>
+    <>
+      {/* <Lesson2/> */}
+      <Lesson3/>
+    </>
   );
 };
 

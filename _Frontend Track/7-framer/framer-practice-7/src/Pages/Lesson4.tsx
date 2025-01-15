@@ -1,14 +1,13 @@
 import { motion } from "motion/react";
-
 const parent = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1 },
+  visible: { opacity: 0.6, scale: 1 },
   transition: { duration: 0.5, ease: "easeInOut" },
-  hover: { scale: 1.4, duration: 1 },
-  tap: { scale: 1.1, rotate: 200,duration:120 },
+  hover : { opacity: 1,duration:0.5},
+
 };
 
-const Lesson3 = () => {
+const Lesson4 = () => {
   return (
     <div>
       <motion.div
@@ -16,11 +15,12 @@ const Lesson3 = () => {
         variants={parent}
         initial="hidden"
         animate="visible"
-        whileHover="hover"
-        whileTap="tap"
+        whileHover='hover'
+        // whileTap='tap'
+         drag="x"
+         dragConstraints={{ left: 0, right: 400 }}
       ></motion.div>
     </div>
   );
 };
-
-export default Lesson3;
+export default Lesson4;

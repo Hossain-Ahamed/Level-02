@@ -1,32 +1,29 @@
-import { motion } from "motion/react";
-import React from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
+export default function MouseMove3DCard() {
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
-const parent = {
-  hidden : {opacity :0, scale:0.9},
-  visible :{opacity :1, scale:1},
-}
-const child = {
-  hidden : {opacity :0, scale : 0.5},
-  visible : {opacity : 1, scale : 1},
-  transition:{duration:5,ease:'easeInOut',staggerChildren:1 , delayChildren:1}
-}
-const Lesson2 = () => {
+  const handleMouseMove = (e) => {
+    const { clientX, clientY, currentTarget } = e;
+    const { width, height, left, top } = currentTarget.getBoundingClientRect();
+    
+    const x = ((clientX - left) / width - 0.5) * 30;
+    const y = ((clientY - top) / height - 0.5) * -30;
+    
+    setRotation({ x, y });
+  };
+
   return (
-    <div>
-      <motion.div className="size-64 bg-indigo-500 rounded-lg h-full grid grid-cols-2 justify-items-center "
-      variants={parent}
-      initial="hidden"
-      animate="visible"
-   
-     >
-        <motion.div className="size-20 bg-yellow-500 rounded-sm " variants={child}></motion.div>
-        <motion.div className="size-20 bg-yellow-500 rounded-sm" variants={child}></motion.div>
-        <motion.div className="size-20 bg-yellow-500 rounded-sm" variants={child}></motion.div>
-        <motion.div className="size-20 bg-yellow-500 rounded-sm" variants={child}></motion.div>
-      </motion.div>
-    </div>
+    <motion.div
+      className="w-40 h-40 bg-blue-500 text-white flex items-center justify-center rounded-lg"
+      style={{ perspective: 1000 }}
+      animate={{ rotateX: rotation.y, rotateY: rotation.x }}
+      transition={{ type: "spring", stiffness: 100, damping: 10 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setRotation({ x: 0, y: 0 })}
+    >
+      Move Mouse
+    </motion.div>
   );
-};
-
-export default Lesson2;
+}

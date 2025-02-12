@@ -21,7 +21,7 @@ TypeScript is a strongly typed programming language that builds on JavaScript, g
   * [5.1. Primitive Data types](#51-primitive-data-types)
   * [5.2. Non-primitive Data types](#52-non-primitive-data-types)
   * [5.3. Function](#53-function)
-  * [5.4. Spread & Rest Operator 1-7](#54-spread--rest-operator-1-7)
+  * [5.4. Spread &amp; Rest Operator 1-7](#54-spread--rest-operator-1-7)
   * [5.5. Destructure 1-8](#55-destructure-1-8)
   * [5.6. Union and Intersection types](#56-union-and-intersection-types)
   * [5.7. Never type- Null - Unknown 1.11 ](#57-never-type--null---unknown-111-211)`2.11`
@@ -39,7 +39,7 @@ TypeScript is a strongly typed programming language that builds on JavaScript, g
   * [6.1. 4 main pillars of OOP ](#61-4-main-pillars-of-oop-aeip-shortcut)`(AEIP shortcut)`
   * [6.2. Basic structure of a class 3-1 ](#62-basic-structure-of-a-class-3-1-31)`3.1`
   * [6.3. Inheritance](#63-inheritance)
-  * [6.4. Type guards & in guard 3-3 ](#64-type-guards--in-guard-3-3-33)`3.3`
+  * [6.4. Type guards &amp; in guard 3-3 ](#64-type-guards--in-guard-3-3-33)`3.3`
     * [6.4.1. Type guard using OOP 3-4](#641-type-guard-using-oop-3-4)
   * [6.5. Access modifiers 3-5 ](#65-access-modifiers-3-5-3536)`3.5,3.6`
   * [6.6. Getter and Setter function ](#66-getter-and-setter-function-3536)`3.5,3.6`
@@ -54,7 +54,6 @@ Every programming languages is created to serve few purpose, so that there have 
 
 ### 3.0.1. Pros
 
-
 1. `Static Typing`: TypeScript enforces static typing, which means you can catch type-related errors at compile time rather than runtime. This can help improve code quality and catch bugs early in the development process.
 2. `Enhanced Tooling`: TypeScript provides excellent tooling and editor support. Popular code editors like Visual Studio Code offer rich TypeScript integration, including auto-completion, error checking, and code navigation.
 3. `Code Maintainability`: Strongly typed code is often more self-documenting and easier to understand, making it easier to maintain and refactor code bases, especially in large projects.
@@ -63,7 +62,6 @@ Every programming languages is created to serve few purpose, so that there have 
 6. `Transpilation`: TypeScript code can be transpiled into plain JavaScript, making it compatible with all major browsers and environments.
 
 ### 3.0.2. Cons
-
 
 1. `Learning Curve`: TypeScript introduces a learning curve for developers who are new to static typing. It may take time to fully grasp TypeScript's type system and its nuances.
 2. `Overhead`: Adding type annotations can make the codebase slightly more verbose, which can be seen as an overhead, especially for small projects.
@@ -525,7 +523,7 @@ Type assertion can be done in two ways: with angle brackets (<>) or with the as 
   ```ts
   let someValue: any = 'Hello, TypeScript!';
   let strLength: number = (someValue as string).length;
-  
+
   console.log(strLength); // Output: 16
   ```
 * **other examples**
@@ -534,7 +532,7 @@ Type assertion can be done in two ways: with angle brackets (<>) or with the as 
   let anything: any;
   anything = 'Hello, World!';
   (anything as string).toUpperCase();
-  
+
   //--------------------------------
   const kgToGram = (value: string | number): string | number | undefined => {
     if (typeof value === 'string') {
@@ -544,15 +542,15 @@ Type assertion can be done in two ways: with angle brackets (<>) or with the as 
       return value * 1000;
     }
   };
-  
+
   const resultOne = kgToGram(2) as number;
   const resultTwo = kgToGram('5') as string;
-  
+
   ```
 * **Try catch Block**
 
   ```ts
-  
+
   type CustomError = {
     message: string;
   };
@@ -571,31 +569,31 @@ Generics in TypeScript allow you to create reusable components, functions, and c
 
   ```ts
   type GenericArray<T> = Array<T>;
-  
+
   const srtArr: GenericArray<string> = ['a', 'b'];
   const numArr: GenericArray<number> = [1, 2];
   const boolArr: GenericArray<boolean> = [true, false];
-  
+
   type Name = {
     id: string;
     fName: string;
     lName: string;
   };
-  
+
   const objArr: GenericArray<Name> = [
     { id: 'sdadsa', fName: 'james', lName: 'clear' },
     { id: 'afsdfa', fName: 'james', lName: 'clear' },
   ];
-  
+
   /**
    * Generic Tuple
    */
-  
+
   type GenericTuple<X, Y> = [X, Y];
-  
+
   const nameAge: GenericTuple<string, number> = ['Napoleon Hill', 47];
   const genreStatus: GenericTuple<string, string> = ['motivation', 'active'];
-  
+
   const nameWithId: GenericTuple<Name, string> = [
     { id: 'afsdfa', fName: 'james', lName: 'clear' },
     '1232',
@@ -607,7 +605,7 @@ Generics in TypeScript allow you to create reusable components, functions, and c
   /**
    * Generic with Interface
    */
-  
+
   interface Developer<T, X, Y, Z = null> {
     name: string;
     email: string;
@@ -616,7 +614,7 @@ Generics in TypeScript allow you to create reusable components, functions, and c
     remote?: Y;
     graduated?: Z;
   }
-  
+
   const jrDeveloper: Developer<string, { county: string; city: string }, null> = {
     name: 'example',
     email: 'example@gmail.com',
@@ -1447,6 +1445,4 @@ student.setAge(25);
 console.log(student.getName()); // Output: Bob
 console.log(student.getAge()); // Output: 25
 ```
-
-
 

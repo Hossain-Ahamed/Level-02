@@ -1,10 +1,13 @@
-import React from 'react';
+import Container from '@/components/layouts/Container';
+import HeroSection from './HeroSection';
+import AboutUsSection from './AboutUsSection';
 
 const Home = () => {
     return (
-        <div>
-            Home
-        </div>
+        <Container>
+            <HeroSection/>
+            <AboutUsSection/>
+        </Container>
     );
 };
 

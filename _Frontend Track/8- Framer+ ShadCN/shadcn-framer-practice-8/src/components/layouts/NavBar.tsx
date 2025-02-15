@@ -1,13 +1,14 @@
-import React from "react";
+
 import { NavLink } from "react-router";
 import { Button } from "../ui/button";
+import { fixedValues } from "@/assets/data";
 
 const NavBar = () => {
   return (
-    <header className="bg-green-500 h-16">
-      <nav className="bg-red-400 mx-auto max-w-[1200px] ">
-        <span>Tech n talk BD</span>
-        <ul>
+    <header className="h-16">
+      <nav className="h-full mx-auto max-w-[1240px] flex justify-between items-center px-5 ">
+        <span className="text-3xl ">{fixedValues.COMPANY_NAME}</span>
+        <ul className="space-x-5">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <Button>

@@ -39,8 +39,8 @@
 @theme {
   --color-gray: hsl(0 0% 70%);
   --color-light-gray: hsl(0 0% 95%);
-  --color-gray: hsl(240 3% 32%);
-  --border-yellow : borde
+  --color-dark-gray: hsl(240 3% 32%);
+
 }
 .dark {
   --background: hsl(0 0% 3.9%);
@@ -110,4 +110,11 @@
   html {
     font-family: "Poppins", serif;
   }
+  h1{
+    @apply text-6xl font-semibold;
+  }
+   
+ .sidebar-nav-item {
+        @apply w-full p-3 bg-gray hover:bg-dark-gray hover:text-white;
+    }
 }

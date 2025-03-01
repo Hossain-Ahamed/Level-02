@@ -1,13 +1,17 @@
-import Container from '@/components/layouts/Container';
+
+
 import HeroSection from './HeroSection';
 import AboutUsSection from './AboutUsSection';
+import SevicesSection from './SevicesSection';
 
 const Home = () => {
     return (
-        <Container>
+        <>
             <HeroSection/>
-            <AboutUsSection/>
-        </Container>
+           
+            {/* <AboutUsSection/> */}
+            <SevicesSection/>
+        </>
     );
 };
 

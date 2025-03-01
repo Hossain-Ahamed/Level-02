@@ -10,6 +10,8 @@ cloudinary.config({
   api_secret: config.Clourdinary_api_secret,
 });
 
+
+
 //upload and delete the local file
 export const sendImageToCloudinary = (
   imageName: string,

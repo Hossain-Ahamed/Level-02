@@ -1,44 +1,32 @@
-import { Layout, Menu } from "antd";
+import { Button, Layout } from "antd";
 import { Outlet } from "react-router";
-import { adminSidebarItems } from "../../routes/admin.routes";
-const { Header, Content, Footer, Sider } = Layout;
+import Sidebar from "./Sidebar";
+import { useAppDispatch } from "../../redux/hooks";
+import { logout } from "../../redux/features/auth/authSlice";
+
+const { Header, Content, Footer } = Layout;
 
 const MainLayout = () => {
+  const dispatch = useAppDispatch();
+  const handleLogut =()=>{
+dispatch(logout());
+  }
   return (
     <Layout style={{ height: "100vh" }}>
-      <Sider
-      style={{paddingTop:'60px'}}
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-      >
-        <div className="demo-logo-vertical" />
-
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["4"]}
-          items={adminSidebarItems}
-        />
-      </Sider>
-
+      <Sidebar />
       <Layout>
         <Header style={{ padding: 0 }}>
           <div
             style={{
               color: "white",
-              padding: "5px 0",
+              padding: "5px",
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-between",
               alignItems: "center",
             }}
           >
             <h1 className="">UMS System</h1>
+            <Button type="primary" onClick={handleLogut}>Logout</Button>
           </div>
         </Header>
 
@@ -51,7 +39,7 @@ const MainLayout = () => {
               // borderRadius: borderRadiusLG,
             }}
           >
-           <Outlet/>
+            <Outlet />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>

@@ -9,6 +9,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
 import { logout, setUser } from '../features/auth/authSlice';
+import { toast } from 'sonner';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:5000/api/v1',
@@ -31,6 +32,10 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 > = async (args, api, extraOptions): Promise<any> => {
   let result = await baseQuery(args, api, extraOptions);
 
+  if(result?.error?.status === 404) {
+    const errorMessage = (result.error.data as { message?: string })?.message || 'Not found';
+    toast.error(errorMessage);
+  }
   if (result?.error?.status === 401) {
     //* Send Refresh
     console.log('Sending refresh token');

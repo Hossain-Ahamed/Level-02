@@ -27,9 +27,10 @@ const Sidebar = () => {
   
     return (
         <Sider
-        style={{paddingTop:'60px'}}
+        style={{paddingTop:'60px',position:'sticky',top:'0',left:'0',height:'100vh'}}
           breakpoint="lg"
           collapsedWidth="0"
+          
           // onBreakpoint={(broken) => {
           //   console.log(broken);
           // }}
@@ -42,6 +43,7 @@ const Sidebar = () => {
           <Menu
             theme="dark"
             mode="inline"
+            
             defaultSelectedKeys={["4"]}
             items={sidebarItems}
           />

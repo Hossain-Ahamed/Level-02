@@ -8,11 +8,11 @@ const { Header, Content, Footer } = Layout;
 
 const MainLayout = () => {
   const dispatch = useAppDispatch();
-  const handleLogut =()=>{
-dispatch(logout());
-  }
+  const handleLogut = () => {
+    dispatch(logout());
+  };
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100%", minHeight: "100vh" }}>
       <Sidebar />
       <Layout>
         <Header style={{ padding: 0 }}>
@@ -26,7 +26,9 @@ dispatch(logout());
             }}
           >
             <h1 className="">UMS System</h1>
-            <Button type="primary" onClick={handleLogut}>Logout</Button>
+            <Button type="primary" onClick={handleLogut}>
+              Logout
+            </Button>
           </div>
         </Header>
 
